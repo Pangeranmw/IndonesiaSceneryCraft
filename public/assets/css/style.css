@@ -34,7 +34,7 @@ h4{
   outline: none !important;
   box-shadow: none;
 }
-.navbar-light .nav-link{
+.nav-link{
   color: white !important;
   font-weight: 500;
   font-size: 18px;
@@ -206,3 +206,23 @@ h4{
     font-weight: 500;
     font-size: 16px;
     color: white;}
+
+@media only screen and (max-width: 640px) {
+  .cart img{
+    /* height: 20%; */
+  }
+  .cart .qty{
+    line-height: 25px;
+    height:20px;
+    width:20px;
+    font-size: 14px;
+    position: absolute;
+    top: -2px;
+    left: 10px;
+    text-decoration: none;
+    color: white;
+    text-decoration: none;
+    background-color: #D19F94;
+    border-radius: 100px;
+  }
+}

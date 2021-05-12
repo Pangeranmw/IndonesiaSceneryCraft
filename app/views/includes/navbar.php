@@ -31,7 +31,7 @@
             </ul>
             <ul class="navbar-nav mx-auto text-center">
                 <a class="navbar-brand" href="#">
-                    <img src="assets/images/logo.png" alt="" />
+                    <img src="<?=BASEURL;?>/assets/images/logo.png" alt="" />
                 </a>
             </ul>
             <ul class="navbar-nav ms-auto text-center">
@@ -51,9 +51,13 @@
                 </li>
                 <li class="nav-item my-auto">
                     <div class="cart me-4">
-                        <a class="" href="#">
-                            <span class="qty">0</span>
-                            <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
+                        <a href="#">
+                            <div id="mobile-cart nav-link">Cart 0</div>
+                            <div id="cart">
+                                <span class="qty">0</span>
+                                <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
+                            </div>
+                            
                         </a>
                     </div>
                 </li>
