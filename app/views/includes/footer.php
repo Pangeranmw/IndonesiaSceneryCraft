@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 py-5">
-        <div class="contact heading">
+        <div class="contact">
           <h3 class="heading">Contact</h3>
           <a href="mailto: dadengrizki@gmail.com"><p>dadengrizki@gmail.com</p></a>
           <a href="mailto: indradirhm@gmail.com"><p>indradirhm@gmail.com</p></a>

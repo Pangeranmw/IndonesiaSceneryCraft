@@ -1,9 +1,13 @@
 
 var navbar = document.querySelector("nav");
 var cart = document.getElementById("cart");
+var search = document.getElementById("search");
+var logo = document.getElementById("logo");
+var lang = document.getElementById("lang");
 var mobileNav = document.getElementById("btnNav");
 var mobile = window.matchMedia("(min-width: 845px)");
 var mobileCart = document.getElementById("mobile-cart");
+var mobileSearch = document.getElementById("mobile-search");
 window.addEventListener("scroll", function () {
 	if (mobile.matches) {
 		navbar.classList.toggle("main-color", window.scrollY > 20);
@@ -14,7 +18,12 @@ if (!mobile.matches){
 }
 mobileNav.onclick = function changeNav() {
 	cart.style.display = "none";
+	logo.style.display = "none";
+	lang.style.width = "25%";
+	lang.style.margin = "0 auto";
+	search.style.display = "none";
 	mobileCart.style.display = "inline-block";
+	mobileSearch.style.display = "inline-block";
 };
 
 

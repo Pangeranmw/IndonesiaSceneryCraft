@@ -162,4 +162,39 @@
                 </div>
             </div>
         </div>
+        <div class="what-they-say mt-5">
+            <h4>What They Say</h4>
+            <div class="row mt-2 mb-5">
+                <div class="col-lg-4 col-md-5 col-sm-12">
+                    <div class="destination-image">
+                        <img style="background-image: url('<?= BASEURL;?>/assets/images/prambanan.jpg');"alt="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7 col-sm-12">
+                    <div class="star d-flex align-content-center">
+                        <img src="assets/images/ic-blackstar.svg" alt="">
+                        <p class="ms-2">5 Stars</p>
+                    </div>
+                    <div class="review-title">
+                        <h4>Awesome Trip</h4>
+                    </div>
+                    <div class="review-text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea nobis atque ratione ad tempora non illo nemo, temporibus dolore recusandae, aperiam qui perspiciatis eveniet repellat illum quae at quisquam? Sed sequi explicabo id quas labore doloribus. Vel, sapiente earum? Reiciendis impedit qui minus, error distinctio itaque voluptatibus, assumenda, cumque ipsa eaque nobis facilis ducimus quod sint rerum labore temporibus..</p>
+                    </div>
+                    <div class="d-flex user-profile">
+                        <img src="<?= BASEURL;?>/assets/images/Profile.jpg" alt="">
+                        <div class="row ms-2">
+                            <div class="col-12">
+                                <p class="name">Pangeran Muhammad</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="profession">Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
     </div>

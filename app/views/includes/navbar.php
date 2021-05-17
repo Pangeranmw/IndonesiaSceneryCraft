@@ -1,5 +1,5 @@
 <nav 
-    class="navbar navbar-expand-md fixed-top navbar-fixed-top navbar-light"
+    class="shadow-blur navbar navbar-expand-md fixed-top navbar-fixed-top navbar-light"
     data-aos="fade-down"
 >   
     <button
@@ -31,31 +31,32 @@
                     <a class="nav-link" href="#">Craft</a>
                 </li>
             </ul>
-            <ul class="navbar-nav mx-auto text-center">
+            <ul class="navbar-nav mx-auto text-center" id="logo">
                 <a class="navbar-brand" href="#">
                     <img src="<?=BASEURL;?>/assets/images/logo.png" alt="" />
                 </a>
             </ul>
             <ul class="navbar-nav ms-auto text-center">
-                <li class="nav-item me-4 my-auto">
-                    <form name="language" method="post" action="">
-                        <select class="mb-auto mt-auto form-select lang" name="language" id="" aria-label="Default select example">
+                <li class="nav-item my-auto">
+                    <form name="language" class="me-4" method="post" action="">
+                        <select class="mb-auto mt-auto form-select lang" id="lang" name="language" id="" aria-label="Default select example">
                             <option value="en">En</option>
                             <option value="id">Id</option>
                         </select>
                     </form>
                 </li>
-                <li class="nav-item me-4 my-auto">
+                <li class="nav-item my-auto">
                     <form class="">
+                        <div class="nav-link" id="mobile-search">Search</div>
                         <!-- <input class="form-control me-4" type="search" placeholder="Search" aria-label="Search"> -->
-                        <button class="btn px-3 py-3 btn-search" type="submit"> </button>
+                        <button class="me-4 btn px-3 py-3 btn-search" id="search" type="submit"> </button>
                     </form>
                 </li>
                 <li class="nav-item my-auto">
                     <div class="cart">
                         <a href="#">
-                            <div class="nav-link" id="mobile-cart">Cart 0</div>
-                            <div id="cart">
+                            <div class="nav-link" id="mobile-cart">Cart</div>
+                            <div class="me-4" id="cart">
                                 <span class="qty">0</span>
                                 <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
                             </div>

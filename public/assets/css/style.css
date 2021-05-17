@@ -4,6 +4,7 @@
   --second: #C5D7D9;
   --third: #7EBBB9;
   --bg: #F6F8FD;
+  --black: #292929;
 }
 *{
     box-sizing: border-box;
@@ -18,17 +19,14 @@ h4{
   font-weight: 600;
   font-size: 34px;
   line-height: 35px;
-  color: var(--main);
+  color: var(--black);
 }
 .main-color{
   transition: 0.6s;
   background-color: #707A7E;
-}
-.text-main{
-  color: var(--main);
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
 }
 .btn:hover {
-    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 9%), 0 2px 3px -1px rgb(0 0 0 / 7%);
     transform: scale(1.02);
 }
 .btn:focus, a:focus, select:focus{
@@ -61,8 +59,8 @@ h4{
   .btn-nav {
     font-weight: 500;
     font-size: 18px;
-    color: white;
-    background-color: rgba(255, 255, 255, 0);
+    color: var(--main);
+    background-color: rgb(255, 255, 255);
     border-radius: 100px;
     width: 100%;
   transition: 0.3s;}
@@ -81,6 +79,8 @@ h4{
     background-size: 18px 18px;
     background-color: rgb(255, 255, 255);
     border-radius: 100px;}
+    #mobile-search{
+      display: none;}
   .cart{
     position: relative;}
     #mobile-cart{
@@ -138,7 +138,7 @@ h4{
     margin-top: 5%;
     font-weight: 500;
     font-size: 24px;
-    color: var(--main);
+    color: var(--black);
   }
 
 /* Card Recommendation */
@@ -155,12 +155,12 @@ h4{
     margin-top: 5px;
     font-weight: 500;
     font-size: 24px;
-    color: var(--main);}
+    color: var(--black);}
   .text-location{
     margin-top: 5px;
     font-weight: normal;
     font-size: 20px;
-    color: var(--main);}
+    color: var(--black);}
   .card-recommendation .star{
     position: absolute;
     top: 0;
@@ -184,12 +184,12 @@ h4{
     margin-top: 5px;
     font-weight: 500;
     font-size: 24px;
-    color: var(--main);}
+    color: var(--black);}
   .text-price{
     margin-top: 5px;
     font-weight: 400;
     font-size: 20px;
-    color: var(--main);}
+    color: var(--black);}
   .rating{
     margin-top: 5%;
     height: 100%;
@@ -206,7 +206,8 @@ footer{
   footer .container{
     background-color: var(--main);}
   footer .heading{
-    margin-bottom: 20px;} 
+    margin-bottom: 20px;
+  font-weight: 700;} 
   footer p{
     color: var(--white-trs);
     margin-bottom: 10px;} 
@@ -222,6 +223,44 @@ footer{
     font-weight: 500;
     margin-bottom: 20px;
   }
+  .what-they-say .destination-image img{
+    width: 100%;
+    min-height: 500px;
+    background-size: cover;
+    border-radius: 1em;}
+    .what-they-say .star img{
+      height: 28px;
+      align-items: center;
+    }
+    .what-they-say h4, .what-they-say p{
+      color: var(--black);
+    }
+    .what-they-say .star p{
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .what-they-say .review-title h4{
+      font-size: 30px;
+    }
+    .what-they-say .review-text p{
+      font-size: 24px;
+      font-weight: 400;
+    }
+    .what-they-say .user-profile img{
+      height: 6rem;
+      border-radius: 1em;
+    }
+    .what-they-say .user-profile .name{
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .what-they-say .user-profile .profession{
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 0;
+
+    }
 @media only screen and (max-width: 640px) {
 
 }
