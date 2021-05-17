@@ -6,6 +6,7 @@
       $this->view('layouts/header', $data);
       $this->view('includes/navbar');
       $this->view('home/index');
+      $this->view('includes/footer');
       $this->view('layouts/footer');
     }
   }

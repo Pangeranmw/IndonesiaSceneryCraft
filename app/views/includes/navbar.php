@@ -3,7 +3,9 @@
     data-aos="fade-down"
 >   
     <button
+        onclick="changeNav()"
         class="navbar-toggler"
+        id="btnNav"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#responsiveNavbar"
@@ -50,14 +52,13 @@
                     </form>
                 </li>
                 <li class="nav-item my-auto">
-                    <div class="cart me-4">
+                    <div class="cart">
                         <a href="#">
-                            <div id="mobile-cart nav-link">Cart 0</div>
+                            <div class="nav-link" id="mobile-cart">Cart 0</div>
                             <div id="cart">
                                 <span class="qty">0</span>
                                 <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
                             </div>
-                            
                         </a>
                     </div>
                 </li>

@@ -9,8 +9,8 @@
         </div>
     </div>
     <div class="container my-5">
-        <h4 class="text-center mb-4">Culture From Provincial Capitals</h4>
-        <div class="row mt-3">
+        <h4 class="text-center mb-2">Culture From Provincial Capitals</h4>
+        <div class="row">
             <div class="owl-carousel owl-theme">
                 <div class="card-1 d-flex flex-column mt-3">
                     <div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/DSC00169.jpg);"></div>
@@ -44,8 +44,8 @@
                 </div>
             </div>
         </div>
-        <h4 class="my-4">Recommended Destinations</h4>
-        <div class="row my-3 justify-content-center align-items-center">
+        <h4 class="mt-5">Recommended Destinations</h4>
+        <div class="row mt-2 mb-5 justify-content-center align-items-center">
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <a href="">
                     <div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/DSC00169.jpg);">
@@ -99,81 +99,67 @@
                 </a>
             </div>
         </div>
-        <h4 class="text-center my-4">Most Rated Crafts</h4>
-        <div class="row mt-3 justify-content-center align-items-center">
+        <h4 class="mt-5">Most Rated Crafts</h4>
+        <div class="row mt-2 mb-5 justify-content-center align-items-center">
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="">
-                    <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
-                    </div>
-                    <div class="rating">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                    </div>
-                    <div class="text-craft">
-                        Tenun Songket
-                    </div>
-                    <div class="text-price">
-                        Rp. 200.000
-                    </div>
-                </a>
+                <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
+                </div>
+                <div class="rating">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                </div>
+                <a href=""><div class="text-craft">Tenun Songket</div></a>
+                <div class="text-price">
+                    Rp. 200.000
+                </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="">
-                    <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
-                    </div>
-                    <div class="rating">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                    </div>
-                    <div class="text-craft">
-                        Songket
-                    </div>
-                    <div class="text-price">
-                        Rp. 200.000
-                    </div>
-                </a>
+                <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
+                </div>
+                <div class="rating">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                </div>
+                <a href=""><div class="text-craft">Songket</div></a>
+                <div class="text-price">
+                    Rp. 200.000
+                </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="">
-                    <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
-                    </div>
-                    <div class="rating">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                    </div>
-                    <div class="text-craft">
-                        Tenun Songket
-                    </div>
-                    <div class="text-price">
-                        Rp. 200.000
-                    </div>
-                </a>
+                <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
+                </div>
+                <div class="rating">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                </div>
+                <a href=""><div class="text-craft">Tenun Songket</div></a>
+                <div class="text-price">
+                    Rp. 200.000
+                </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="">
-                    <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
-                    </div>
-                    <div class="rating">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                        <img src="assets/images/ic-greystar.svg" alt="">
-                    </div>
-                    <div class="text-craft">
-                        Songket
-                    </div>
-                    <div class="text-price">
-                        Rp. 200.000
-                    </div>
-                </a>
+                <div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
+                </div>
+                <div class="rating">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                    <img src="assets/images/ic-greystar.svg" alt="">
+                </div>
+                <a href=""><div class="text-craft">Songket</div></a>
+                <div class="text-price">
+                    Rp. 200.000
+                </div>
             </div>
         </div>
     </div>
