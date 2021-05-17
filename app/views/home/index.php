@@ -166,8 +166,10 @@
             <h4>What They Say</h4>
             <div class="row mt-2 mb-5">
                 <div class="col-lg-4 col-md-5 col-sm-12">
-                    <div class="destination-image">
-                        <img style="background-image: url('<?= BASEURL;?>/assets/images/prambanan.jpg');"alt="">
+                    <div class="page-header destination-image">
+                        <img class="" style="background-image: url('<?= BASEURL;?>/assets/images/prambanan.jpg');"alt="">
+                        <div class="mask bg-gradient-dark opacity-6"></div>
+                        <p class="text-location fs-5 text-center">Prambanan</p>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-sm-12">
@@ -176,19 +178,19 @@
                         <p class="ms-2">5 Stars</p>
                     </div>
                     <div class="review-title">
-                        <h4>Awesome Trip</h4>
+                        <h4 class="fs-3">Awesome Trip</h4>
                     </div>
                     <div class="review-text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea nobis atque ratione ad tempora non illo nemo, temporibus dolore recusandae, aperiam qui perspiciatis eveniet repellat illum quae at quisquam? Sed sequi explicabo id quas labore doloribus. Vel, sapiente earum? Reiciendis impedit qui minus, error distinctio itaque voluptatibus, assumenda, cumque ipsa eaque nobis facilis ducimus quod sint rerum labore temporibus..</p>
+                        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea nobis atque ratione ad tempora non illo nemo, temporibus dolore recusandae, aperiam qui perspiciatis eveniet repellat illum quae at quisquam? Sed sequi explicabo id quas labore doloribus. Vel, sapiente earum? Reiciendis impedit qui minus, error distinctio itaque voluptatibus, assumenda, cumque ipsa eaque nobis facilis ducimus quod sint rerum labore temporibus..</p>
                     </div>
                     <div class="d-flex user-profile">
                         <img src="<?= BASEURL;?>/assets/images/Profile.jpg" alt="">
                         <div class="row ms-2">
                             <div class="col-12">
-                                <p class="name">Pangeran Muhammad</p>
+                                <p class="fs-4 name">Pangeran Muhammad</p>
                             </div>
                             <div class="col-12">
-                                <p class="profession">Traveler</p>
+                                <p class="fs-5 profession">Traveler</p>
                             </div>
                         </div>
                     </div>

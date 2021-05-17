@@ -5,18 +5,19 @@ var search = document.getElementById("search");
 var logo = document.getElementById("logo");
 var lang = document.getElementById("lang");
 var mobileNav = document.getElementById("btnNav");
-var mobile = window.matchMedia("(min-width: 845px)");
+var mobile = window.matchMedia("(max-width: 845px)");
 var mobileCart = document.getElementById("mobile-cart");
 var mobileSearch = document.getElementById("mobile-search");
 window.addEventListener("scroll", function () {
-	if (mobile.matches) {
+	if (!mobile.matches) {
 		navbar.classList.toggle("main-color", window.scrollY > 20);
 	}
 });
-if (!mobile.matches){
+if (mobile.matches){
 	navbar.classList.add("main-color");
 }
 mobileNav.onclick = function changeNav() {
+	navbar.classList.toggle("rounded-pill");
 	cart.style.display = "none";
 	logo.style.display = "none";
 	lang.style.width = "25%";

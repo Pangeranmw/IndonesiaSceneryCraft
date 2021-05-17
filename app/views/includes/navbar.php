@@ -1,7 +1,4 @@
-<nav 
-    class="shadow-blur navbar navbar-expand-md fixed-top navbar-fixed-top navbar-light"
-    data-aos="fade-down"
->   
+
     <button
         onclick="changeNav()"
         class="navbar-toggler"
@@ -64,7 +61,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-nav px-3 text-main" href="#">
+                    <a class="btn btn-nav px-3 text-main" href="<?= BASEURL; ?>/home/login">
                         LOG IN
                     </a>
                 </li>
