@@ -1,6 +1,5 @@
 
     <button
-        onclick="changeNav()"
         class="navbar-toggler"
         id="btnNav"
         type="button"
@@ -16,16 +15,16 @@
         <div class="collapse navbar-collapse" id="responsiveNavbar">
             <ul class="navbar-nav me-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link <?php if($data['aktif']=='home') echo 'nav-active';?>" href="<?= BASEURL;?>/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Destination</a>
+                    <a class="nav-link <?php if($data['aktif']=='destination') echo 'nav-active';?>" href="<?= BASEURL;?>/destination">Destination</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Culture</a>
+                    <a class="nav-link <?php if($data['aktif']=='culture') echo 'nav-active';?>" href="#">Culture</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Craft</a>
+                    <a class="nav-link <?php if($data['aktif']=='craft') echo 'nav-active';?>" href="#">Craft</a>
                 </li>
             </ul>
             <ul class="navbar-nav mx-auto text-center" id="logo">
@@ -54,7 +53,7 @@
                         <a href="#">
                             <div class="nav-link" id="mobile-cart">Cart</div>
                             <div class="me-4" id="cart">
-                                <span class="qty">0</span>
+                                <span class="qty <?php if ($data['qty']>0) echo 'nonzero';?>"><?=$data['qty'];?></span>
                                 <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
                             </div>
                         </a>

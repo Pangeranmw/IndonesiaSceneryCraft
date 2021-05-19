@@ -9,9 +9,9 @@
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="container my-auto">
+  <div class="container my-5">
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-7 mx-auto ">
+      <div class="col-xl-6 col-lg-8 col-md-8 mx-auto ">
         <div class="card">
           <div class="card-title fs-4 mt-4 text-dark text-bold text-center">
             Register
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="mb-3">
-                <textarea name="" class="form-control" name="adresses" placeholder="Adresses"></textarea>
+                <textarea name="" class="form-control" row="1" name="adresses" placeholder="Adresses"></textarea>
               </div>
               <div class="row">
                 <div class="col-6">

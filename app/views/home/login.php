@@ -9,11 +9,11 @@
   </nav>
   <!-- End Navbar -->
   <section>
-    <div class="page-header section-height-75">
+    <div class="page-header section-height-50">
       <div class="container">
         <div class="row">
           <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-            <div class="card card-plain mt-8">
+            <div class="card card-plain my-auto">
               <div class="card-header pb-0 text-left bg-transparent">
                 <h3 class="font-weight-bolder text-info text-dark">Welcome back</h3>
                 <p class="mb-0">Enter your email and password to login</p>

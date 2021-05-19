@@ -1,7 +1,7 @@
 <body style="background-color: var(--bg);">
     <div class="hero" style="background-image: url('<?= BASEURL;?>/assets/images/hero-img.png');">
         <div class="mx-auto my-auto d-flex flex-column">
-            <h1 class="h1">
+            <h1 id="hero-title" class="h1">
                 Best Journey <br>
                 From Indonesia
             </h1>
@@ -197,6 +197,13 @@
                 </div>
             </div>
         </div>
-        
-
     </div>
+    <script>
+    window.addEventListener("scroll", function () {
+        var mobile = window.matchMedia("(max-width: 845px)");
+        var navbar = document.querySelector("nav");
+        if (!mobile.matches ) {
+            navbar.classList.toggle("main-color", window.scrollY > 20);
+        }
+    });
+    </script>
