@@ -1,24 +1,24 @@
 <?php 
-  class Destination extends Controller{
+  class Craft extends Controller{
     public function index(){
-      $data['judul'] = 'Destination';
-      $data['aktif'] = 'destination';
+      $data['judul'] = 'Craft';
+      $data['aktif'] = 'craft';
       $data['qty'] = 12;
       $this->view('layouts/header', $data);
       $this->view('includes/navbar-general');
       $this->view('includes/navbar', $data);
-      $this->view('destination/index');
+      $this->view('craft/index');
       $this->view('includes/footer');
       $this->view('layouts/footer');
     }
     public function detail(){
-      $data['judul'] = 'Destination';
-      $data['aktif'] = 'destination';
+      $data['judul'] = 'Craft';
+      $data['aktif'] = 'craft';
       $data['qty'] = 12;
       $this->view('layouts/header', $data);
       $this->view('includes/navbar-general');
       $this->view('includes/navbar', $data);
-      $this->view('destination/detail');
+      $this->view('craft/detail');
       $this->view('includes/footer');
       $this->view('layouts/footer');
     }

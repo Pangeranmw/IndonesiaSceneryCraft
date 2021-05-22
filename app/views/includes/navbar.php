@@ -1,5 +1,6 @@
 
     <button
+        onclick="changeNav()"
         class="navbar-toggler"
         id="btnNav"
         type="button"
@@ -21,20 +22,20 @@
                     <a class="nav-link <?php if($data['aktif']=='destination') echo 'nav-active';?>" href="<?= BASEURL;?>/destination">Destination</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($data['aktif']=='culture') echo 'nav-active';?>" href="#">Culture</a>
+                    <a class="nav-link <?php if($data['aktif']=='culture') echo 'nav-active';?>" href="<?= BASEURL;?>/culture">Culture</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if($data['aktif']=='craft') echo 'nav-active';?>" href="#">Craft</a>
+                    <a class="nav-link <?php if($data['aktif']=='craft') echo 'nav-active';?>" href="<?= BASEURL;?>/craft">Craft</a>
                 </li>
             </ul>
             <ul class="navbar-nav mx-auto text-center" id="logo">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="<?= BASEURL;?>/home">
                     <img src="<?=BASEURL;?>/assets/images/logo.png" alt="" />
                 </a>
             </ul>
             <ul class="navbar-nav ms-auto text-center">
                 <li class="nav-item my-auto">
-                    <form name="language" class="me-4" method="post" action="">
+                    <form name="language" class="" method="post" action="">
                         <select class="mb-auto mt-auto form-select lang" id="lang" name="language" id="" aria-label="Default select example">
                             <option value="en">En</option>
                             <option value="id">Id</option>
@@ -42,11 +43,21 @@
                     </form>
                 </li>
                 <li class="nav-item my-auto">
-                    <form class="">
+                    <div class="me-4 px-3">
+                        <form action="" class="" name="search">
+                            <div class="searchBox">
+                                <div class="nav-link" id="mobile-search">Search</div>
+                                <input class="searchInput py-2"type="text" name="search" placeholder="Search" required>
+                                <button type="submit" class="searchButton">
+                                    <i class="material-icons my-auto">search</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <form class="">
                         <div class="nav-link" id="mobile-search">Search</div>
-                        <!-- <input class="form-control me-4" type="search" placeholder="Search" aria-label="Search"> -->
                         <button class="me-4 btn px-3 py-3 btn-search" id="search" type="submit"> </button>
-                    </form>
+                    </form> -->
                 </li>
                 <li class="nav-item my-auto">
                     <div class="cart">

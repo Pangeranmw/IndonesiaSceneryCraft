@@ -1,24 +1,43 @@
 
 var navbar = document.querySelector("nav");
 var cart = document.getElementById("cart");
-var search = document.getElementById("search");
 var logo = document.getElementById("logo");
 var lang = document.getElementById("lang");
-var hT = document.getElementById("hero-title");
 var mobileNav = document.getElementById("btnNav");
 var mobile = window.matchMedia("(max-width: 845px)");
 var mobileCart = document.getElementById("mobile-cart");
 var mobileSearch = document.getElementById("mobile-search");
 
+// var btnDeleteCategory = document.getElementById("close");
+// var categorySelected = document.getElementById("category-selected");
+var categoryItem = document.getElementsByClassName("category-item");
+var deleteItem = function(index) {
+	for (var i = 0; i < categoryItem.length; i++) {
+		if (i == index) {
+			categoryItem[i].parentNode.removeChild(categoryItem[i]);
+			break;
+		}
+	}
+};
+var deleteButtons = document.getElementsByClassName("close");
+for (var i = 0; i < deleteButtons.length; i++) {
+(function (index) {
+	deleteButtons[i].addEventListener(
+		"click",
+		function () {
+			deleteItem(index);
+		},
+		false
+		);
+	})(i);
+}
 if (mobile.matches){
-	hT.style.fontSize = "6vh";
 	navbar.classList.toggle("main-color");
 	navbar.classList.remove("rounded-pill");
 	cart.style.display = "none";
 	logo.style.display = "none";
 	lang.style.width = "25%";
 	lang.style.margin = "0 auto";
-	search.style.display = "none";
 	mobileCart.style.display = "inline-block";
 	mobileSearch.style.display = "inline-block";
 } else {
@@ -27,42 +46,15 @@ if (mobile.matches){
 	logo.style.display = "block";
 	lang.style.width = "100%";
 	lang.style.margin = "auto 0";
-	search.style.display = "block";
 	mobileCart.style.display = "none";
 	mobileSearch.style.display = "none";
 }
-// mobileNav.onclick = function changeNav() {
-// 	navbar.classList.toggle("rounded-pill");
-// 	cart.style.display = "none";
-// 	logo.style.display = "none";
-// 	lang.style.width = "25%";
-// 	lang.style.margin = "0 auto";
-// 	search.style.display = "none";
-// 	mobileCart.style.display = "inline-block";
-// 	mobileSearch.style.display = "inline-block";
-// };
-
-
-$(document).ready(function () {
-	$(".owl-carousel").owlCarousel({
-		margin: 20,
-		nav: true,
-		dots: false,
-		responsiveClass: true,
-		responsive: {
-			0: {
-				items: 1,
-			},
-			600: {
-				items: 3,
-			},
-			1000: {
-				items: 4,
-			},
-		},
-		navText: [
-			"<img src='http://localhost/ISC/public/assets/images/prev.png'>",
-			"<img src='http://localhost/ISC/public/assets/images/next.png'>",
-		],
-	});
-});
+mobileNav.onclick = function changeNav() {
+	navbar.classList.toggle("rounded-pill");
+	cart.style.display = "none";
+	logo.style.display = "none";
+	lang.style.width = "25%";
+	lang.style.margin = "0 auto";
+	mobileCart.style.display = "inline-block";
+	mobileSearch.style.display = "inline-block";
+};

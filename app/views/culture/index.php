@@ -74,6 +74,62 @@
                             </div>
                           </div>
                           <!-- End Looping -->
+                          <!-- Looping -->
+                          <div class="text fs-3 d-inline-block">
+                            A
+                          </div>
+                          <!-- Looping -->
+                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="form-check m-2">
+                              <input class="form-check-input" name="lokasi" type="checkbox" value="Ampenan" id="">
+                              <label class="form-check-label fs-6 main" for="">
+                                Ampenan
+                              </label>
+                            </div>
+                          </div>
+                          <!-- End Looping -->
+                          <!-- Looping -->
+                          <div class="text fs-3 d-inline-block">
+                            A
+                          </div>
+                          <!-- Looping -->
+                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="form-check m-2">
+                              <input class="form-check-input" name="lokasi" type="checkbox" value="Ampenan" id="">
+                              <label class="form-check-label fs-6 main" for="">
+                                Ampenan
+                              </label>
+                            </div>
+                          </div>
+                          <!-- End Looping -->
+                          <!-- Looping -->
+                          <div class="text fs-3 d-inline-block">
+                            A
+                          </div>
+                          <!-- Looping -->
+                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="form-check m-2">
+                              <input class="form-check-input" name="lokasi" type="checkbox" value="Ampenan" id="">
+                              <label class="form-check-label fs-6 main" for="">
+                                Ampenan
+                              </label>
+                            </div>
+                          </div>
+                          <!-- End Looping -->
+                          <!-- Looping -->
+                          <div class="text fs-3 d-inline-block">
+                            A
+                          </div>
+                          <!-- Looping -->
+                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="form-check m-2">
+                              <input class="form-check-input" name="lokasi" type="checkbox" value="Ampenan" id="">
+                              <label class="form-check-label fs-6 main" for="">
+                                Ampenan
+                              </label>
+                            </div>
+                          </div>
+                          <!-- End Looping -->
                         </div>
                       </div>
                     </div>
@@ -85,41 +141,13 @@
               </ul>
             </div>
           </div>
-          <div class="variety">
-            <button class="btn btn-toggle align-items-center rounded collapsed main w-100" data-bs-toggle="collapse" data-bs-target="#variety">
-              Variety
-            </button>
-            <div class="collapse" id="variety">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <form action="" class="" name="kategori"> 
-                  <!-- Looping -->
-                  <li class="category-list">
-                    <div class="form-check ">
-                      <input class="form-check-input" name="kategori" type="checkbox" value="beach" id="">
-                      <label class="form-check-label fs-6 main" for="">
-                        Beach
-                      </label>
-                    </div>
-                  </li>
-                  <!-- End Looping -->
-                  <li class="category-list">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </li>
-                </form>
-              </ul>
-            </div>
-          </div>
         </div>
       </aside>
-      <div class="destination col-lg-9 col-md-9 col-sm-12">
+      <div class="culture col-lg-9 col-md-9 col-sm-12">
 
-        <div class="category-selected mb-3">
+        <div class="category-selected">
           <form action="" class="mb-3" name="sortby"> 
             <!-- Looping if category select-->
-            <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
-              <p class="d-inline-block m-0 main">Beach</p>
-              <button class="btn close" style="background-image: url('<?=BASEURL;?>/assets/images/closeicon.svg');"></button>
-            </div>
             <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
               <p class="d-inline-block m-0 main">Lombok, NTB</p>
               <button class="btn close" style="background-image: url('<?=BASEURL;?>/assets/images/closeicon.svg');"></button>
@@ -128,30 +156,29 @@
           </form>
         </div>
 
-        <div class="destination-section card p-3 mb-4">
+        <div class="culture-section card p-3 mb-4">
 
           <!-- Looping -->
-          <div class="destination-content row">
-            <div class="destination-image col-lg-3 col-md-3 col-sm-6">
-              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/beach2.jpg');">
+          <div class="culture-content row">
+            <div class="culture-image col-lg-4 col-md-4 col-sm-6">
+              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/peresean.jpg');">
               <div class="star py-1 px-3">
                 <img class="" src="<?=BASEURL;?>/assets/images/ic-stargreen.svg" alt="">
                 <p class="d-inline-block third-color">5 Stars</p>
               </div>
               </div>
             </div>
-            <div class="text col-lg-9 col-md-9 col-sm-6">
+            <div class="text col-lg-8 col-md-8 col-sm-6">
               <div class="category mb-2">
-                <span class="py-1 px-3 rounded-pill">Pantai</span>
-                <span class="py-1 px-3 rounded-pill">Lembah</span>
+                <span class="py-1 px-3 rounded-pill">Lombok, NTB</span>
               </div>
               <div class="name fs-3 fw-semibold">
-                Pantai anuk
+                Peresean
               </div>
               <div class="description fs-6 mb-2">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero assumenda repudiandae perspiciatis itaque illum facere ut adipisci nulla esse a voluptatum, odio officia, velit reiciendis molestiae saepe amet dolor deleniti!
               </div>
-              <a href="<?=BASEURL;?>/destination/detail" class="btn btn-third py-2 px-3 fw-semibold">Read More</a>
+              <a href="<?=BASEURL;?>/culture/detail" class="btn btn-third py-2 px-3 fw-semibold">Read More</a>
             </div>
           </div>
           <!-- End Looping -->

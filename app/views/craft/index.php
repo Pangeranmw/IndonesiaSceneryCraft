@@ -30,7 +30,7 @@
       <span class="filter-title main fw-semibold">Filter</span>
     </div> -->
     <div class="row mt-3">
-      <aside class="filter-category col-lg-3 col-md-3 col-sm-12">
+      <aside class="filter-category col-lg-2 col-md-2 col-sm-12">
         <div class="filter-content card p-3 ">
           <div class="location">
             <button class="btn btn-toggle align-items-center rounded collapsed main w-100" data-bs-toggle="collapse" data-bs-target="#location">
@@ -111,13 +111,13 @@
           </div>
         </div>
       </aside>
-      <div class="destination col-lg-9 col-md-9 col-sm-12">
+      <div class="craft col-lg-10 col-md-10 col-sm-12">
 
-        <div class="category-selected mb-3">
-          <form action="" class="mb-3" name="sortby"> 
+        <div class="category-selected mb-2" id="category-selected">
+          <form action="" class="" name="sortby"> 
             <!-- Looping if category select-->
             <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
-              <p class="d-inline-block m-0 main">Beach</p>
+              <p class="d-inline-block m-0 main">Bag</p>
               <button class="btn close" style="background-image: url('<?=BASEURL;?>/assets/images/closeicon.svg');"></button>
             </div>
             <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
@@ -128,33 +128,30 @@
           </form>
         </div>
 
-        <div class="destination-section card p-3 mb-4">
-
-          <!-- Looping -->
-          <div class="destination-content row">
-            <div class="destination-image col-lg-3 col-md-3 col-sm-6">
-              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/beach2.jpg');">
-              <div class="star py-1 px-3">
-                <img class="" src="<?=BASEURL;?>/assets/images/ic-stargreen.svg" alt="">
-                <p class="d-inline-block third-color">5 Stars</p>
-              </div>
+        <div class="craft-section p-2">
+          <div class="row">
+            <!-- Looping -->
+            <div class="craft-content p-1 col-lg-3 col-md-4 col-sm-6">
+              <div class="card p-3">
+                <a href="<?=BASEURL;?>/craft/detail" class="link-primary mt-1">
+                  <span class="image">
+                    <img class="rounded w-100" src="<?=BASEURL;?>/assets/images/ketak.jpeg" alt="">
+                  </span>
+                  <div class="star mt-1">
+                    <img src="<?=BASEURL;?>/assets/images/ic-greystar.svg" alt="">
+                  </div>
+                  <div class="name fs-5 fw-semibold">
+                    Tas Ketak
+                  </div>
+                  <div class="price main mt-1">
+                    Rp. 200.000
+                  </div>
+                </a>
+                <a href="<?=BASEURL;?>/cart" class="mt-1 btn btn-third py-2 px-2 fw-semibold w-50">Add to Cart</a>
               </div>
             </div>
-            <div class="text col-lg-9 col-md-9 col-sm-6">
-              <div class="category mb-2">
-                <span class="py-1 px-3 rounded-pill">Pantai</span>
-                <span class="py-1 px-3 rounded-pill">Lembah</span>
-              </div>
-              <div class="name fs-3 fw-semibold">
-                Pantai anuk
-              </div>
-              <div class="description fs-6 mb-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero assumenda repudiandae perspiciatis itaque illum facere ut adipisci nulla esse a voluptatum, odio officia, velit reiciendis molestiae saepe amet dolor deleniti!
-              </div>
-              <a href="<?=BASEURL;?>/destination/detail" class="btn btn-third py-2 px-3 fw-semibold">Read More</a>
-            </div>
+            <!-- End Looping -->
           </div>
-          <!-- End Looping -->
         </div>
       </div>
     </div>
