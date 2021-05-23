@@ -8,12 +8,12 @@
 			<a href="<?= BASEURL;?>/destination" class="btn mx-auto px-5 py-3 fs-4">Explore</a>
 		</div>
 	</div>
-	<div class="container my-5">
+	<div class="container my-5 px-5">
 		<h4 class="text-center mb-2">Culture From Provincial Capitals</h4>
 		<div class="row">
 				<div class="owl-carousel owl-theme">
 					<a href="">
-						<div class="card-1 d-flex flex-column mt-3">
+						<div class="card-1 p-1 mt-3">
 							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean.jpg);"></div>
 							<div class="card-text text-center">
 									Lombok
@@ -21,7 +21,7 @@
 						</div>
 					</a>
 					<a href="">
-						<div class="card-1 d-flex flex-column mt-3">
+						<div class="card-1 p-1 mt-3">
 							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean2.jpg);"></div>
 							<div class="card-text text-center">
 									Jakarta
@@ -29,7 +29,7 @@
 						</div>
 					</a>
 					<a href="">
-						<div class="card-1 d-flex flex-column mt-3">
+						<div class="card-1 p-1 mt-3">
 							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean3.jpg);"></div>
 							<div class="card-text text-center">
 									Bali
@@ -37,7 +37,7 @@
 						</div>
 					</a>
 					<a href="">
-						<div class="card-1 d-flex flex-column mt-3">
+						<div class="card-1 p-1 mt-3">
 							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean.jpg);"></div>
 							<div class="card-text text-center">
 									Bandung

@@ -2,8 +2,6 @@
  <div class="detail-detail container">
   <div class="row mt-5">
     <div class="detail-image col-lg-5 col-md-6 col-sm-12" id="gallery">
-      <!-- <zoom-on-hover class="detail-item w-100":style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }" img-normal="photos[activePhoto].url" ></zoom-on-hover> -->
-      <!-- <zoom-on-hover class="detail-item w-100" :style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }"></zoom-on-hover> -->
       <div class="detail-item w-100" :style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }">
       </div>
       <div class="row mt-2">
@@ -41,12 +39,12 @@
             </button>
           </span>
           <input type="text" id="quantity" name="quantity" class="form-control input-number border-0" value="1" min="1" max="100">
-            <span class="input-group-btn">
-              <button type="button" class="quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" data-field="">
-                  <i class="bi bi-plus-circle"></i>
-              </button>
-            </span>
-          </div>
+          <span class="input-group-btn">
+            <button type="button" class="quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" data-field="">
+                <i class="bi bi-plus-circle"></i>
+            </button>
+          </span>
+        </div>
         <div class="detail-cta mt-3 ">
           <button type="submit" class="btn btn-primary me-2">Add to Cart</button>
         </div>
@@ -190,7 +188,7 @@
     $('.quantity-left-minus').click(function(e){
       e.preventDefault();
       var quantity = parseInt($('#quantity').val());
-      if(quantity>0){
+      if(quantity>1){
       $('#quantity').val(quantity - 1);
       }
     });

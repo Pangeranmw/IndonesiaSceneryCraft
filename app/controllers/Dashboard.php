@@ -9,13 +9,6 @@
       $this->view('dashboard/index', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
-    public function signin(){
-      $data['aktif'] = 'signin';
-      $data['judul'] = 'Sign in Dashboard';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('dashboard/signin', $data);
-      $this->view('layouts/dashboard-footer', $data);
-    }
     public function profile(){
       $data['aktif'] = 'profile';
       $data['judul'] = 'Profile Dashboard';
@@ -23,29 +16,67 @@
       $this->view('dashboard/profile', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
-    public function tables(){
-      $data['judul'] = 'Table Dashboard';
-      $data['aktif'] = 'table';
+    public function category(){
+      $data['judul'] = 'Category Dashboard';
+      $data['aktif'] = 'category';
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/tables', $data);
+      $this->view('dashboard/category', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
-    public function billing(){
-      $data['aktif'] = 'billing';
-      $data['judul'] = 'Billing Dashboard';
+    public function addcategory(){
+      $data['aktif'] = 'category';
+      $data['judul'] = 'Add Category';
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/billing', $data);
+      $this->view('dashboard/category/create', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
-    public function signup(){
-      $data['aktif'] = 'signup';
-      $data['judul'] = 'Signup Dashboard';
+    public function updatecategory(){
+      $data['aktif'] = 'category';
+      $data['judul'] = 'Update Category';
       $this->view('layouts/dashboard-header', $data);
-      $this->view('dashboard/signup', $data);
+      $this->view('includes/dashboard-sidebar', $data);
+      $this->view('includes/dashboard-navbar', $data);
+      $this->view('dashboard/category/update', $data);
+      $this->view('layouts/dashboard-footer', $data);
+    }
+    public function destination(){
+      $data['aktif'] = 'destination';
+      $data['judul'] = 'Destination Dashboard';
+      $this->view('layouts/dashboard-header', $data);
+      $this->view('includes/dashboard-sidebar', $data);
+      $this->view('includes/dashboard-navbar', $data);
+      $this->view('dashboard/destination', $data);
+      $this->view('layouts/dashboard-footer', $data);
+    }
+    public function culture(){
+      $data['aktif'] = 'culture';
+      $data['judul'] = 'Culture Dashboard';
+      $this->view('layouts/dashboard-header', $data);
+      $this->view('includes/dashboard-sidebar', $data);
+      $this->view('includes/dashboard-navbar', $data);
+      $this->view('dashboard/culture', $data);
+      $this->view('layouts/dashboard-footer', $data);
+    }
+    public function craft(){
+      $data['aktif'] = 'craft';
+      $data['judul'] = 'Craft Dashboard';
+      $this->view('layouts/dashboard-header', $data);
+      $this->view('includes/dashboard-sidebar', $data);
+      $this->view('includes/dashboard-navbar', $data);
+      $this->view('dashboard/craft', $data);
+      $this->view('layouts/dashboard-footer', $data);
+    }
+    public function user(){
+      $data['aktif'] = 'user';
+      $data['judul'] = 'User Dashboard';
+      $this->view('layouts/dashboard-header', $data);
+      $this->view('includes/dashboard-sidebar', $data);
+      $this->view('includes/dashboard-navbar', $data);
+      $this->view('dashboard/user', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
   }

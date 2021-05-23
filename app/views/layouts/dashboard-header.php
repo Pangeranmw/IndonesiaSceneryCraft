@@ -12,9 +12,11 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
+
     <!-- Icons -->
     <link rel="stylesheet" href="<?= BASEURL;?>/assets/css/nucleo-icons.css" >
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/cad536baf8.js" crossorigin="anonymous"></script>
 
     <!-- Soft UI Dashboard -->
     <link rel="stylesheet" type="text/css" href="<?= BASEURL;?>/assets/css/soft-dashboard.min.css">

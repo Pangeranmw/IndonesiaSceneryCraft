@@ -61,7 +61,7 @@
                 </li>
                 <li class="nav-item my-auto">
                     <div class="cart">
-                        <a href="#">
+                        <a href="<?= BASEURL;?>/cart">
                             <div class="nav-link" id="mobile-cart">Cart</div>
                             <div class="me-4" id="cart">
                                 <span class="qty <?php if ($data['qty']>0) echo 'nonzero';?>"><?=$data['qty'];?></span>
@@ -71,9 +71,29 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-nav px-3 text-main" href="<?= BASEURL; ?>/home/login">
+                    <!-- If Not Login -->
+                    <!-- <?php if (!isset($_SESSION["login"])) { ?> -->
+                    <!-- <a class="btn btn-nav px-3 text-main" href="<?= BASEURL; ?>/home/login">
                         LOG IN
-                    </a>
+                    </a> -->
+                     <!-- <?php } else{ ?> -->
+                    
+                    <!-- <?php }?> -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-nav px-3 text-main dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, Admin
+                        </button>
+                        <ul class="dropdown-menu">
+                            <!-- <?php if ($user["role"]!="admin") : ?> -->
+                                <!-- <a href="<?= BASEURL; ?>/home/dashboard">Dashboard</a> -->
+                            <!-- <?php else : ?> -->
+                                <!-- <a href="dashboard/admin-dashboard.php">Dashboard</a> -->
+                            <!-- <?php endif; ?> -->
+                            <li><a class="dropdown-item" href="<?= BASEURL; ?>/dashboard/destination">Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
