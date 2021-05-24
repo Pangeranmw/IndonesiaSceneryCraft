@@ -1,5 +1,5 @@
 <body style="background-color: var(--bg);">
-	<div class="hero" style="background-image: url('<?= BASEURL;?>/assets/images/hero-img.png');">
+	<amp-img class="hero" style="background-image: url('<?= BASEURL;?>/assets/images/hero-img.png');">
 		<div class="mx-auto my-auto d-flex flex-column">
 			<h1 id="hero-title" class="h1">
 				Best Journey <br>
@@ -7,7 +7,7 @@
 			</h1>
 			<a href="<?= BASEURL;?>/destination" class="btn mx-auto px-5 py-3 fs-4">Explore</a>
 		</div>
-	</div>
+	</amp-img>
 	<div class="container my-5 px-5">
 		<h4 class="text-center mb-2">Culture From Provincial Capitals</h4>
 		<div class="row">
