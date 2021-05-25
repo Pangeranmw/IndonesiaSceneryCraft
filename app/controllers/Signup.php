@@ -11,7 +11,6 @@ class Signup extends Controller{
     public function tambah(){
       $pass = $_POST['password'];
       $conpass = $_POST['confirmpassword'];
-
       //mengecekkan email
       $result =  $this->model('Signup_model')->getDatabyEmail($_POST);
       if(!$result){

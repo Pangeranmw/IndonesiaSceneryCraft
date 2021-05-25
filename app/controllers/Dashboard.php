@@ -1,12 +1,13 @@
 <?php 
   class Dashboard extends Controller{
     public function index(){
-      $data['judul'] = 'Dashboard';
-      $data['aktif'] = 'dashboard';
+      $data['aktif'] = 'destination';
+      $data['judul'] = 'Destination Dashboard';
+      $data['destinasi'] = $this->model('Destination_model')->getAllDestination();
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/index', $data);
+      $this->view('dashboard/destination', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
 
@@ -46,6 +47,7 @@
     public function destination(){
       $data['aktif'] = 'destination';
       $data['judul'] = 'Destination Dashboard';
+      $data['destinasi'] = $this->model('Destination_model')->getAllDestination();
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
@@ -151,23 +153,6 @@
       $this->view('includes/dashboard-navbar', $data);
       $this->view('dashboard/culture/addgallery', $data);
       $this->view('layouts/dashboard-footer', $data);
-    }
-
-    public function user(){
-      $data['aktif'] = 'user';
-      $data['judul'] = 'User Dashboard';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/user', $data);
-      $this->view('layouts/dashboard-footer', $data);
-    }
-
-    public function getwilayah(){
-      echo $_GET['jenis'];
-      $data['get'] = $_GET['jenis'];
-      $data['post'] = $_POST;
-      echo $this->model('Wilayah_model')->data_wilayah($data);
     }
   }
 ?>
