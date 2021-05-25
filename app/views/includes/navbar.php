@@ -72,28 +72,32 @@
                 </li>
                 <li class="nav-item">
                     <!-- If Not Login -->
-                    <!-- <?php if (!isset($_SESSION["login"])) { ?> -->
-                    <!-- <a class="btn btn-nav px-3 text-main" href="<?= BASEURL; ?>/home/login">
-                        LOG IN
-                    </a> -->
-                     <!-- <?php } else{ ?> -->
-                    
-                    <!-- <?php }?> -->
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-nav px-3 text-main dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, Admin
-                        </button>
-                        <ul class="dropdown-menu">
-                            <!-- <?php if ($user["role"]!="admin") : ?> -->
-                                <!-- <a href="<?= BASEURL; ?>/home/dashboard">Dashboard</a> -->
-                            <!-- <?php else : ?> -->
-                                <!-- <a href="dashboard/admin-dashboard.php">Dashboard</a> -->
-                            <!-- <?php endif; ?> -->
-                            <li><a class="dropdown-item" href="<?= BASEURL; ?>/dashboard/destination">Dashboard</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="<?= BASEURL; ?>/home/logout">Logout</a></li>
-                        </ul>
-                    </div>
+                    <?php if (!isset($_SESSION["login"])) { ?>
+                        <a class="btn btn-nav px-3 text-main" href="<?= BASEURL; ?>/login">
+                            LOG IN
+                        </a>
+                    <?php } else{ ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-nav px-3 text-main dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hi, <?= $data['user']['username']; ?>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- <?php if ($user["role"]!="admin") : ?> -->
+                                    <!-- <a href="<?= BASEURL; ?>/home/dashboard">Dashboard</a> -->
+                                <!-- <?php else : ?> -->
+                                    <!-- <a href="dashboard/admin-dashboard.php">Dashboard</a> -->
+                                <!-- <?php endif; ?> -->
+                            
+                                <li><a class="dropdown-item" href="<?= BASEURL; ?>/dashboard/destination">Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action=" <?= BASEURL?>/logout" method="post">
+                                        <button type="submit" class="dropdown-item" >Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php }?>
                 </li>
             </ul>
         </div>

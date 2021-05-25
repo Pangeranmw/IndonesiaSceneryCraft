@@ -8,7 +8,7 @@
                 <h5 class="mb-0">Destination List</h5>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/adddestination"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Destination</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/adddestination"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Destination</a>
               </div>
             </div>
           </div>

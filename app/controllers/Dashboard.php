@@ -43,7 +43,6 @@
       $this->view('dashboard/category/update', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
-
     public function destination(){
       $data['aktif'] = 'destination';
       $data['judul'] = 'Destination Dashboard';
@@ -51,14 +50,6 @@
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
       $this->view('dashboard/destination', $data);
-      $this->view('layouts/dashboard-footer', $data);
-    }public function adddestination(){
-      $data['aktif'] = 'destination';
-      $data['judul'] = 'Add Destination';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/destination/create', $data);
       $this->view('layouts/dashboard-footer', $data);
     }public function updatedestination(){
       $data['aktif'] = 'destination';
@@ -170,6 +161,13 @@
       $this->view('includes/dashboard-navbar', $data);
       $this->view('dashboard/user', $data);
       $this->view('layouts/dashboard-footer', $data);
+    }
+
+    public function getwilayah(){
+      echo $_GET['jenis'];
+      $data['get'] = $_GET['jenis'];
+      $data['post'] = $_POST;
+      echo $this->model('Wilayah_model')->data_wilayah($data);
     }
   }
 ?>

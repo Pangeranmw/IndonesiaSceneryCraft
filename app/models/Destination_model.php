@@ -1,23 +1,25 @@
 <?php
 
 class Destination_model {
-  private $dbh; //database handler
-  private $stmt; //database handler
+  private $db;
 
   public function __construct()
   {
-    // data source name
-    $dsn = 'mysql:host=localhost;dbname=isc';
-
-    try {
-      $this->dbh = new PDO($dsn, 'root', '');
-    } catch(PDOException $e){
-      die($e->getMessage());
-    }
+    $this->db = new Database();
   }
-  public function getAllDestinasi(){
-    $this->stmt = $this->dbh->prepare('SELECT * FROM destinasi');
-    $this->stmt->execute();
-    return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+  public function tambahdestinasi($data){
+    $query = "INSERT INTO destinasi VALUES ('0', :nama_id, :maps, :artikel_id, :rating, :artikel_en, :nama_en, :id_lokasi";
+    $this->db->query($query);
+
+    $this->db->bind('nama_id', $data['nama_id']);
+    $this->db->bind('maps', $data['maps']);
+    $this->db->bind('artikel_id', $data['artikel_id']);
+    $this->db->bind('rating', 0);
+    $this->db->bind('artikel_en', $data['artikel_en']);
+    $this->db->bind('nama_en', $data['nama_en']);
+    $this->db->bind('id_lokasi', $data['id_lokasi']);
+
+    $this->db->execute();
+    return $this->db->rowCount();
   }
 }

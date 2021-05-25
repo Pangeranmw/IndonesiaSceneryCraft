@@ -12,13 +12,17 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
-    <!-- script -->
-    <script src="<?=BASEURL;?>/assets/js/ckeditor.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="<?= BASEURL;?>/assets/css/nucleo-icons.css" >
+    <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/cad536baf8.js" crossorigin="anonymous"></script>
-    <script src=""></script>
+    
+    <script src="<?= BASEURL?>/assets/vendor/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/um4rc7qp7fdpvxj5872e8dl18bihaql97mrd5teqz6rupwd6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- <script src="<?= BASEURL?>/asset/js/app.js"></script> -->
+    <!-- <script src="<?= BASEURL?>/assets/js/ckeditor.js"></script> -->
     <!-- Soft UI Dashboard -->
     <link rel="stylesheet" type="text/css" href="<?= BASEURL;?>/assets/css/soft-dashboard.min.css">
     <title><?= $data['judul'];?></title>
