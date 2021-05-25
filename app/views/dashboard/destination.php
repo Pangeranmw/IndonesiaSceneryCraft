@@ -27,16 +27,16 @@
                   <?php foreach($data['destinasi'] as $destinasi) :?>
                     <tr>
                       <td>
-                        <div class="d-flex px-2 py-1 text-wrap">
+                        <div class="d-flex px-2 py-1 text-center text-wrap">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-md"><?=$destinasi['nama_id'];?></p>
+                            <p class="mb-0 text-secondary text-center text-wrap"><?=$destinasi['nama_id'];?></p>
                           </div>
                         </div>
                       </td>
-                      <td class="align-middle text-wrap">
+                      <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=substr($destinasi['artikel_id'],0,100);?></p>
                       </td>
-                      <td class="align-middle text-center">
+                      <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($destinasi['nama_desa'])).', '.ucwords(strtolower($destinasi['nama_provinsi']));?></p>
                       </td>
                       <td class="align-middle text-center">

@@ -31,17 +31,17 @@
                       <td>
                         <div class="d-flex px-2 py-1 text-wrap">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-md"><?=$kerajinan['nama_id'];?></p>
+                            <p class="mb-0 text-secondary text-center text-wrap text-md"><?=$kerajinan['nama_id'];?></p>
                           </div>
                         </div>
                       </td>
-                      <td class="align-middle text-center">
-                        <p class="mb-0 text-secondary text-md">Rp. <?=$kerajinan['harga'];?></p>
+                      <td class="align-middle text-center text-wrap">
+                        <p class="mb-0 text-secondary text-md">Rp <?=str_replace(',', '.', number_format($kerajinan['harga']));?></p>
                       </td>
-                      <td class="align-middle text-center">
+                      <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=$kerajinan['stok'];?></p>
                       </td>
-                      <td class="align-middle text-wrap">
+                      <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=substr($kerajinan['deskripsi_id'],0,100);?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">

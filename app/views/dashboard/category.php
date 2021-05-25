@@ -26,10 +26,10 @@
                   <tbody>
                     <?php foreach($data['kategori'] as $kategori) :?>
                       <tr>
-                        <td class="align-middle text-center">
+                        <td class="align-middle text-center text-wrap">
                           <span class="text-sm font-weight-bolder mb-0"><?=$kategori['kategori_id'];?></span>
                         </td>
-                        <td class="align-middle text-center">
+                        <td class="align-middle text-center text-wrap">
                           <span class="text-sm font-weight-bolder mb-0"><?=$kategori['kategori_en'];?></span>
                         </td>
                         <td class="align-middle text-center">
