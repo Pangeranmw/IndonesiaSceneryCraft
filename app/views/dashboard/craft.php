@@ -8,7 +8,7 @@
                 <h6 class="mb-0">Craft List</h6>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addcraft"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Craft</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addcraft"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Craft</a>
               </div>
             </div>
           </div>
@@ -18,31 +18,41 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-md font-weight-bolder">Name</th>
+                    <th class="text-uppercase text-secondary text-center text-md font-weight-bolder">Price</th>
+                    <th class="text-uppercase text-secondary text-center text-md font-weight-bolder">Stock</th>
                     <th class="text-uppercase text-secondary text-center text-md font-weight-bolder">Description</th>
                     <th class="text-uppercase text-secondary text-center text-md font-weight-bolder">Location</th>
                     <th class="text-center text-md font-weight-bolder">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1 text-wrap">
-                        <div class="d-flex flex-column justify-content-center">
-                          <p class="mb-0 text-secondary text-md">Tas Ketak</p>
+                  <?php foreach($data['kerajinan'] as $kerajinan) : ?>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1 text-wrap">
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="mb-0 text-secondary text-md"><?=$kerajinan['nama_id'];?></p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-wrap">
-                      <p class="mb-0 text-secondary text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto assumenda repudiandae molestias ducimus deserunt, ullam nesciunt minus, reprehenderit </p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <p class="mb-0 text-secondary text-md">Lombok, Nusa Tenggara Barat</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                      <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatecraft"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                    </td>
-                  </tr>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="mb-0 text-secondary text-md">Rp. <?=$kerajinan['harga'];?></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="mb-0 text-secondary text-md"><?=$kerajinan['stok'];?></p>
+                      </td>
+                      <td class="align-middle text-wrap">
+                        <p class="mb-0 text-secondary text-md"><?=substr($kerajinan['deskripsi_id'],0,100);?></p>
+                      </td>
+                      <td class="align-middle text-center text-wrap">
+                        <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($kerajinan['nama_desa'])).', '.ucwords(strtolower($kerajinan['nama_provinsi']));?></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatecraft"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                      </td>
+                    </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

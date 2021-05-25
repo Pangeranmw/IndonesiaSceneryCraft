@@ -34,10 +34,10 @@
                         </div>
                       </td>
                       <td class="align-middle text-wrap">
-                        <p class="mb-0 text-secondary text-md"><?=substr($destinasi['artikel_id'],40);?></p>
+                        <p class="mb-0 text-secondary text-md"><?=substr($destinasi['artikel_id'],0,100);?></p>
                       </td>
                       <td class="align-middle text-center">
-                        <p class="mb-0 text-secondary text-md"><?=$destinasi['nama_desa'] .', '. $destinasi['nama_kecamatan'].', '.$destinasi['nama_kabupaten'].', '.$destinasi['nama_provinsi'];?></p>
+                        <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($destinasi['nama_desa'])).', '.ucwords(strtolower($destinasi['nama_provinsi']));?></p>
                       </td>
                       <td class="align-middle text-center">
                         <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>

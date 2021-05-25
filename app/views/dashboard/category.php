@@ -9,7 +9,7 @@
                   <h6 class="mb-0">Category List</h6>
                 </div>
                 <div class="col-md-6 text-right">
-                  <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addcategory"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
+                  <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addcategory"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
                 </div>
               </div>
             </div>
@@ -24,18 +24,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="align-middle text-center">
-                        <span class="text-sm font-weight-bolder mb-0">Gunung</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-sm font-weight-bolder mb-0">Mountain</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatecategory"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                      </td>
-                    </tr>
+                    <?php foreach($data['kategori'] as $kategori) :?>
+                      <tr>
+                        <td class="align-middle text-center">
+                          <span class="text-sm font-weight-bolder mb-0"><?=$kategori['kategori_id'];?></span>
+                        </td>
+                        <td class="align-middle text-center">
+                          <span class="text-sm font-weight-bolder mb-0"><?=$kategori['kategori_en'];?></span>
+                        </td>
+                        <td class="align-middle text-center">
+                          <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                          <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatecategory"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                        </td>
+                      </tr>
+                    <?php endforeach;?>
                   </tbody>
                 </table>
               </div>

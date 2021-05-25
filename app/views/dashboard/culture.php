@@ -8,7 +8,7 @@
                 <h6 class="mb-0">Culture List</h6>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addculture"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add culture</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addculture"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add culture</a>
               </div>
             </div>
           </div>
@@ -24,25 +24,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1 text-wrap">
-                        <div class="d-flex flex-column justify-content-center">
-                          <p class="mb-0 text-secondary text-md">Peresean</p>
+                  <?php foreach($data['budaya'] as $budaya) :?>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1 text-wrap">
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="mb-0 text-secondary text-md"><?=$budaya['nama_id'];?></p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-wrap">
-                      <p class="mb-0 text-secondary text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto assumenda repudiandae molestias ducimus deserunt, ullam nesciunt minus, reprehenderit </p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <p class="mb-0 text-secondary text-md">Lombok, Nusa Tenggara Barat</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                      <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updateculture"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                    </td>
-                  </tr>
+                      </td>
+                      <td class="align-middle text-wrap">
+                        <p class="mb-0 text-secondary text-md"><?=substr($budaya['artikel_id'],0,100);?></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($budaya['nama_desa'])).', '.ucwords(strtolower($budaya['nama_provinsi']));?></p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatedestination"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                      </td>
+                    </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

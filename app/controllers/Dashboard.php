@@ -22,26 +22,11 @@
     public function category(){
       $data['judul'] = 'Category Dashboard';
       $data['aktif'] = 'category';
+      $data['kategori'] = $this->model('Category_model')->getAllCategory();
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
       $this->view('dashboard/category', $data);
-      $this->view('layouts/dashboard-footer', $data);
-    }public function addcategory(){
-      $data['aktif'] = 'category';
-      $data['judul'] = 'Add Category';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/category/create', $data);
-      $this->view('layouts/dashboard-footer', $data);
-    }public function updatecategory(){
-      $data['aktif'] = 'category';
-      $data['judul'] = 'Update Category';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/category/update', $data);
       $this->view('layouts/dashboard-footer', $data);
     }
     public function destination(){
@@ -69,19 +54,11 @@
       $this->view('includes/dashboard-navbar', $data);
       $this->view('dashboard/destination/addgallery', $data);
       $this->view('layouts/dashboard-footer', $data);
-    }public function addcategorydestination(){
-      $data['aktif'] = 'destination';
-      $data['judul'] = 'Add Category Destination';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/destination/addcategory', $data);
-      $this->view('layouts/dashboard-footer', $data);
     }
-    
     public function craft(){
       $data['aktif'] = 'craft';
       $data['judul'] = 'Craft Dashboard';
+      $data['kerajinan'] = $this->model('Craft_model')->getAllCraft();
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
@@ -124,6 +101,7 @@
     public function culture(){
       $data['aktif'] = 'culture';
       $data['judul'] = 'Culture Dashboard';
+      $data['budaya'] = $this->model('Culture_model')->getAllCulture();
       $this->view('layouts/dashboard-header', $data);
       $this->view('includes/dashboard-sidebar', $data);
       $this->view('includes/dashboard-navbar', $data);
