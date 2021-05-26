@@ -32,7 +32,7 @@
               <label for="artikel_en" class="form-label">Article (English)</label>
               <textarea class="form-control"
               placeholder="Article (English)" 
-              name="artikel_en" id="default"></textarea>
+              name="artikel_en"></textarea>
             </div>
             <div class="mb-3">
               <label for="maps" class="form-label">Maps</label>

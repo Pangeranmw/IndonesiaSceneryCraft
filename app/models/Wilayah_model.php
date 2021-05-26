@@ -16,7 +16,7 @@ class Wilayah_model{
     $query = "SELECT  * FROM kabupaten WHERE province_id ='$id_prov' ORDER BY nama_kabupaten ASC";
     $this->db->query($query);
     $result = $this->db->allSet();
-    $data = "<option value=''>- Select Kabupaten -</option>";
+    $data = "<option value=''> Select Kabupaten </option>";
     foreach( $result as $kota){
       $data .= '<option value="'.$kota['id'].'">'. $kota['nama_kabupaten'].'</option>';
     }
@@ -26,7 +26,7 @@ class Wilayah_model{
     $query = "SELECT  * FROM kecamatan WHERE regency_id ='$id_kab' ORDER BY nama_kecamatan ASC";
     $this->db->query($query);
     $result = $this->db->allSet();
-    $data = "<option value=''>- Select Kecamatan -</option>";
+    $data = "<option value=''> Select Kecamatan </option>";
     foreach( $result as $kecamatan){
       $data .= '<option value="'.$kecamatan['id'].'">'. $kecamatan['nama_kecamatan'].'</option>';
     }
@@ -36,7 +36,7 @@ class Wilayah_model{
     $query = "SELECT  * FROM desa WHERE district_id ='$id_kec' ORDER BY nama_desa ASC";
     $this->db->query($query);
     $result = $this->db->allSet();
-    $data = "<option value=''>- Select Desa -</option>";
+    $data = "<option value=''> Select Desa </option>";
     foreach( $result as $desa){
       $data .= '<option value="'.$desa['id'].'">'. $desa['nama_desa'].'</option>';
     }

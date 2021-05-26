@@ -1,14 +1,19 @@
 <?php 
   class AddCulture extends Controller{
     public function index(){
-      $data['aktif'] = 'culture';
-      $data['judul'] = 'Add Culture';
-      $data['wilayah'] = $this->model("Wilayah_model")->add_ajax_prov();
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/culture/create', $data);
-      $this->view('layouts/dashboard-footer', $data);
+      if($_SESSION['login'] == 'admin'){
+        $data['aktif'] = 'culture';
+        $data['judul'] = 'Add Culture';
+        $data['wilayah'] = $this->model("Wilayah_model")->add_ajax_prov();
+        $this->view('layouts/dashboard-header', $data);
+        $this->view('includes/dashboard-sidebar', $data);
+        $this->view('includes/dashboard-navbar', $data);
+        $this->view('dashboard/culture/create', $data);
+        $this->view('layouts/dashboard-footer', $data);
+      }else{
+        header('Location: http://localhost/ISC/public/loginadmin');
+        exit;
+      }
     }
     public function add_ajax_kab($id_prov){
       $this->model("Wilayah_model")->add_ajax_kab($id_prov);

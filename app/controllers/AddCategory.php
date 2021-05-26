@@ -1,13 +1,18 @@
 <?php 
   class AddCategory extends Controller{
     public function index(){
-      $data['aktif'] = 'category';
-      $data['judul'] = 'Add Category';
-      $this->view('layouts/dashboard-header', $data);
-      $this->view('includes/dashboard-sidebar', $data);
-      $this->view('includes/dashboard-navbar', $data);
-      $this->view('dashboard/category/create', $data);
-      $this->view('layouts/dashboard-footer', $data);
+      if($_SESSION['login'] == 'admin'){
+        $data['aktif'] = 'category';
+        $data['judul'] = 'Add Category';
+        $this->view('layouts/dashboard-header', $data);
+        $this->view('includes/dashboard-sidebar', $data);
+        $this->view('includes/dashboard-navbar', $data);
+        $this->view('dashboard/category/create', $data);
+        $this->view('layouts/dashboard-footer', $data);
+      }else{
+        header('Location: http://localhost/ISC/public/loginadmin');
+        exit;
+      }
     }
     public function tambah(){
       if($this->model('Category_model')->tambahkategori($_POST)>0){

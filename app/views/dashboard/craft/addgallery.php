@@ -3,12 +3,14 @@
     <div class="row">
       <div class="col">
         <div class="card p-3">
-          <form action="" enctype="multipart/form-data">
+          <form action="<?= BASEURL;?>/addgallerycraft/tambah" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
-              <label for="craft" class="form-label">Craft</label>
-              <select class="form-select" name="name" id="craft">
-                <option value=""> Select Craft </option>
-                <option value="Tas Ketak"> Tas Ketak </option>
+              <label for="id_kerajinan" class="form-label">Craft</label>
+              <select class="form-select" name="id_kerajinan" id="id_kerajinan">
+                <option> Select Craft </option>
+                <?php foreach( $data['craft'] as $craft) :?>
+                  <option value="<?=$craft['id']?>" required><?=$craft['nama_id']?></option>
+                <?php endforeach;?>
               </select>
             </div>
             <div class="mb-3">

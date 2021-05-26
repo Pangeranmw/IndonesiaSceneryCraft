@@ -61,7 +61,7 @@
                 <h6 class="mb-0">Culture Gallery List</h6>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addgalleryculture"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Gallery</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addgalleryculture"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Gallery</a>
               </div>
             </div>
           </div>
@@ -76,21 +76,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                          <p class="mb-0 text-secondary text-md">Peresean</p>
+                  <?php foreach($data['gallery'] as $gallery) :?>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_id']?></p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-center">
-                      <img src="<?=BASEURL;?>/assets/images/peresean.jpg" class="avatar avatar-xl">
-                    </td>
-                    <td class="align-middle text-center">
-                      <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                    </td>
-                  </tr>
+                      </td>
+                      <td class="align-middle text-center">
+                        <img src="<?=BASEURL;?>/assets/images/<?= $gallery['gallery']?>" class="avatar avatar-xl">
+                      </td>
+                      <td class="align-middle text-center">
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?= BASEURL;?>/dashboard/deletegallerycraft/<?= $gallery['id']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                      </td>
+                    </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

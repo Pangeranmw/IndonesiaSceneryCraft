@@ -1,3 +1,13 @@
+  <?php
+    function limit_text($text, $limit) {
+      if (str_word_count($text, 0) > $limit) {
+        $words = str_word_count($text, 2);
+        $pos   = array_keys($words);
+        $text  = substr($text, 0, $pos[$limit]) . '...';
+      }
+      return $text;
+    }
+  ?>
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-lg-12 col-md-8 col-sm-12">
@@ -42,14 +52,14 @@
                         <p class="mb-0 text-secondary text-md"><?=$kerajinan['stok'];?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">
-                        <p class="mb-0 text-secondary text-md"><?=substr($kerajinan['deskripsi_id'],0,100);?></p>
+                        <p class="mb-0 text-secondary text-md"><?=limit_text($kerajinan['deskripsi_id'], 20);?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($kerajinan['nama_desa'])).', '.ucwords(strtolower($kerajinan['nama_provinsi']));?></p>
                       </td>
                       <td class="align-middle text-center">
-                        <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatecraft"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?= BASEURL;?>/dashboard/deletecraft/<?=$kerajinan['id'];?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a class="btn btn-link text-dark mb-0" href="<?= BASEURL;?>/updatecraft/<?=$kerajinan['id'];?>"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                       </td>
                     </tr>
                   <?php endforeach;?>
@@ -113,7 +123,7 @@
                 <h6 class="mb-0">Craft Gallery List</h6>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addgallerycraft"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Gallery</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addgallerycraft"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Gallery</a>
               </div>
             </div>
           </div>
@@ -128,21 +138,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                          <p class="mb-0 text-secondary text-md">Tas Ketak</p>
+                  <?php foreach($data['gallery'] as $gallery) :?>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_id']?></p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-center">
-                      <img src="<?=BASEURL;?>/assets/images/ketak.jpeg" class="avatar avatar-xl">
-                    </td>
-                    <td class="align-middle text-center">
-                      <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                    </td>
-                  </tr>
+                      </td>
+                      <td class="align-middle text-center">
+                        <img src="<?=BASEURL;?>/assets/images/<?= $gallery['gallery']?>" class="avatar avatar-xl">
+                      </td>
+                      <td class="align-middle text-center">
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?= BASEURL;?>/dashboard/deletegallerycraft/<?= $gallery['id']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                      </td>
+                    </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

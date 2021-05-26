@@ -6,7 +6,8 @@
       $data['qty'] = 12;
       if(isset($_SESSION['login'])){
         $data['email'] = $_SESSION['email'];
-        $data['user']= $this->model('Home_model')->ambildata($data);
+        $data['user']= $this->model('User_model')->dataUser($data);
+        $data['admin']= $this->model('Admin_model')->dataAdmin($data);
       }
       // $data['destinasi'] = $this->model('Destination_model')->getDestination();
       $this->view('layouts/header', $data);

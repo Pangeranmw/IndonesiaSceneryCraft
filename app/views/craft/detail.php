@@ -99,9 +99,12 @@
             <input type="hidden" name="whatever3" class="rating-value" value="1">
           </div>
           <input type="hidden" name="craft_id" id="craft_id" value="<?=$craft['id']?>">
-          <textarea row="2" class="form-control mt-2" id="review" name="review"></textarea>
-          <button class="btn btn-third mt-2 rounded-pill">Login to add review</button>
-          <button class="btn btn-success mt-2 rounded-pill" type="submit" id="submit_review">Submit Review</button>
+          <textarea class="form-control mt-2" id="review" name="review"></textarea>
+          <?php if (!isset($_SESSION['login'])){?>
+            <button class="btn btn-third mt-2 rounded-pill">Login to add review</button>
+          <?php } else {?>
+            <button class="btn btn-success mt-2 rounded-pill" type="submit" id="submit_review">Submit Review</button>
+          <?php }?>
         </div>
       </form>
     </div>
