@@ -71,7 +71,7 @@
                 <h5 class="mb-0">Destination Category List</h5>
               </div>
               <div class="col-md-6 text-right">
-                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/dashboard/addcategorydestination"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
+                <a class="btn bg-gradient-dark mb-0" href="<?=BASEURL;?>/addcategorydestination"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
               </div>
             </div>
           </div>
@@ -86,19 +86,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach($data['kategori_destinasi'] as $kategori) :?>
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
-                        <p class="mb-0 text-secondary text-md">Rinjani Mountain</p>
+                        <p class="mb-0 text-secondary text-md"><?=$kategori['nama_id']?></p>
                       </div>
                     </td>
                     <td class="align-middle text-center">
-                      <p class="mb-0 text-secondary text-md">Mountain</p>
+                      <p class="mb-0 text-secondary text-md"><?=$kategori['kategori_id']?></p>
                     </td>
                     <td class="align-middle text-center">
-                      <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                      <a class="btn btn-link text-danger text-gradient mb-0" href="<?=BASEURL;?>/dashboard/deletecategorydestination/<?=$kategori['id']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
                     </td>
                   </tr>
+                  <?php endforeach;?>
                 </tbody>
               </table>
             </div>

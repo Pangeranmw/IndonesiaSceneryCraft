@@ -24,6 +24,19 @@ class Destination_model {
     ');
     return $this->db->allSet();
   }
+  public function getAllCategoryDestination(){
+    $this->db->query(
+      'SELECT 
+      kategori_destinasi.id AS id,
+      kategori.id AS id_kategori,
+      destinasi.id AS id_destinasi,
+      destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, kategori.kategori_id AS kategori_id,kategori.kategori_en AS kategori_en
+      FROM kategori_destinasi
+      JOIN destinasi ON kategori_destinasi.id_destinasi = destinasi.id 
+      JOIN kategori ON kategori_destinasi.id_kategori = kategori.id 
+    ');
+    return $this->db->allSet();
+  }
   public function getAllDestination(){
     $this->db->query(
       'SELECT destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
@@ -65,7 +78,22 @@ class Destination_model {
     $this->db->execute();
     return $this->db->rowCount();
   }
-
+  // public function deleteMM($id, $table){
+  //   $query = "DELETE FROM ". $table ." WHERE id_kategori =:id_kategori";
+  //   $this->db->query($query);
+  //   $this->db->bind('id_kategori',$id);
+  //   $this->db->execute();
+  //   return $this->db->rowCount();
+  // }
+  // FIXME: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails
+  public function tambahkategori($data){
+    $query = "INSERT INTO kategori_destinasi VALUES ('0', :id_kategori, :id_destinasi)";
+    $this->db->query($query);
+    $this->db->bind('id_kategori', $data['id_kategori']);
+    $this->db->bind('id_destinasi', $data['id_destinasi']);
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
   public function edit($data, $table){
     $query = "UPDATE ". $table .
              " SET id=:id, nama_id=:nama_id, maps=:maps, artikel_id=:artikel_id, rating=:rating, artikel_en=:artikel_en, nama_en=:nama_en, id_lokasi=:id_lokasi 
