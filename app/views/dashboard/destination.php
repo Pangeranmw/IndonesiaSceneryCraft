@@ -50,8 +50,8 @@
                         <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($destinasi['nama_desa'])).', '.ucwords(strtolower($destinasi['nama_provinsi']));?></p>
                       </td>
                       <td class="align-middle text-center">
-                        <a class="btn btn-link text-danger text-gradient mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/dashboard/updatedestination"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?=BASEURL;?>/dashboard/deletedestination/<?=$destinasi['id'];?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a class="btn btn-link text-dark mb-0" href="<?=BASEURL;?>/updatedestination/<?=$destinasi['id'];?>"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                       </td>
                     </tr>
                   <?php endforeach;?>

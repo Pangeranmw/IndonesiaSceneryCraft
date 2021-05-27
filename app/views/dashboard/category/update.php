@@ -3,7 +3,14 @@
     <div class="row">
       <div class="col">
         <div class="card p-3">
-          <form action="">
+          <form action="<?=BASEURL;?>/updatecategory/editcategory" method="POST">
+            <input 
+              type="hidden" 
+              class="form-control" 
+              id="id" 
+              placeholder="Category (Indonesia)" 
+              name="id"
+              value="<?=$data['kategori']['id'];?>">
             <div class="mb-3">
               <label for="kategori_id" class="form-label">Category (Indonesia)</label>
               <input 
@@ -12,7 +19,7 @@
               id="kategori_id" 
               placeholder="Category (Indonesia)" 
               name="kategori_id"
-              value="<?=$data['kategori_id'];?>">
+              value="<?=$data['kategori']['kategori_id'];?>">
             </div>
             <div class="mb-3">
               <label for="kategori_en" class="form-label">Category (English)</label>
@@ -22,7 +29,7 @@
                 id="kategori_en" 
                 placeholder="Category (English)" 
                 name="kategori_en" 
-                value="<?=$data['kategori_en'];?>">
+                value="<?=$data['kategori']['kategori_en'];?>">
             </div>
             <button type="submit" class="btn btn-success">
               Update Category

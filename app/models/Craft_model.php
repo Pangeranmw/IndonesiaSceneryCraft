@@ -26,7 +26,7 @@ class Craft_model {
   public function getAllCategoryCraft(){
     $this->db->query(
       'SELECT 
-      kategori_kerajinan.id AS id,
+      kategori_kerajinan.id AS id_kategori,
       kerajinan.nama_id AS nama_id, 
       kerajinan.nama_en AS nama_en, 
       kategori.kategori_id AS kategori_id,
@@ -78,7 +78,7 @@ class Craft_model {
   }
   // FIXME: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails
   public function tambahkategori($data){
-    $query = "INSERT INTO kategori_kerajinan VALUES ('0', :id_kategori, :id_kerajinan)";
+    $query = "INSERT INTO kategori_kerajinan VALUES (:id_kategori, :id_kerajinan, '0')";
     $this->db->query($query);
     $this->db->bind('id_kategori', $data['id_kategori']);
     $this->db->bind('id_kerajinan', $data['id_kerajinan']);

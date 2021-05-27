@@ -46,22 +46,7 @@
         header('Location: http://localhost/ISC/public/loginadmin');
         exit;
       }
-    }public function updatedestination($id = null){
-      if($_SESSION['login'] == 'admin'){
-        $data['aktif'] = 'destination';
-        $data['judul'] = 'Update Destination';
-        $data['destinasi'] = $this->model("Destination_model")->getDestinationbyId($id);
-        $this->view('layouts/dashboard-header', $data);
-        $this->view('includes/dashboard-sidebar', $data);
-        $this->view('includes/dashboard-navbar', $data);
-        $this->view('dashboard/destination/update', $data);
-        $this->view('layouts/dashboard-footer', $data);
-      }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
-        exit;
-      }
     }
-
     public function craft(){
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'craft';
@@ -96,6 +81,49 @@
         exit;
       }
     }
+    public function deletegalleryculture($id = null){
+      if($_SESSION['login'] == 'admin'){
+        $tabel = "gallery_budaya";
+        if($this->model('Culture_model')->delete($id, $tabel)){
+          echo
+          "<script>
+            alert('Data Berhasil Dihapus');
+            window.location='".BASEURL."/dashboard/culture';
+          </script>";
+        }else{
+          echo
+          "<script>
+            alert('Data Gagal Dihapus');
+            window.location='".BASEURL."/dashboard/culture';
+          </script>";
+        }
+      }else{
+        header('Location: http://localhost/ISC/public/loginadmin');
+        exit;
+      }
+    }
+
+    public function deletecategory($id=null){
+      if($_SESSION['login'] == 'admin'){
+        $tabel = "kategori";
+        if($this->model('Category_model')->delete($id, $tabel)){
+          echo
+          "<script>
+            alert('Data Berhasil Dihapus');
+            window.location='".BASEURL."'/dashboard/category';
+          </script>";
+        }else{
+          echo
+          "<script>
+            alert('Data Gagal Dihapus');
+            window.location='".BASEURL."/dashboard/category';
+          </script>";
+        }
+      }else{
+        header('Location: http://localhost/ISC/public/loginadmin');
+        exit;
+      }
+    }
     
     public function editdestination(){
       if($_SESSION['login'] == 'admin'){
@@ -124,13 +152,13 @@
         if($this->model('Destination_model')->delete($id, $tabel)){
           echo
           "<script>
-            alert('Gallery Destinasi Berhasil Dihapus');
+            alert('Destinasi Berhasil Dihapus');
             window.location='".BASEURL."/dashboard/destination';
           </script>";
         }else{
           echo
           "<script>
-            alert('Gallery Destinasi Gagal Dihapus');
+            alert('Destinasi Gagal Dihapus');
             window.location='".BASEURL."/dashboard/destination';
           </script>";
         }
@@ -166,13 +194,13 @@
         if($this->model('Destination_model')->delete($id, $tabel)){
           echo
           "<script>
-            alert('Data Berhasil Dihapus');
+            alert('Gallery Destinasi Berhasil Dihapus');
             window.location='".BASEURL."/dashboard/destination';
           </script>";
         }else{
           echo
           "<script>
-            alert('Data Gagal Dihapus');
+            alert('Gallery Destinasi Gagal Dihapus');
             window.location='".BASEURL."/dashboard/destination';
           </script>";
         }

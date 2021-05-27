@@ -27,19 +27,19 @@ class Destination_model {
   public function getAllCategoryDestination(){
     $this->db->query(
       'SELECT 
-      kategori_destinasi.id AS id,
-      kategori.id AS id_kategori,
-      destinasi.id AS id_destinasi,
-      destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, kategori.kategori_id AS kategori_id,kategori.kategori_en AS kategori_en
-      FROM kategori_destinasi
-      JOIN destinasi ON kategori_destinasi.id_destinasi = destinasi.id 
-      JOIN kategori ON kategori_destinasi.id_kategori = kategori.id 
+          kategori_destinasi.id AS id,
+          kategori.id AS id_kategori,
+          destinasi.id AS id_destinasi,
+          destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, kategori.kategori_id AS kategori_id,kategori.kategori_en AS kategori_en
+          FROM kategori_destinasi
+          JOIN destinasi ON kategori_destinasi.id_destinasi = destinasi.id 
+          JOIN kategori ON kategori_destinasi.id_kategori = kategori.id 
     ');
     return $this->db->allSet();
   }
   public function getAllDestination(){
     $this->db->query(
-      'SELECT destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
+      'SELECT destinasi.id AS id, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
         desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
         FROM destinasi JOIN desa ON destinasi.id_lokasi = desa.id 
         JOIN kecamatan ON desa.district_id = kecamatan.id 
@@ -78,6 +78,27 @@ class Destination_model {
     $this->db->execute();
     return $this->db->rowCount();
   }
+  public function getAllDestinationById($id){
+    $this->db->query(
+      "SELECT destinasi.id AS id, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, 
+        destinasi.artikel_id AS artikel_id,
+        destinasi.artikel_en AS artikel_en,
+        destinasi.rating AS rating, 
+        destinasi.maps AS maps, 
+        desa.id AS id_desa, desa.nama_desa AS nama_desa, 
+        kecamatan.id AS id_kecamatan, kecamatan.nama_kecamatan AS nama_kecamatan, 
+        kabupaten.id AS id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, 
+        provinsi.id AS id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+        FROM destinasi
+        JOIN desa ON destinasi.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        WHERE destinasi.id='$id'
+    ");
+    // $this->db->bind('destinasi.id',$id);
+    return $this->db->singleSet();
+  }
   // public function deleteMM($id, $table){
   //   $query = "DELETE FROM ". $table ." WHERE id_kategori =:id_kategori";
   //   $this->db->query($query);
@@ -87,7 +108,7 @@ class Destination_model {
   // }
   // FIXME: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails
   public function tambahkategori($data){
-    $query = "INSERT INTO kategori_destinasi VALUES ('0', :id_kategori, :id_destinasi)";
+    $query = "INSERT INTO kategori_destinasi VALUES (:id_kategori, :id_destinasi, '0')";
     $this->db->query($query);
     $this->db->bind('id_kategori', $data['id_kategori']);
     $this->db->bind('id_destinasi', $data['id_destinasi']);

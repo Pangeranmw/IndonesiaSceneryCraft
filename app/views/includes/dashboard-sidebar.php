@@ -29,11 +29,6 @@
             <span class="nav-link-text ms-1">Craft</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if($data['aktif']=='user') echo 'active';?>" href="<?= BASEURL;?>/dashboard/user">
-            <span class="nav-link-text ms-1">User</span>
-          </a>
-        </li>
       </ul>
       <hr class="horizontal dark mt-5">
       <ul class="navbar-nav">

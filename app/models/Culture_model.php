@@ -29,6 +29,7 @@ class Culture_model {
         budaya.artikel_id AS artikel_id,
         budaya.artikel_en AS artikel_en,
         budaya.rating AS rating, 
+        budaya.maps AS maps, 
         desa.id AS id_desa, desa.nama_desa AS nama_desa, 
         kecamatan.id AS id_kecamatan, kecamatan.nama_kecamatan AS nama_kecamatan, 
         kabupaten.id AS id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, 

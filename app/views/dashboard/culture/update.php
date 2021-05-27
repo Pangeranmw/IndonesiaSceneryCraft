@@ -2,45 +2,42 @@
     <div class="row">
       <div class="col">
         <div class="card p-3">
-          <form action="">
+          <form action="<?= BASEURL;?>/updateculture/editculture" method="POST">
+            <input type="hidden" name="id" id="id" value="<?=$data['budaya']['id'];?>">
             <div class="mb-3">
               <label for="nama_id" class="form-label">Name (Indonesia)</label>
-              <input 
+              <input
                 type="text" 
-                class="form-control" 
+                class="form-control"
                 id="nama_id" 
-                placeholder="Category (Indonesia)" 
+                placeholder="Culture Name (Indonesia)"
                 name="nama_id"
-                value="<?=$data['nama_id'];?>"
+                value="<?=$data['budaya']['nama_id'];?>"
                 required>
             </div>
             <div class="mb-3">
               <label for="nama_en" class="form-label">Name (English)</label>
               <input 
-              type="text" 
-              class="form-control" 
-              id="nama_en" 
-              placeholder="Category (English)" 
-              value="<?=$data['nama_en'];?>"
+              type="text"
+              class="form-control"
+              id="nama_en"
+              placeholder="Culture Name (English)"
+              value="<?=$data['budaya']['nama_en'];?>"
               name="nama_en" required>
             </div>
             <div class="mb-3">
               <label for="artikel_id" class="form-label">Article (Indonesia)</label>
-              <textarea class="form-control ck_editor_txt"
-              placeholder="Article (Indonesia)" 
-              name="artikel_id" id="editor" 
-              value="<?=$data['artikel_id'];?>"
-              required>
-              </textarea>
+              <textarea class="form-control"
+              placeholder="Article (Indonesia)"
+              name="artikel_id" id="editor"
+              value="<?=$data['budaya']['artikel_id'];?>"><?=$data['budaya']['artikel_id'];?></textarea>
             </div>
             <div class="mb-3">
               <label for="artikel_en" class="form-label">Article (English)</label>
-              <textarea class="form-control ck_editor_txt"
+              <textarea class="form-control"
               placeholder="Article (English)"
-              value="<?=$data['artikel_en'];?>"
-              name="artikel_en" id="editor2" required>
-                
-              </textarea>
+              value="<?=$data['budaya']['artikel_en'];?>"
+              name="artikel_en" id="editor2"><?=$data['budaya']['artikel_en'];?></textarea>
             </div>
             <div class="mb-3">
               <label for="maps" class="form-label">Maps</label>
@@ -49,39 +46,38 @@
               class="form-control" 
               id="maps" 
               placeholder="Maps" 
-              value="<?=$data['maps'];?>"
+              value="<?=$data['budaya']['maps'];?>"
               name="maps" required>
             </div>
             <div class="mb-3">
-              <label for="nama_provinsi" class="form-label">Province</label>
-              <select class="form-select w-100" name="nama_provinsi" id="nama_provinsi"required>
-                <option value="<?=$data['nama_provinsi'];?>">Select Province</option>
-                <option value="NTB" required>NTB</option>
+              <label for="provinsi" class="form-label">Province</label>
+              <select class="form-select w-100" name="provinsi" id="provinsi"required>
+                <option value="<?=$data['budaya']['nama_provinsi'];?>"><?=$data['budaya']['nama_provinsi'];?></option>
+                <?php foreach( $data['wilayah'] as $provinsi) :?>
+                  <option value="<?= $provinsi['id']?>" required><?= $provinsi['nama_provinsi']?></option>
+                <?php endforeach;?>
               </select>
             </div>
             <div class="mb-3">
-              <label for="nama_kabupaten" class="form-label">Regency</label>
-              <select class="form-select w-100" name="nama_kabupaten" id="nama_kabupaten" required>
-                <option value="<?=$data['nama_kabupaten'];?>">Select Regency</option>
-                <option value="Lombok" required>Lombok</option>
+              <label for="kabupaten" class="form-label">Regency</label>
+              <select class="form-select w-100" name="kabupaten" id="kabupaten" required>
+                <option value="<?=$data['budaya']['nama_kabupaten'];?>"><?=$data['budaya']['nama_kabupaten'];?></option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="nama_kecamatan" class="form-label">District</label>
-              <select class="form-select w-100" name="nama_kecamatan" id="nama_kecamatan" required>
-                <option value="<?=$data['nama_kecamatan'];?>">Select District</option>
-                <option value="Lombok Utara" required>Lombok Utara</option>
+              <label for="kecamatan" class="form-label">District</label>
+              <select class="form-select w-100" name="kecamatan" id="kecamatan" required>
+                <option value="<?=$data['budaya']['nama_kecamatan'];?>"><?=$data['budaya']['nama_kecamatan'];?></option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="nama_desa" class="form-label">Village</label>
-              <select class="form-select w-100" name="nama_desa" id="nama_desa" required>
-                <option value="<?=$data['nama_desa'];?>">Select Village</option>
-                <option value="Sembalun" required>Sembalun</option>
+              <label for="id_lokasi" class="form-label">Village</label>
+              <select class="form-select w-100" name="id_lokasi" id="desa" required>
+                <option value="<?=$data['budaya']['id_desa'];?>"><?=$data['budaya']['nama_desa'];?></option>
               </select>
             </div>
             <button type="submit" class="btn btn-success">
-              Add Category
+              Add culture
             </button>
           </form>
         </div>
@@ -90,8 +86,23 @@
   </div>
 </main>
 <script>
-  var allEditors = document.querySelectorAll('.ck_editor_txt');
-  for (var i = 0; i < allEditors.length; ++i) {
-    ClassicEditor.create(allEditors[i]);
-  }
+$(document).ready(function () {
+	$("#provinsi").change(function () {
+		var url = "<?=BASEURL;?>/updatecraft/add_ajax_kab/" + $(this).val();
+		$("#kabupaten").load(url);
+		return false;
+	});
+
+	$("#kabupaten").change(function () {
+		var url = "<?=BASEURL;?>/updatecraft/add_ajax_kec/" + $(this).val();
+		$("#kecamatan").load(url);
+		return false;
+	});
+
+	$("#kecamatan").change(function () {
+		var url = "<?=BASEURL;?>/updatecraft/add_ajax_des/" + $(this).val();
+		$("#desa").load(url);
+		return false;
+	});
+});
 </script>
