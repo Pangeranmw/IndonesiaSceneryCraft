@@ -7,6 +7,50 @@ class Culture_model {
   {
     $this->db = new Database();
   }
+  public function getnamaprovinsi($id){
+    $this->db->query(
+      "SELECT nama_provinsi FROM provinsi WHERE id IN ($id)
+    ");
+    return $this->db->allSet();
+  }
+  public function getallculturegruopbynama(){
+    $this->db->query(
+      'SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.id AS id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+        FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN gallery_budaya ON gallery_budaya.id_budaya = budaya.id
+        GROUP BY provinsi.nama_provinsi
+    ');
+    return $this->db->allSet();
+  }
+  public function getAlldataCulturecondisi($lokasi){
+    $this->db->query(
+      "SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+        FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN gallery_budaya ON gallery_budaya.id_budaya = budaya.id
+        WHERE provinsi.id IN ($lokasi);
+    ");
+    return $this->db->allSet();
+  }
+  public function getAlldataCulture(){
+    $this->db->query(
+      'SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+        FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN gallery_budaya ON gallery_budaya.id_budaya = budaya.id
+    ');
+    return $this->db->allSet();
+  }
   public function getCulture(){
     $this->db->query('SELECT * FROM '.$this->table);
     return $this->db->allSet();
@@ -18,9 +62,45 @@ class Culture_model {
   }
   public function getAllGaleryCulture(){
     $this->db->query(
-      'SELECT budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, gallery_budaya.id AS id,gallery_budaya.foto AS gallery
-      FROM budaya JOIN gallery_budaya ON budaya.id = gallery_budaya.id_budaya
+      'SELECT budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, gallery_budaya.id AS id,gallery_budaya.foto AS gallery, provinsi.nama_provinsi as nama_provinsi
+      FROM budaya JOIN gallery_budaya ON budaya.id = gallery_budaya.id_budaya 
+      JOIN desa ON budaya.id_lokasi = desa.id 
+      JOIN kecamatan ON desa.district_id = kecamatan.id 
+      JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+      JOIN provinsi ON kabupaten.province_id = provinsi.id
+      GROUP BY provinsi.nama_provinsi
     ');
+    return $this->db->allSet();
+  }
+  public function getAllgaleryCultureById($id){
+    $this->db->query(
+      "SELECT gallery_budaya.foto as gallery,
+        budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, 
+        budaya.artikel_id AS artikel_id,
+        budaya.artikel_en AS artikel_en,
+        budaya.rating AS rating, 
+        budaya.maps AS maps, 
+        desa.id AS id_desa, desa.nama_desa AS nama_desa, 
+        kecamatan.id AS id_kecamatan, kecamatan.nama_kecamatan AS nama_kecamatan, 
+        kabupaten.id AS id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, 
+        provinsi.id AS id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+        FROM budaya
+        JOIN desa ON budaya.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN gallery_budaya ON gallery_budaya.id_budaya = budaya.id
+        WHERE budaya.id='$id'
+    ");
+    // $this->db->bind('budaya.id',$id);
+    return $this->db->singleSet();
+  }
+  public function getCultureGallerybyId($id){
+    $this->db->query('SELECT * 
+      FROM gallery_budaya
+      WHERE gallery_budaya.id_budaya=:id
+    ');
+    $this->db->bind('id',$id);
     return $this->db->allSet();
   }
   public function getAllCultureById($id){

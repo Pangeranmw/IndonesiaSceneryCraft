@@ -1,6 +1,7 @@
 <?php 
   class AddCategory extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'category';
         $data['judul'] = 'Add Category';
@@ -10,7 +11,7 @@
         $this->view('dashboard/category/create', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }

@@ -9,7 +9,7 @@
               <select class="form-select" name="id_kerajinan" id="craft">
                 <option> Select Craft </option>
                 <?php foreach($data['kerajinan'] as $kerajinan):?>
-                  <option value="<?=$kerajinan['id'];?>"> <?=$kerajinan['nama_id'];?> </option>
+                  <option value="<?=$kerajinan['id'];?>"> <?=$kerajinan['nama_'.$_SESSION['lang'].''];?> </option>
                 <?php endforeach;?>
               </select>
             </div>
@@ -18,7 +18,7 @@
               <select class="form-select" name="id_kategori" id="kategori">
                 <option> Select Category </option>
                 <?php foreach($data['kategori'] as $kategori):?>
-                  <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_id'];?> </option>
+                  <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_'.$_SESSION['lang'].''];?> </option>
                 <?php endforeach;?>
               </select>
             </div>

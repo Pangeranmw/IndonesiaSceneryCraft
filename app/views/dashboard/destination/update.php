@@ -12,14 +12,14 @@
                 value="<?=$data['destinasi']['id'];?>"
                 required>
             <div class="mb-3">
-              <label for="nama_id" class="form-label">Name (Indonesia)</label>
+              <label for="nama_'.$_SESSION['lang'].'" class="form-label">Name (Indonesia)</label>
               <input
                 type="text" 
                 class="form-control"
-                id="nama_id" 
+                id="nama_'.$_SESSION['lang'].'" 
                 placeholder="Destination Name (Indonesia)"
-                name="nama_id"
-                value="<?=$data['destinasi']['nama_id'];?>"
+                name="nama_'.$_SESSION['lang'].'"
+                value="<?=$data['destinasi']['nama_'.$_SESSION['lang'].''];?>"
                 required>
             </div>
             <div class="mb-3">
@@ -33,11 +33,11 @@
               name="nama_en" required>
             </div>
             <div class="mb-3">
-              <label for="artikel_id" class="form-label">Article (Indonesia)</label>
+              <label for="artikel_'.$_SESSION['lang'].'" class="form-label">Article (Indonesia)</label>
               <textarea class="form-control"
               placeholder="Article (Indonesia)"
-              name="artikel_id" id="editor"
-              value="<?=$data['destinasi']['artikel_id'];?>"><?=$data['destinasi']['artikel_id'];?></textarea>
+              name="artikel_'.$_SESSION['lang'].'" id="editor"
+              value="<?=$data['destinasi']['artikel_'.$_SESSION['lang'].''];?>"><?=$data['destinasi']['artikel_'.$_SESSION['lang'].''];?></textarea>
             </div>
             <div class="mb-3">
               <label for="artikel_en" class="form-label">Article (English)</label>

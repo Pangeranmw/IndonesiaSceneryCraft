@@ -18,8 +18,23 @@ class Craft_model {
   }
   public function getAllGaleryCraft(){
     $this->db->query(
-      'SELECT kerajinan.nama_id AS nama_id, kerajinan.nama_en AS nama_en, gallery_kerajinan.id AS id,gallery_kerajinan.foto AS gallery
-      FROM kerajinan JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan
+      'SELECT kerajinan.rating AS rating, kerajinan.id AS id_kerajinan, kerajinan.stok AS stok, kerajinan.nama_id AS nama_id, kerajinan.harga AS harga, kerajinan.nama_en AS nama_en, gallery_kerajinan.id AS id_gallery,gallery_kerajinan.foto AS gallery
+      FROM kerajinan JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan ORDER BY kerajinan.rating DESC
+    ');
+    return $this->db->allSet();
+  }public function getAllCategoryCraftgroupby(){
+    $this->db->query(
+      'SELECT 
+      kategori_kerajinan.id AS id_kategori,
+      kerajinan.nama_id AS nama_id, 
+      kerajinan.nama_en AS nama_en, 
+      kategori.kategori_id AS kategori_id,
+      kategori.kategori_en AS kategori_en,
+      kategori_kerajinan.id_kategori AS id_kategori
+      FROM kategori_kerajinan 
+      JOIN kerajinan ON kategori_kerajinan.id_kerajinan = kerajinan.id 
+      JOIN kategori ON kategori_kerajinan.id_kategori = kategori.id 
+      GROUP BY kategori.kategori_id
     ');
     return $this->db->allSet();
   }
@@ -36,6 +51,58 @@ class Craft_model {
       JOIN kerajinan ON kategori_kerajinan.id_kerajinan = kerajinan.id 
       JOIN kategori ON kategori_kerajinan.id_kategori = kategori.id 
     ');
+    return $this->db->allSet();
+  } public function getAllCraftConditionCategory($kategori){
+    $this->db->query(
+      "SELECT kerajinan.id AS id_kerajinan, 
+        gallery_kerajinan.foto AS gallery,
+        kerajinan.nama_id AS nama_id, 
+        kerajinan.nama_en AS nama_en, 
+        kerajinan.stok AS stok, 
+        kerajinan.harga AS harga, 
+        kerajinan.deskripsi_id AS deskripsi_id, 
+        kerajinan.deskripsi_en AS deskripsi_en,
+        kerajinan.rating AS rating, 
+        desa.id AS id_desa, desa.nama_desa AS nama_desa, 
+        kecamatan.id AS id_kecamatan, kecamatan.nama_kecamatan AS nama_kecamatan, 
+        kabupaten.id AS id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, 
+        provinsi.id AS id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+        FROM kerajinan
+        JOIN desa ON kerajinan.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN kategori_kerajinan ON kategori_kerajinan.id_kerajinan = kerajinan.id
+        JOIN kategori ON kategori.id = kategori_kerajinan.id_kategori
+        JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan
+        WHERE kategori.id IN ($kategori)
+        GROUP BY kerajinan.nama_id
+      ");
+      return $this->db->allSet();
+    }
+    public function getAllCraftConditionLocation($lokasi){
+    $this->db->query(
+      "SELECT kerajinan.id AS id_kerajinan, kerajinan.nama_id AS nama_id, kerajinan.nama_en AS nama_en, 
+        gallery_kerajinan.foto AS gallery,
+        kerajinan.stok AS stok, 
+        kerajinan.harga AS harga, 
+        kerajinan.deskripsi_id AS deskripsi_id, 
+        kerajinan.deskripsi_en AS deskripsi_en,
+        kerajinan.rating AS rating, 
+        desa.id AS id_desa, desa.nama_desa AS nama_desa, 
+        kecamatan.id AS id_kecamatan, kecamatan.nama_kecamatan AS nama_kecamatan, 
+        kabupaten.id AS id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, 
+        provinsi.id AS id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+        FROM kerajinan
+        JOIN desa ON kerajinan.id_lokasi = desa.id 
+        JOIN kecamatan ON desa.district_id = kecamatan.id 
+        JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+        JOIN provinsi ON kabupaten.province_id = provinsi.id
+        JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan
+        WHERE kabupaten.id IN ($lokasi)
+        GROUP BY kerajinan.nama_id
+    ");
+    // $this->db->bind('kerajinan.id',$id);
     return $this->db->allSet();
   }
   public function getAllCraftById($id){
@@ -60,6 +127,14 @@ class Craft_model {
     // $this->db->bind('kerajinan.id',$id);
     return $this->db->singleSet();
   }
+  public function getCraftGallerybyId($id){
+    $this->db->query('SELECT * 
+      FROM gallery_kerajinan
+      WHERE gallery_kerajinan.id_kerajinan=:id
+    ');
+    $this->db->bind('id',$id);
+    return $this->db->allSet();
+  }
   public function getAllCraft(){
     $this->db->query(
       'SELECT kerajinan.id AS id, kerajinan.nama_id AS nama_id, kerajinan.nama_en AS nama_en, 
@@ -68,7 +143,7 @@ class Craft_model {
         kerajinan.deskripsi_id AS deskripsi_id, 
         kerajinan.deskripsi_en AS deskripsi_en,
         kerajinan.rating AS rating, 
-        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan,kabupaten.id as id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
         FROM kerajinan JOIN desa ON kerajinan.id_lokasi = desa.id 
         JOIN kecamatan ON desa.district_id = kecamatan.id 
         JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 

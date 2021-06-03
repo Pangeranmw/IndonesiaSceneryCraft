@@ -8,6 +8,15 @@ var mobile = window.matchMedia("(max-width: 845px)");
 var mobileCart = document.getElementById("mobile-cart");
 var mobileSearch = document.getElementById("mobile-search");
 
+// toggle review
+function toggleReview() {
+	var x = document.getElementById("toggleReview");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
 // var btnDeleteCategory = document.getElementById("close");
 // var categorySelected = document.getElementById("category-selected");
 var categoryItem = document.getElementsByClassName("category-item");

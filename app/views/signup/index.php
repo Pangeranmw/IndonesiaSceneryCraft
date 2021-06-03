@@ -31,6 +31,9 @@
                 </div>
               </div>
               <div class="mb-3">
+                <input name="profesi" class="form-control" type="text" name="profesi" placeholder="Profession">
+              </div>
+              <div class="mb-3">
                 <textarea name="alamat" class="form-control" row="1" name="adresses" placeholder="Adresses"></textarea>
               </div>
               <div class="row">
@@ -98,3 +101,4 @@
       </div>
     </div>
   </div>
+<script>tinymce.activeEditor.mode.set("readonly");</script>

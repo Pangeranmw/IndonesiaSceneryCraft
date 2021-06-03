@@ -12,157 +12,58 @@
 		<h4 class="text-center mb-2">Culture From Provincial Capitals</h4>
 		<div class="row">
 				<div class="owl-carousel owl-theme">
+				<?php for($i = 0;$i<count($data['culture']);$i++) :?>
 					<a href="">
 						<div class="card-1 p-1 mt-3">
-							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean.jpg);"></div>
+							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/<?= $data['culture'][$i]['gallery']?>);"></div>
 							<div class="card-text text-center">
-									Lombok
+								<?= $data['culture'][$i]['nama_'.$_SESSION['lang'].'']?>
+								<div class="text-location m-0">
+									<?= ucwords(strtolower($data['culture'][$i]['nama_provinsi']))?>
+								</div>
 							</div>
 						</div>
 					</a>
-					<a href="">
-						<div class="card-1 p-1 mt-3">
-							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean2.jpg);"></div>
-							<div class="card-text text-center">
-									Jakarta
-							</div>
-						</div>
-					</a>
-					<a href="">
-						<div class="card-1 p-1 mt-3">
-							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean3.jpg);"></div>
-							<div class="card-text text-center">
-									Bali
-							</div>
-						</div>
-					</a>
-					<a href="">
-						<div class="card-1 p-1 mt-3">
-							<div class="card-img mx-auto mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/peresean.jpg);"></div>
-							<div class="card-text text-center">
-									Bandung
-							</div>
-						</div>
-					</a>
+				<?php endfor;?>
 				</div>
 		</div>
 		<h4 class="mt-5">Recommended Destinations</h4>
 		<div class="row mt-2 mb-5 justify-content-center align-items-center">
+		<?php for($i = 0;$i<4;$i++) :?>
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<a href="">
-					<div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/hero-img.png);">
-						<div class="star"><img src="assets/images/ic-starlogo.svg" alt=""> 5 Stars</div>
+					<div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/<?= $data['destination_gallery'][$i]['gallery']?>);">
+						<div class="star"><img src="assets/images/ic-starlogo.svg" alt=""><?= $data['destination'][$i]['rating']?> Stars</div>
 					</div>
 					<div class="text-destination">
-						Rinjani Mountain
+						<?= $data['destination'][$i]['nama_'.$_SESSION['lang'].'']?>
 					</div>
 					<div class="text-location">
-						NTB
+						<?= ucwords(strtolower($data['destination'][$i]['nama_provinsi']))?>
 					</div>
 				</a>
 			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a href="">
-					<div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/beach.jpg);">
-						<div class="star"><img src="assets/images/ic-starlogo.svg" alt=""> 5 Stars</div>
-					</div>
-					<div class="text-destination">
-						Pandanan Beach
-					</div>
-					<div class="text-location">
-						NTB
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
-				<a href="">
-					<div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/beach2.jpg);">
-							<div class="star"><img src="assets/images/ic-starlogo.svg" alt=""> 5 Stars</div>
-					</div>
-					<div class="text-destination">
-							Rinjani Mountain
-					</div>
-					<div class="text-location">
-							NTB
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-3 col-md-4 col-sm-6">
-					<a href="">
-							<div class="card-recommendation mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/beach.jpg);">
-									<div class="star"><img src="assets/images/ic-starlogo.svg" alt=""> 5 Stars</div>
-							</div>
-							<div class="text-destination">
-									Rinjani Mountain
-							</div>
-							<div class="text-location">
-									NTB
-							</div>
-					</a>
-			</div>
+		<?php endfor;?>
 		</div>
 		<h4 class="mt-5">Most Rated Crafts</h4>
 		<div class="row mt-2 mb-5 justify-content-center align-items-center">
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
-					</div>
-					<div class="rating mt-3 mt-3">
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-					</div>
-					<a href=""><div class="text-craft">Tenun Songket</div></a>
-					<div class="text-price">
-						Rp. 200.000
-					</div>
+		<?php for($i = 0;$i<4;$i++) :?>
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/<?= $data['craft'][$i]['gallery']?>);">
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
-					</div>
-					<div class="rating mt-3">
+				<div class="rating mt-3 mt-3">
+					<?php 	$j=0;
+							while($j<$data['craft'][$i]['rating']):?>
 						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-					</div>
-					<a href=""><div class="text-craft">Songket</div></a>
-					<div class="text-price">
-						Rp. 200.000
-					</div>
+					<?php 	$j++;
+							endwhile;?>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/ketak.jpeg);">
-					</div>
-					<div class="rating mt-3">
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-					</div>
-					<a href=""><div class="text-craft">Tenun Songket</div></a>
-					<div class="text-price">
-						Rp. 200.000
-					</div>
+				<a href=""><div class="text-craft"><?= $data['craft'][$i]['nama_'.$_SESSION['lang'].'']?></div></a>
+				<div class="text-price">
+					Rp <?= str_replace(',','.',(number_format($data['craft'][$i]['harga'])));?>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="card-craft mt-3" style="background-image: url(<?= BASEURL;?>/assets/images/songket.jpeg);">
-					</div>
-					<div class="rating mt-3">
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-						<span class="fa fa-star" style="color: orange; font-size: 18px;"></span>
-					</div>
-					<a href=""><div class="text-craft">Songket</div></a>
-					<div class="text-price">
-							Rp. 200.000
-					</div>
-				</div>
+			</div>
+		<?php endfor;?>
 		</div>
 		<div class="what-they-say mt-5">
 			<h4>What They Say</h4>
@@ -228,8 +129,8 @@
 					},
 			},
 			navText: [
-					"<img src='http://localhost/ISC/public/assets/images/prev.png'>",
-					"<img src='http://localhost/ISC/public/assets/images/next.png'>",
+					"<img src=''. BASEURL .'/assets/images/prev.png'>",
+					"<img src=''. BASEURL .'/assets/images/next.png'>",
 			],
 		});
 	});

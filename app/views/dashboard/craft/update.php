@@ -11,14 +11,14 @@
               value="<?=$data['kerajinan']['id'];?>"
               required>
             <div class="mb-3">
-              <label for="nama_id" class="form-label">Name (Indonesia)</label>
+              <label for="nama_'.$_SESSION['lang'].'" class="form-label">Name (Indonesia)</label>
               <input 
                 type="text" 
                 class="form-control" 
-                id="nama_id" 
+                id="nama_'.$_SESSION['lang'].'" 
                 placeholder="Craft Name (Indonesia)" 
-                name="nama_id"
-                value="<?=$data['kerajinan']['nama_id'];?>"
+                name="nama_'.$_SESSION['lang'].'"
+                value="<?=$data['kerajinan']['nama_'.$_SESSION['lang'].''];?>"
                 required>
             </div>
             <div class="mb-3">
@@ -52,10 +52,10 @@
               name="stok" required>
             </div>
             <div class="mb-3">
-              <label for="deskripsi_id" class="form-label">Description (Indonesia)</label>
+              <label for="deskripsi_'.$_SESSION['lang'].'" class="form-label">Description (Indonesia)</label>
               <textarea class="form-control"
               placeholder="Description (Indonesia)" 
-              name="deskripsi_id" id="editor"><?=$data['kerajinan']['deskripsi_id'];?></textarea>
+              name="deskripsi_'.$_SESSION['lang'].'" id="editor"><?=$data['kerajinan']['deskripsi_'.$_SESSION['lang'].''];?></textarea>
             </div>
             <div class="mb-3">
               <label for="deskripsi_en" class="form-label">Description (English)</label>

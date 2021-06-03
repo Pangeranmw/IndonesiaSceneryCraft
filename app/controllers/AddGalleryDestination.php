@@ -1,6 +1,7 @@
 <?php 
   class AddGalleryDestination extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'destination';
         $data['judul'] = 'Add Gallery Destination';
@@ -11,12 +12,13 @@
         $this->view('dashboard/destination/addgallery', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
 
     public function tambah(){
+      $this->model('Language_model')->changeLanguage();
       $nama = $this->model('Upload_model')->upload($_FILES);
       if($this->model('Destination_model')->uploadtodb($nama, $_POST)>0){
           echo

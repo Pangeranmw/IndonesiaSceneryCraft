@@ -1,6 +1,7 @@
 <?php 
   class Account extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       $data['aktif'] = 'account';
       $data['judul'] = 'Account Dashboard';
       $this->view('layouts/account-header', $data);
@@ -11,6 +12,7 @@
     }
 
     public function profile(){
+      $this->model('Language_model')->changeLanguage();
       $data['aktif'] = 'profile';
       $data['judul'] = 'Profile Dashboard';
       $this->view('layouts/account-header', $data);

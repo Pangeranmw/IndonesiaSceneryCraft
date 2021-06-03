@@ -29,12 +29,12 @@
                       <td>
                         <div class="d-flex px-2 py-1 text-center text-wrap">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-md"><?=$budaya['nama_id'];?></p>
+                            <p class="mb-0 text-secondary text-md"><?=$budaya['nama_'.$_SESSION['lang'].''];?></p>
                           </div>
                         </div>
                       </td>
                       <td class="align-middle text-center text-wrap">
-                        <p class="mb-0 text-secondary text-md"><?=substr($budaya['artikel_id'],0,100);?></p>
+                        <p class="mb-0 text-secondary text-md"><?=substr($budaya['artikel_'.$_SESSION['lang'].''],0,100);?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($budaya['nama_desa'])).', '.ucwords(strtolower($budaya['nama_provinsi']));?></p>
@@ -81,7 +81,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_id']?></p>
+                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_'.$_SESSION['lang'].'']?></p>
                           </div>
                         </div>
                       </td>

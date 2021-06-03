@@ -9,16 +9,16 @@
               <select class="form-select" name="id_destinasi" id="destination">
                 <option> Select Destination </option>
                 <?php foreach($data['destinasi'] as $destinasi):?>
-                  <option value="<?=$destinasi['id'];?>"> <?=$destinasi['nama_id'];?> </option>
+                  <option value="<?=$destinasi['id'];?>"> <?=$destinasi['nama_'.$_SESSION['lang'].''];?> </option>
                 <?php endforeach;?>
               </select>
             </div>
             <div class="mb-3">
-              <label for="kategori_id" class="form-label">Category</label>
-              <select class="form-select" name="id_kategori" id="kategori_id">
+              <label for="kategori_'.$_SESSION['lang'].'" class="form-label">Category</label>
+              <select class="form-select" name="id_kategori" id="kategori_'.$_SESSION['lang'].'">
                 <option value=""> Select Destination </option>
                 <?php foreach($data['kategori'] as $kategori):?>
-                  <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_id'];?> </option>
+                  <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_'.$_SESSION['lang'].''];?> </option>
                 <?php endforeach;?>
               </select>
             </div>

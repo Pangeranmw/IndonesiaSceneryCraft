@@ -41,7 +41,7 @@
                       <td>
                         <div class="d-flex px-2 py-1 text-wrap">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-center text-wrap text-md"><?=$kerajinan['nama_id'];?></p>
+                            <p class="mb-0 text-secondary text-center text-wrap text-md"><?=$kerajinan['nama_'.$_SESSION['lang'].''];?></p>
                           </div>
                         </div>
                       </td>
@@ -52,7 +52,7 @@
                         <p class="mb-0 text-secondary text-md"><?=$kerajinan['stok'];?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">
-                        <p class="mb-0 text-secondary text-md"><?=limit_text($kerajinan['deskripsi_id'], 20);?></p>
+                        <p class="mb-0 text-secondary text-md"><?=limit_text($kerajinan['deskripsi_'.$_SESSION['lang'].''], 20);?></p>
                       </td>
                       <td class="align-middle text-center text-wrap">
                         <p class="mb-0 text-secondary text-md"><?=ucwords(strtolower($kerajinan['nama_desa'])).', '.ucwords(strtolower($kerajinan['nama_provinsi']));?></p>
@@ -98,11 +98,11 @@
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
-                        <p class="mb-0 text-secondary text-md"><?=$kategori['nama_id']?></p>
+                        <p class="mb-0 text-secondary text-md"><?=$kategori['nama_'.$_SESSION['lang'].'']?></p>
                       </div>
                     </td>
                     <td class="align-middle text-center">
-                      <p class="mb-0 text-secondary text-md"><?=$kategori['kategori_id']?></p>
+                      <p class="mb-0 text-secondary text-md"><?=$kategori['kategori_'.$_SESSION['lang'].'']?></p>
                     </td>
                     <td class="align-middle text-center">
                       <a class="btn btn-link text-danger text-gradient mb-0" href="<?=BASEURL;?>/dashboard/deletecategorycraft/<?=$kategori['id_kategori']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
@@ -146,7 +146,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_id']?></p>
+                            <p class="mb-0 text-secondary text-md"><?= $gallery['nama_'.$_SESSION['lang'].'']?></p>
                           </div>
                         </div>
                       </td>
@@ -154,7 +154,7 @@
                         <img src="<?=BASEURL;?>/assets/images/<?= $gallery['gallery']?>" class="avatar avatar-xl">
                       </td>
                       <td class="align-middle text-center">
-                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?= BASEURL;?>/dashboard/deletegallerycraft/<?= $gallery['id']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                        <a class="btn btn-link text-danger text-gradient mb-0" href="<?= BASEURL;?>/dashboard/deletegallerycraft/<?= $gallery['id_gallery']?>"><i class="far fa-trash-alt me-2"></i>Delete</a>
                       </td>
                     </tr>
                   <?php endforeach;?>

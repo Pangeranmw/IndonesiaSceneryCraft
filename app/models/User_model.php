@@ -8,7 +8,7 @@ class User_model {
   public function dataUser($data){
     $query = ("SELECT * FROM user WHERE email = :email");
     $this->db->query($query);
-    $this->db->bind('email', $data['email']);
+    $this->db->bind('email', $data);
     return $this->db->singleSet();
   }
 }

@@ -1,6 +1,7 @@
 <?php 
   class AddGalleryCulture extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'culture';
         $data['judul'] = 'Add Gallery Culture';
@@ -11,12 +12,13 @@
         $this->view('dashboard/culture/addgallery', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
 
     public function tambah(){
+      $this->model('Language_model')->changeLanguage();
         $nama = $this->model('Upload_model')->upload($_FILES);
         if($this->model('Culture_model')->uploadtodb($nama, $_POST)>0){
             echo

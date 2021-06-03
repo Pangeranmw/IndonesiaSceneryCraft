@@ -16,42 +16,40 @@
                   </tr>
                 </thead>
                 <tbody>
+                <?php foreach($data['cart'] as $cart) :?>
                   <!-- Looping -->
                   <tr class="cart-item">
                     <td style="width: 25%;">
-                      <img src="<?= BASEURL;?>/assets/images/ketak.jpeg" alt="" class="cart-image"/>
+                      <img src="<?= BASEURL;?>/assets/images/<?= $cart['gallery'] ?>" alt="" class="cart-image"/>
                     </td>
                     <td style="width: 30%;">
-                      <div class="product-title">Tas Ketas</div>
-                      <div class="product-subtitle">NTB</div>
+                      <div class="product-title"><?= $cart['nama_'.$_SESSION['lang'].''] ?></div>
+                      <div class="product-subtitle"><?= ucwords(strtolower($cart['nama_provinsi'])) ?></div>
                     </td>
                     <td style="width: 15%;">
-                      <div class="product-title">Rp 200.000</div>
+                      <div class="product-title">Rp <?= str_replace(',','.',number_format($cart['harga'])) ?></div>
                       <div class="product-subtitle">Rupiah</div>
                     </td>
                     <td style="width: 15%;">
                       <div class="product-title">
                         <div class="detail-quantity input-group">
-                          <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minus btn btn-white btn-number rounded-left"  data-type="minus" data-field="">
-                              <i class="bi bi-dash-circle"></i>
-                            </button>
-                          </span>
-                          <input type="text" id="quantity" name="quantity" class="form-control input-number border-0 rounded-0" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                            <button type="button" class="quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" data-field="">
-                                <i class="bi bi-plus-circle"></i>
-                            </button>
-                          </span>
+                          <button type="button" class="minus quantity-left-minus btn btn-white btn-number rounded-left"  data-type="minus" onclick="this.parentNode.querySelector('[type=number]').stepDown();" id="decrease">
+                            <i class="bi bi-dash-circle"></i>
+                          </button>
+                          <input type="number" id="quantity" name="quantity" class="form-control input-number border-0 rounded-0 quantity" value="<?=$cart['jumlah']?>" min="1" max="<?= $cart['stok'] ?>">
+                          <button type="button" class="plus quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" onclick="this.parentNode.querySelector('[type=number]').stepUp();" id="increment"> 
+                              <i class="bi bi-plus-circle"></i>
+                          </button>
                         </div>
                       </div>
                     </td>
                     <td style="width: 20%;">
-                      <a href="#" class="btn btn-remove-cart">
+                      <a href="<?= BASEURL?>/cart/remove/<?= $cart['id_keranjang']?>" class="btn btn-remove-cart">
                         Remove
                       </a>
                     </td>
                   </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -64,7 +62,7 @@
           </div>
           <div class="row mb-2">
             <div class="col-md-12">
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="alamat">Address</label>
                 <input
                   type="text"
@@ -77,23 +75,26 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="provinsi">Province</label>
-                <select name="provinsi" id="provinsi" class="form-control form-select">
-                  <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                <select class="form-control form-select w-100" name="provinsi" id="provinsi"required>
+                  <option>Select Province</option>
+                  <?php foreach( $data['wilayah'] as $daerah) :?>
+                    <option value="<?= $daerah['id']?>" required><?= $daerah['nama_provinsi']?></option>
+                  <?php endforeach;?>
                 </select>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="kabupaten">City</label>
-                <select name="kabupaten" id="kabupaten" class="form-control form-select">
-                  <option value="Mataram">Mataram</option>
+                <select class="form-control form-select w-100" name="kabupaten" id="kabupaten" required>
+                  <option></option>
                 </select>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="postalCode">Postal Code</label>
                 <input
                   type="text"
@@ -105,7 +106,7 @@
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="mobile">Mobile</label>
                 <input
                   type="text"
@@ -127,7 +128,15 @@
           </div>
           <div class="row">
             <div class="col-4 col-md-2">
-              <div class="product-title text-success">Rp 200.000</div>
+              <div class="product-title text-success total">Rp 
+              <?php
+                $total=0;
+                foreach($data['cart'] as $cart){
+                  $total+=$cart['jumlah']*$cart['harga'];
+                }
+                echo str_replace(',','.',number_format($total));
+              ?>
+              </div>
               <div class="product-subtitle">Total</div>
             </div>
             <div class="col-8 col-md-3">
@@ -144,6 +153,38 @@
     </div>
 <script src="<?= BASEURL;?>/assets/vendor/jquery.min.js"></script>
 <script>
+  $(".minus , .plus , .quantity").on("click input", function() {
+    var selectors = $(this).closest('tr'); //get closest tr
+    var quan = selectors.find('.quantity').val(); //get qty
+    if (!quan || quan < 0)
+      return;
+    var cost = parseFloat(selectors.find('.cost').text());
+    var total = (cost * quan).toFixed(2);
+    selectors.find('.total').text(total); //add total 
+  })
+
+
+  $(document).ready(function () {
+	$("#provinsi").change(function () {
+		var url = "<?=BASEURL;?>/adddestination/add_ajax_kab/" + $(this).val();
+		$("#kabupaten").load(url);
+		return false;
+	});
+
+	$("#kabupaten").change(function () {
+		var url = "<?=BASEURL;?>/adddestination/add_ajax_kec/" + $(this).val();
+		$("#kecamatan").load(url);
+		return false;
+	});
+
+	$("#kecamatan").change(function () {
+		var url = "<?=BASEURL;?>/adddestination/add_ajax_des/" + $(this).val();
+		$("#desa").load(url);
+		return false;
+	});
+});
+</script>
+<!-- <script>
   // quantity
   $(document).ready(function(){
     var quantitiy=0;
@@ -161,4 +202,4 @@
       }
     });
   });
-</script>
+</script> -->

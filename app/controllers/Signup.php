@@ -2,15 +2,17 @@
 
 class Signup extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
         $data['judul'] = 'Signup';
         $this->view('layouts/dashboard-header', $data);
         $this->view('signup/index', $data);
-        $this->view('layouts/dashboard-footer', $data);
+        // $this->view('layouts/dashboard-footer', $data);
     }
     
     public function tambah(){
       $pass = $_POST['password'];
       $conpass = $_POST['confirmpassword'];
+      $this->model('Language_model')->changeLanguage();
       //mengecekkan email
       $result =  $this->model('Signup_model')->getDatabyEmail($_POST);
       if(!$result){
@@ -20,28 +22,28 @@ class Signup extends Controller{
           if($this->model('Signup_model')->tambahUser($_POST)>0){
             echo
             "<script>
-              confirm('Registrasi berhasil');
-              window.location='http://localhost/IndonesiaSceneryCraft/public/login';
+              alert('Registrasi berhasil');
+              window.location='".BASEURL."/login';
             </script>";
           }else{
             echo
             "<script>
-              confirm('Registrasi Gagal');
-              window.location='http://localhost/IndonesiaSceneryCraft/public/signup';
+              alert('Registrasi Gagal');
+              window.location='".BASEURL."/signup';
             </script>";
           }
         }else{
           echo
           "<script>
-            confirm('Confirm Password is Wrong');
-            window.location='http://localhost/IndonesiaSceneryCraft/public/signup';
+            alert('Confirm Password is Wrong');
+            window.location='".BASEURL."/signup';
           </script>";
         }
       }else{
         echo
         "<script>
-          confirm('Email are Ready Use');
-          window.location='http://localhost/IndonesiaSceneryCraft/public/signup';
+          alert('Email are Ready Use');
+          window.location='".BASEURL."/signup';
         </script>";
       }
     }

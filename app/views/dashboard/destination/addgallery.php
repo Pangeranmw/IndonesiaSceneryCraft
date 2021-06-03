@@ -9,7 +9,7 @@
               <select class="form-select" name="id_destination" id="id_destination">
                 <option> Select Destination </option>
                 <?php foreach( $data['destination'] as $destination) :?>
-                  <option value="<?= $destination['id']?>" required><?= $destination['nama_id']?></option>
+                  <option value="<?= $destination['id']?>" required><?= $destination['nama_'.$_SESSION['lang'].'']?></option>
                 <?php endforeach;?>
               </select>
             </div>

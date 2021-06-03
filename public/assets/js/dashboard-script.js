@@ -5,6 +5,9 @@ if (win && document.querySelector("#sidenav-scrollbar")) {
 	};
 	Scrollbar.init(document.querySelector("#sidenav-scrollbar"), options);
 }
+tinyMCE.init({
+    height : "480"
+});
 
 // var ctx = document.getElementById("chart-bars").getContext("2d");
 

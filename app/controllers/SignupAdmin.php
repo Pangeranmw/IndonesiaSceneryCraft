@@ -6,9 +6,9 @@ class SignupAdmin extends Controller{
         $data['judul'] = 'Signup Admin';
         $this->view('layouts/dashboard-header', $data);
         $this->view('signupadmin/index', $data);
-        $this->view('layouts/dashboard-footer', $data);
+        // $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
@@ -25,27 +25,27 @@ class SignupAdmin extends Controller{
           if($this->model('Signup_model')->tambahAdmin($_POST)>0){
             echo
             "<script>
-              confirm('Admin Berhasil ditambahkan');
+              alert('Admin Berhasil ditambahkan');
               window.location='".BASEURL."/loginadmin';
             </script>";
           }else{
             echo
             "<script>
-              confirm('Admin Gagal ditambahkan');
+              alert('Admin Gagal ditambahkan');
               window.location='".BASEURL."/signupadmin';
             </script>";
           }
         }else{
           echo
           "<script>
-            confirm('Confirm Password is Wrong');
+            alert('Confirm Password is Wrong');
             window.location='".BASEURL."/signupadmin';
           </script>";
         }
       }else{
         echo
         "<script>
-          confirm('Email already use');
+          alert('Email already use');
           window.location='".BASEURL."/signupadmin';
         </script>";
       }

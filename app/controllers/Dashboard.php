@@ -1,6 +1,7 @@
 <?php 
   class Dashboard extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'destination';
         $data['judul'] = 'Destination Dashboard';
@@ -11,11 +12,12 @@
         $this->view('dashboard/destination', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function category(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['judul'] = 'Category Dashboard';
         $data['aktif'] = 'category';
@@ -26,11 +28,12 @@
         $this->view('dashboard/category', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function destination(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'destination';
         $data['judul'] = 'Destination Dashboard';
@@ -43,7 +46,7 @@
         $this->view('dashboard/destination', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
@@ -60,12 +63,13 @@
         $this->view('dashboard/craft', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     
     public function culture(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'culture';
         $data['judul'] = 'Culture Dashboard';
@@ -77,11 +81,12 @@
         $this->view('dashboard/culture', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletegalleryculture($id = null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "gallery_budaya";
         if($this->model('Culture_model')->delete($id, $tabel)){
@@ -98,12 +103,13 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
 
     public function deletecategory($id=null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "kategori";
         if($this->model('Category_model')->delete($id, $tabel)){
@@ -120,12 +126,13 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     
     public function editdestination(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "destinasi";
         if($this->model('Destination_model')->edit($_POST, $tabel)){
@@ -142,11 +149,12 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletedestination($id=null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "destinasi";
         if($this->model('Destination_model')->delete($id, $tabel)){
@@ -163,11 +171,12 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletecategorydestination($id=null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "kategori_destinasi";
         if($this->model('Destination_model')->delete($id, $tabel)){
@@ -184,11 +193,12 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletegallerydestination($id = null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "gallery_destination";
         if($this->model('Destination_model')->delete($id, $tabel)){
@@ -205,11 +215,12 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletecraft($id=null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "kerajinan";
         if($this->model('Craft_model')->delete($id, $tabel)){
@@ -226,7 +237,7 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
@@ -247,11 +258,12 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }
     public function deletegallerycraft($id = null){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $tabel = "gallery_kerajinan";
         if($this->model('Craft_model')->delete($id, $tabel)){
@@ -268,7 +280,7 @@
           </script>";
         }
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }

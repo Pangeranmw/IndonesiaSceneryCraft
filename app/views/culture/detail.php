@@ -33,18 +33,10 @@
   <div class="col-lg-10 col-md-6 col-sm-12">
     <div class="culture-description">
       <div class="culture-title text-center mb-4">
-        <h4>Peresean</h4>
+        <h4><?= $data['culture']['nama_'.$_SESSION['lang'].'']?></h4>
       </div>
       <div class="culture-information fs-5 font-read">
-        Ada sebuah tradisi pertarungan Suku sasak di Lombok yang mampu menarik wisatawan. Tradisi ini bernama Peresean. Tradisi Presean atau Peresean adat Lombok ini merupakan kesenian khas Sasak Lombok yang berupa duel satu lawan satu antara dua pemuda Suku Sasak bersenjatakan tongkat dan perisai.
-        Budaya Peresean adat Lombok yang dahulunya sebagai ritual adat namun saat ini menjadi sebuah tradisi yang memiliki keunikan sendiri ketika para Pepadu-nya memadukan gaya bela diri dengan ekspresi-ekspresi lelucon ketika berhasil memukul lawannya. <br>
-        <br>
-        Tradisi Peresean adat Lombok biasanya di iringi oleh tabuhan musik Gendang Beleq. Tetabuhan ini selain berfungsi sebagai penyemangat juga digunakan sebagai penanda diadakannya ritual peresean sehingga masyarakat sekitar acara akan datang untuk menonton. Dengan di iringi tabuhan gendang Beleq, kedua Pepadu akan saling mengalahkan lawan dengan pukulan rotan tanpa rasa cemas dan tidak kenal takut.
-        <br> <br>
-        Senjata Pada Tradisi Peresean Adat Lombok
-        Pertarungan antara dua lelaki ini akan menggunakan persenjataan berupa tongkat rotan atau penjalin yang digunakan untuk memukul tubuh lawan. Selain itu untuk menangkis pukulan rotan, pemain akan dibekali perisai kulit kerbau yang tebal dan keras yang disebut ende.
-        <br> <br>
-        Ada hal unik yang menjadikan tradisi peresean diminati oleh para wisatawan. Para peserta Peresean tidak pernah dipersiapkan sebelumnya, para penonton dan siapapun yang sedang berada di lokasi acara boleh ikut bertarung.
+        <?= $data['culture']['artikel_'.$_SESSION['lang'].'']?>
       </div>
     </div>
   </div>
@@ -55,53 +47,74 @@
       <span class="fs-4 fw-semibold">Review</span>
       <div class="detail-rating row">
         <div class="col-lg-12">
-          <span class="fs-2 me-2 third-color fw-bold">3</span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fs-6 ms-1">1 Review</span> 
+        <span class="fs-2 me-2 third-color fw-bold"><?= $data['culture']['rating']?></span>
+            <?php for($i =0;$i<$data['culture']['rating'];$i++) :?>
+              <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
+            <?php endfor;?>
+          <span class="fs-6 ms-1"><?= count($data['review'])?> Review</span> 
+          <button class="btn btn-third my-2 rounded-pill float-end" onclick="toggleReview()">Add Review</button>
         </div>
       </div>
     </div>
     <div class="col-lg-12 mt-1">
-      <div class="review-list">
-        <div class="review-item col-lg-12">
-          <div class="name mb-1 fs-5">
-            Lalu Rizki Aldi
+    <!-- add new review -->
+      <div style="display: none;" id="toggleReview">
+        <form action="<?= BASEURL?>/tambahreview/index/<?= $data['culture']['id']?>" method="POST" id="ratingForm" enctype="multipart/form-data">
+          <div class="add-review mt-2 col-lg-12">
+            <input type="file" name="foto" id="foto" class="form-control w-auto" accept=".jpg, .jpeg, .png">
+            <div class="star-rating d-inline-flex mt-2 align-items-center form-control w-auto">
+              <span class="fs-6 color-main me-2">Rating</span>
+              <button type="button" class="btn third-color fa fa-star rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <input type="hidden" class="form-control" id="rating" name="rating" value="1">
+            </div>
+            <input type="text" class="form-control my-2" id="judul" name="judul" placeholder="Title" required>
+            <textarea row="4" class="form-control mt-2" placeholder="Review" id="review" name="review"></textarea>
+            <?php if ($_SESSION['id_user'] == null){?>
+              <a href="<?= BASEURL?>/login"class="btn btn-third my-2 rounded-pill">Login to add review</a>
+            <?php } else {?>
+              <button class="btn btn-success my-2 rounded-pill" type="submit" id="saveReview">Submit Review</button>
+            <?php }?>
           </div>
-          <div class="rating-star d-inline-block mb-2">
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-          </div>
-          <div class="review-image d-block mb-2">
-            <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/peresean.jpg');"></div>
-          </div>
-          <div class="review-text mb-2">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam consequatur quibusdam assumenda vel facilis, molestias libero sit culpa neque iure temporibus pariatur! Vitae, ad! Recusandae excepturi debitis aspernatur blanditiis.
-          </div>
-          <hr>
-        </div>
+        </form>
       </div>
-      <!-- add new review -->
-      <form action="" method="POST" enctype="multipart/form-data" id="upload_review">
-        <div class="add-review mt-2 col-lg-12">
-          <input type="file" name="foto[]" id="foto" class="form-control w-auto" multiple accept=".jpg, .jpeg, .png">
-          <div class="star-rating d-inline-flex mt-2 align-items-center form-control w-auto">
-            <span class="fs-6 color-main me-2">Rating</span>
-            <span class="fa fa-star-o" data-rating="1" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="2" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="3" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="4" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="5" style="color: var(--third); font-size:24px;"></span>
-            <input type="hidden" name="whatever3" class="rating-value" value="1">
+      
+      <?php if($data['review']) :?>
+        <?php foreach($data['review'] as $review) :?>
+        <div class="review-list">
+          <div class="review-item col-lg-12">
+            <div class="name mb-1 fs-5">
+            <?= $review['nama_lengkap']?>
+            </div>
+            <div class="rating-star d-inline-block mb-2">
+              <?php for($i=0;$i<$review['rating'];$i++) :?>
+                <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
+              <?php endfor;?>
+            </div>
+            <?php if($review['gallery']!=0):?>
+            <div class="review-image d-block mb-2">
+              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $review['gallery']?>');"></div>
+            </div>
+            <?php endif;?>
+            <div class="review-text fs-5 fw-semibold mb-2">
+              <?= $review['judul']?>
+            </div>
+            <div class="review-text mb-2">
+              <?= $review['review']?>
+            </div>
+            <hr>
           </div>
-          <input type="hidden" name="craft_id" id="craft_id" value="<?=$craft['id']?>">
-          <textarea row="2" class="form-control mt-2" id="review" name="review"></textarea>
-          <button class="btn btn-third mt-2 rounded-pill">Login to add review</button>
-          <button class="btn btn-success mt-2 rounded-pill" type="submit" id="submit_review">Submit Review</button>
         </div>
-      </form>
+        <?php endforeach;?>
+      <?php endif;?>
     </div>
   </div>
 </div>
@@ -109,39 +122,49 @@
 <script src="<?= BASEURL;?>/assets/vendor/jquery.min.js"></script>
 <script src="<?= BASEURL;?>/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
 <script>
+  // implement start rating select/deselect
+  $( ".rateButton" ).click(function() {
+		if($(this).hasClass('grey-color')) {			
+			$(this).removeClass('grey-color fa-star-o').addClass('third-color fa-star star-selected');
+			$(this).prevAll('.rateButton').removeClass('grey-color fa-star-o').addClass('third-color fa-star star-selected');
+			$(this).nextAll('.rateButton').removeClass('third-color fa-star star-selected').addClass('grey-color fa-star-o');			
+		} else {
+			$(this).nextAll('.rateButton').removeClass('third-color fa-star star-selected').addClass('grey-color fa-star-o');
+		}
+		$("#rating").val($('.star-selected').length);
+	});
+  // save review using Ajax
+	$('#ratingForm').on('submit', function(event){
+		event.preventDefault();
+		// var formData = $(this).serialize();
+		$.ajax({
+			type : 'POST',
+			url : '<?= BASEURL?>/addreviewculture/index/<?= $data['culture']['id']?>',
+			data:  new FormData(this),
+			dataType: "json",	
+      contentType: false,
+      cache: false,
+      processData:false,
+
+			success:function(response){
+				if(response.success == 1) {
+					$("#ratingForm")[0].reset();
+					window.location='<?=BASEURL?>/culture/detail/<?=$data['culture']['id']?>'
+				}
+			}
+		});		
+	});
   // gallery
   var gallery = new Vue({
     el: "#gallery",
     data: {
-      hover: false,
       activePhoto: 0,
       photos: [
-        {
-          id: 0,
-          url: "<?= BASEURL;?>/assets/images/peresean.jpg"
+        <?php for($i=0; $i<count($data['gallery']); $i++):?> {
+          id: <?=$i?>,
+          url: "<?=BASEURL?>/assets/images/<?=$data['gallery'][$i]['foto']?>",
         },
-        {
-          id: 1,
-          url: "<?= BASEURL;?>/assets/images/peresean2.jpg"
-        },
-        {
-          id: 2,
-          url: "<?= BASEURL;?>/assets/images/peresean3.jpg"
-        },
-        {
-          id: 3,
-          url: "<?= BASEURL;?>/assets/images/peresean2.jpg"
-        },
-        {
-          id: 4,
-          url: "<?= BASEURL;?>/assets/images/peresean3.jpg"
-        },
-      // @foreach($product->galleries as $gallery)  
-      //   {
-      //       id: {{ $gallery->id }},
-      //       url: "{{ Storage::url($gallery->photos) }}",
-      //   },
-      // @endforeach
+        <?php endfor;?>
       ],
     },
     methods: {
@@ -168,114 +191,9 @@
           },
       },
       navText: [
-          "<img src='http://localhost/ISC/public/assets/images/prev.png'>",
-          "<img src='http://localhost/ISC/public/assets/images/next.png'>",
+          "<img src=''. BASEURL .'/assets/images/prev.png'>",
+          "<img src=''. BASEURL .'/assets/images/next.png'>",
       ],
     });
   });
-
-  // submit review ajax
-  var $star_rating = $('.star-rating .fa');
-  var SetRatingStar = function() {
-    return $star_rating.each(function() {
-      if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-        return $(this).removeClass('fa-star-o').addClass('fa-star');
-      } else {
-        return $(this).removeClass('fa-star').addClass('fa-star-o');
-      }
-    });
-  };
-
-  $star_rating.on('click', function() {
-    $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-    return SetRatingStar();
-  });
-
-  SetRatingStar();
-  $(document).ready(function() {
-  });
-
-  $("#submit_review").click(function() {
-    var $star_rating = $('.star-rating .fa');
-    var rating = parseInt($star_rating.siblings('input.rating-value').val());
-    var photo= $('#foto').val();
-    var review= $('#review').val();
-    var craft_id= $('#craft_id').val();
-    if(rating>0 && review!="" && photo!=""){
-      $.ajax({
-        url: "submit_review.php",
-        type: "POST",
-        contentType: false,
-        cache: fale,
-        processData: false, 
-        data: {
-          rate: rating,
-          photo:foto,
-          review:review,
-          craft_id:craft_id
-        },
-        success : function(data){
-          alert(data);
-          location.reload();	
-        }
-      });
-    }
-    else{
-      alert('Please add your review, photo, and rating!');
-    }
-  });
-  $(".selected").click(function() {
-    var selected = $(this).hasClass("highlight");
-    $(".selected").removeClass("highlight");
-    if(!selected){
-        $(this).addClass("highlight");
-    }
-  });
-  
-  // // add star rating 
-  // var ratedIndex = -1, uID = 0;
-  // $(document).ready(function () {
-  //   resetStarColors();
-  //   if (localStorage.getItem('ratedIndex') != null) {
-  //     setStars(parseInt(localStorage.getItem('ratedIndex')));
-  //     uID = localStorage.getItem('uID');
-  //   }
-  //   $('.fa-star').on('click', function () {
-  //     ratedIndex = parseInt($(this).data('index'));
-  //     localStorage.setItem('ratedIndex', ratedIndex);
-  //     saveToTheDB();
-  //   });
-  //   $('.fa-star').mouseover(function () {
-  //     resetStarColors();
-  //     var currentIndex = parseInt($(this).data('index'));
-  //     setStars(currentIndex);
-  //   });
-  //   $('.fa-star').mouseleave(function () {
-  //     resetStarColors();
-  //     if (ratedIndex != -1)
-  //       setStars(ratedIndex);
-  //   });
-  // });
-  // function saveToTheDB() {
-  //   $.ajax({
-  //     url: "index.php",
-  //     method: "POST",
-  //     dataType: 'json',
-  //     data: {
-  //       save: 1,
-  //       uID: uID,
-  //       ratedIndex: ratedIndex
-  //     }, success: function (r) {
-  //       uID = r.id;
-  //       localStorage.setItem('uID', uID);
-  //     }
-  //   });
-  // }
-  // function setStars(max) {
-  //   for (var i=0; i <= max; i++)
-  //     $('.fa-star:eq('+i+')').css({'color': 'var(--third)'});
-  // }
-  // function resetStarColors() {
-  //   $('.fa-star').css('color', 'var(--main)');
-  // }
 </script>

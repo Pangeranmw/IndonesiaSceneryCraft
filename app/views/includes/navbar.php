@@ -35,16 +35,17 @@
             </ul>
             <ul class="navbar-nav ms-auto text-center">
                 <li class="nav-item my-auto">
-                    <form name="language" class="" method="post" action="">
-                        <select class="mb-auto mt-auto form-select lang" id="lang" name="language" id="" aria-label="Default select example">
-                            <option value="en">En</option>
-                            <option value="id">Id</option>
+                    <form name="lang" class="" method="POST" action="">
+                        <select class="mb-auto mt-auto form-select lang" id="lang" name="lang" id="" onchange='this.form.submit()' aria-label="Default select example">
+                            <option value="en" <?php if($_SESSION['lang']=='en') echo 'selected'?> >En</option>
+                            <option value="id" <?php if($_SESSION['lang']=='id') echo 'selected'?>>Id</option>
                         </select>
+                        <noscript><input type="submit" value="Submit"></noscript>
                     </form>
                 </li>
                 <li class="nav-item my-auto">
                     <div class="me-4 px-3">
-                        <form action="" class="" name="search">
+                        <form action="<?=BASEURL?>/search" method="GET">
                             <div class="searchBox">
                                 <div class="nav-link" id="mobile-search">Search</div>
                                 <input class="searchInput py-2"type="text" name="search" placeholder="Search" required>
@@ -64,7 +65,9 @@
                         <a href="<?= BASEURL;?>/cart">
                             <div class="nav-link" id="mobile-cart">Cart</div>
                             <div class="me-4" id="cart">
-                                <span class="qty <?php if ($data['qty']>0) echo 'nonzero';?>"><?=$data['qty'];?></span>
+                                <?php if(!is_null($data['qty'])) :?>
+                                    <span class="qty <?php if ($data['qty']>0) echo 'nonzero';?>"><?=$data['qty'];?></span>
+                                <?php endif;?>
                                 <img src="<?= BASEURL; ?>/assets/images/ic-keranjang.svg" alt="">
                             </div>
                         </a>

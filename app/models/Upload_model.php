@@ -19,23 +19,40 @@ class Upload_model {
     // mengambil ekstensi dengan memilih string terakhir dari gambar 
     $ekstensiGambar = strtolower(end($ekstensiGambar));
 
-    if ($ukuranFile > 1000000){
-        echo "
-            <script>alert('ukuran gambar terlalu besar')</script>
-        ";
-        return false;
-    }
+    // lolos cek foto,generate nama file baru, 
+    $namaFileBaru = uniqid('', true). '.'.$ekstensiGambar;
 
     // cek ekstensi file yang diupload apakah sama dengan yang valid
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)){
-        echo "
-            <script>alert('yang diupload bukan gambar')</script>
-        ";
-        return false;
+      // echo "
+      //     <script>alert('yang diupload bukan gambar')</script>
+      // ";
+      return false;
     }
-    // lolos cek foto,generate nama file baru, 
-    $namaFileBaru = uniqid('', true). '.'.$ekstensiGambar;
+    // function compressImage($source, $destination, $quality) {
+    //   $info = getimagesize($source);
+    //   if ($info['mime'] == 'image/jpeg') 
+    //     $image = imagecreatefromjpeg($source);
+    //   elseif ($info['mime'] == 'image/gif') 
+    //     $image = imagecreatefromgif($source);
+    //   elseif ($info['mime'] == 'image/png') 
+    //     $image = imagecreatefrompng($source);
+    //   imagejpeg($image, $destination, $quality);
+    // }
+
+    if ($ukuranFile > 1000000){
+        // echo "
+        //     <script>alert('ukuran gambar terlalu besar')</script>
+        // ";
+      // compressImage($tmpName,'assets/images/'.$namaFileBaru,50);
+      return false;
+    } 
+    // else {
+    //   compressImage($tmpName,'assets/images/'.$namaFileBaru,100);
+    // }
+    
     move_uploaded_file($tmpName, 'assets/images/' . $namaFileBaru);
     return $namaFileBaru;
   }
+  
 }

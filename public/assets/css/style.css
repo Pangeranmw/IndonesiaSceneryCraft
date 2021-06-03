@@ -140,21 +140,27 @@ body{
 .navbar-dark .navbar-toggler {
   border: none;
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
 /* Card 1 */
 .card-1{
   /* position: relative; */
   flex-direction: column;
   word-wrap: break-word;
   width: 100%;
-  height: 250px;
+  height: 22rem;
   background-color:white;
   border-radius: 20px;}
   .card-1 .card-img{
     width: 90%;
     height: 70%;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: -30px;
     border-radius:  10px 10px 0 0px;}
   .card-1 .card-text{
     margin-top: 5%;
@@ -409,7 +415,7 @@ footer{
 .third-color:hover, .third-color {
   color: var(--third) !important;
 }
-.grey-color{
+.grey-color:hover, .grey-color{
   color: gray !important;
 }
 .sort-by-content{
@@ -514,6 +520,11 @@ float: right;
 }
 .detail-info img{
   height: 1.2em;
+}
+.craft-content .image{
+  height: 15em;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .btn-white{
   background-color: white;

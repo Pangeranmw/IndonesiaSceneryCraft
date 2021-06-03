@@ -5,13 +5,13 @@
         <div class="card p-3">
           <form action="<?=BASEURL;?>/addcraft/tambah" method="POST">
             <div class="mb-3">
-              <label for="nama_id" class="form-label">Name (Indonesia)</label>
+              <label for="nama_'.$_SESSION['lang'].'" class="form-label">Name (Indonesia)</label>
               <input 
                 type="text" 
                 class="form-control" 
-                id="nama_id" 
+                id="nama_'.$_SESSION['lang'].'" 
                 placeholder="Craft Name (Indonesia)" 
-                name="nama_id" required>
+                name="nama_'.$_SESSION['lang'].'" required>
             </div>
             <div class="mb-3">
               <label for="nama_en" class="form-label">Name (English)</label>
@@ -23,10 +23,10 @@
               name="nama_en" required>
             </div>
             <div class="mb-3">
-              <label for="deskripsi_id" class="form-label">Description (Indonesia)</label>
+              <label for="deskripsi_'.$_SESSION['lang'].'" class="form-label">Description (Indonesia)</label>
               <textarea class="form-control"
               placeholder="Description (Indonesia)" 
-              name="deskripsi_id"></textarea>
+              name="deskripsi_'.$_SESSION['lang'].'"></textarea>
             </div>
             <div class="mb-3">
               <label for="deskripsi_en" class="form-label">Description (English)</label>

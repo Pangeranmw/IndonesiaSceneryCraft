@@ -16,5 +16,6 @@
     <link rel="stylesheet" href="<?= BASEURL;?>/assets/vendor/owlcarousel/owl.theme.default.css">
     <link rel="icon" type="image/png" href="<?= BASEURL;?>/assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/um4rc7qp7fdpvxj5872e8dl18bihaql97mrd5teqz6rupwd6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <title><?= $data['judul'];?></title>
 </head>

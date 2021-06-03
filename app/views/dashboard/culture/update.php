@@ -5,14 +5,14 @@
           <form action="<?= BASEURL;?>/updateculture/editculture" method="POST">
             <input type="hidden" name="id" id="id" value="<?=$data['budaya']['id'];?>">
             <div class="mb-3">
-              <label for="nama_id" class="form-label">Name (Indonesia)</label>
+              <label for="nama_'.$_SESSION['lang'].'" class="form-label">Name (Indonesia)</label>
               <input
                 type="text" 
                 class="form-control"
-                id="nama_id" 
+                id="nama_'.$_SESSION['lang'].'" 
                 placeholder="Culture Name (Indonesia)"
-                name="nama_id"
-                value="<?=$data['budaya']['nama_id'];?>"
+                name="nama_'.$_SESSION['lang'].'"
+                value="<?=$data['budaya']['nama_'.$_SESSION['lang'].''];?>"
                 required>
             </div>
             <div class="mb-3">
@@ -26,18 +26,18 @@
               name="nama_en" required>
             </div>
             <div class="mb-3">
-              <label for="artikel_id" class="form-label">Article (Indonesia)</label>
+              <label for="artikel_'.$_SESSION['lang'].'" class="form-label">Article (Indonesia)</label>
               <textarea class="form-control"
               placeholder="Article (Indonesia)"
-              name="artikel_id" id="editor"
-              value="<?=$data['budaya']['artikel_id'];?>"><?=$data['budaya']['artikel_id'];?></textarea>
+              name="artikel_'.$_SESSION['lang'].'" id="editor"
+              value="<?=$data['budaya']['artikel_'.$_SESSION['lang'].''];?>"><?=$data['budaya']['artikel_'.$_SESSION['lang'].''];?></textarea>
             </div>
             <div class="mb-3">
               <label for="artikel_en" class="form-label">Article (English)</label>
               <textarea class="form-control"
               placeholder="Article (English)"
-              value="<?=$data['budaya']['artikel_en'];?>"
-              name="artikel_en" id="editor2"><?=$data['budaya']['artikel_en'];?></textarea>
+              name="artikel_en" id="editor2"
+              value="<?=$data['budaya']['artikel_en'];?>"><?=$data['budaya']['artikel_en'];?></textarea>
             </div>
             <div class="mb-3">
               <label for="maps" class="form-label">Maps</label>

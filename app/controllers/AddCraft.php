@@ -1,6 +1,7 @@
 <?php 
   class AddCraft extends Controller{
     public function index(){
+      $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){
         $data['aktif'] = 'craft';
         $data['judul'] = 'Add Craft';
@@ -11,7 +12,7 @@
         $this->view('dashboard/craft/create', $data);
         $this->view('layouts/dashboard-footer', $data);
       }else{
-        header('Location: http://localhost/ISC/public/loginadmin');
+        header('Location: '. BASEURL .'/loginadmin');
         exit;
       }
     }

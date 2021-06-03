@@ -22,28 +22,24 @@
     </div>
     <div class="col-lg-7 col-md-6 col-sm-12">
       <div class="detail-name fs-3 fw-semibold">
-        Tas Ketas
+        <?= $data['craft']['nama_'.$_SESSION['lang'].'']?>
       </div>
       <div class="detail-price fs-5 third-color">
-        Rp. 200000
+        Rp. <?= $data['craft']['harga']?>
       </div>
       <div class="detail-description mt-3 fs-6">
         <h5>Description</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, mollitia. Cum ex labore non? Nesciunt tenetur nulla culpa, iusto, adipisci odio excepturi voluptatum, fugit expedita commodi dolorum tempora nobis modi!</p>
+        <?= $data['craft']['deskripsi_'.$_SESSION['lang'].'']?>
       </div>
-      <form action="" name="cart">
+      <form action="<?=BASEURL;?>/cart/tambah/<?=$data['craft']['id']?>" method="POST">
         <div class="detail-quantity input-group mt-2">
-          <span class="input-group-btn">
-            <button type="button" class="quantity-left-minus btn btn-white btn-number rounded-left"  data-type="minus" data-field="">
-              <i class="bi bi-dash-circle"></i>
-            </button>
-          </span>
-          <input type="text" id="quantity" name="quantity" class="form-control input-number border-0" value="1" min="1" max="100">
-          <span class="input-group-btn">
-            <button type="button" class="quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" data-field="">
-                <i class="bi bi-plus-circle"></i>
-            </button>
-          </span>
+          <button type="button" class="minus quantity-left-minus btn btn-white btn-number rounded-left"  data-type="minus" onclick="this.parentNode.querySelector('[type=number]').stepDown();" id="decrease">
+            <i class="bi bi-dash-circle"></i>
+          </button>
+          <input type="number" id="quantity" name="quantity" class="form-control input-number border-0 rounded-0 quantity" value="1" min="1" max="<?= $cart['stok'] ?>">
+          <button type="button" class="plus quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" onclick="this.parentNode.querySelector('[type=number]').stepUp();" id="increment"> 
+              <i class="bi bi-plus-circle"></i>
+          </button>
         </div>
         <div class="detail-cta mt-3 ">
           <button type="submit" class="btn btn-primary me-2">Add to Cart</button>
@@ -57,56 +53,73 @@
       <span class="fs-4 fw-semibold">Review</span>
       <div class="detail-rating row">
         <div class="col-lg-12">
-          <span class="fs-2 me-2 third-color fw-bold">3</span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
-          <span class="fs-6 ms-1">1 Review</span> 
+        <span class="fs-2 me-2 third-color fw-bold"><?= $data['craft']['rating']?></span>
+          <?php for($i =0;$i<$data['craft']['rating'];$i++) :?>
+              <span class="fa fa-star" style="color: var(--third); font-size:24px;"></span>
+          <?php endfor;?>
+          <span class="fs-6 ms-1"><?= count($data['review'])?> Review</span>
+          <button class="btn btn-third my-2 rounded-pill float-end" onclick="toggleReview()">Add Review</button>
         </div>
       </div>
     </div>
-    <div class="col-lg-12 mt-1">
-      <div class="review-list">
-        <div class="review-item col-lg-12">
-          <div class="name mb-1 fs-5">
-            Lalu Rizki Aldi
+    <!-- add new review -->
+      <div style="display: none;" id="toggleReview">
+        <form action="<?= BASEURL?>/tambahreview/index/<?= $data['craft']['id']?>" method="POST" id="ratingForm" enctype="multipart/form-data">
+          <div class="add-review mt-2 col-lg-12">
+            <input type="file" name="foto" id="foto" class="form-control w-auto" accept=".jpg, .jpeg, .png">
+            <div class="star-rating d-inline-flex mt-2 align-items-center form-control w-auto">
+              <span class="fs-6 color-main me-2">Rating</span>
+              <button type="button" class="btn third-color fa fa-star rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <button type="button" class="btn grey-color fa fa-star-o rateButton" aria-label="Left Align" style="font-size:24px;">
+              </button>
+              <input type="hidden" class="form-control" id="rating" name="rating" value="1">
+            </div>
+            <input type="text" class="form-control my-2" id="judul" name="judul" placeholder="Title" required>
+            <textarea row="4" class="form-control mt-2" placeholder="Review" id="review" name="review"></textarea>
+            <?php if ($_SESSION['id_user'] == null){?>
+              <a href="<?= BASEURL?>/login"class="btn btn-third my-2 rounded-pill">Login to add review</a>
+            <?php } else {?>
+              <button class="btn btn-success my-2 rounded-pill" type="submit" id="saveReview">Submit Review</button>
+            <?php }?>
           </div>
-          <div class="rating d-inline-block mb-2">
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-            <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
-          </div>
-          <div class="review-image d-block mb-2">
-            <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/ketak.jpeg');"></div>
-          </div>
-          <div class="review-text mb-2">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam consequatur quibusdam assumenda vel facilis, molestias libero sit culpa neque iure temporibus pariatur! Vitae, ad! Recusandae excepturi debitis aspernatur blanditiis.
-          </div>
-          <hr>
-        </div>
+        </form>
       </div>
-      <!-- add new review -->
-      <form action="" method="POST" enctype="multipart/form-data" id="upload_review">
-        <div class="add-review mt-2 col-lg-12">
-          <input type="file" name="foto[]" id="foto" class="form-control w-auto" multiple accept=".jpg, .jpeg, .png">
-          <div class="star-rating d-inline-flex mt-2 align-items-center form-control w-auto">
-            <span class="fs-6 color-main me-2">Rating</span>
-            <span class="fa fa-star-o" data-rating="1" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="2" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="3" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="4" style="color: var(--third); font-size:24px;"></span>
-            <span class="fa fa-star-o" data-rating="5" style="color: var(--third); font-size:24px;"></span>
-            <input type="hidden" name="whatever3" class="rating-value" value="1">
+    <div class="col-lg-12 mt-1">
+    <?php if($data['review']) :?>
+        <?php foreach($data['review'] as $review) :?>
+        <div class="review-list">
+          <div class="review-item col-lg-12">
+            <div class="name mb-1 fs-5">
+            <?= $review['nama_lengkap']?>
+            </div>
+            <div class="rating-star d-inline-block mb-2">
+              <?php for($i =0;$i<$review['rating'];$i++) :?>
+                <span class="fa fa-star" style="color: var(--main); font-size:16px;"></span>
+              <?php endfor;?>
+            </div>
+            <?php if($review['gallery']!=0):?>
+            <div class="review-image d-block mb-2">
+              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $review['gallery']?>');"></div>
+            </div>
+            <?php endif;?>
+            <div class="review-text fs-5 fw-semibold mb-2">
+              <?= $review['judul']?>
+            </div>
+            <div class="review-text mb-2">
+              <?= $review['review']?>
+            </div>
+            <hr>
           </div>
-          <input type="hidden" name="craft_id" id="craft_id" value="<?=$craft['id']?>">
-          <textarea class="form-control mt-2" id="review" name="review"></textarea>
-          <?php if (!isset($_SESSION['login'])){?>
-            <button class="btn btn-third mt-2 rounded-pill">Login to add review</button>
-          <?php } else {?>
-            <button class="btn btn-success mt-2 rounded-pill" type="submit" id="submit_review">Submit Review</button>
-          <?php }?>
         </div>
-      </form>
+        <?php endforeach;?>
+      <?php endif;?>
     </div>
   </div>
 </div>
@@ -114,39 +127,50 @@
 <script src="<?= BASEURL;?>/assets/vendor/jquery.min.js"></script>
 <script src="<?= BASEURL;?>/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
 <script>
+  // implement start rating select/deselect
+  $( ".rateButton" ).click(function() {
+		if($(this).hasClass('grey-color')) {			
+			$(this).removeClass('grey-color fa-star-o').addClass('third-color fa-star star-selected');
+			$(this).prevAll('.rateButton').removeClass('grey-color fa-star-o').addClass('third-color fa-star star-selected');
+			$(this).nextAll('.rateButton').removeClass('third-color fa-star star-selected').addClass('grey-color fa-star-o');			
+		} else {
+			$(this).nextAll('.rateButton').removeClass('third-color fa-star star-selected').addClass('grey-color fa-star-o');
+		}
+		$("#rating").val($('.star-selected').length);
+	});
+  // save review using Ajax
+	$('#ratingForm').on('submit', function(event){
+		event.preventDefault();
+		// var formData = $(this).serialize();
+		$.ajax({
+			type : 'POST',
+			url : '<?= BASEURL?>/addreviewcraft/index/<?= $data['craft']['id']?>',
+			data:  new FormData(this),
+			dataType: "json",	
+      contentType: false,
+      cache: false,
+      processData:false,
+
+			success:function(response){
+				if(response.success == 1) {
+					$("#ratingForm")[0].reset();
+					window.location='<?=BASEURL?>/craft/detail/<?=$data['craft']['id']?>'
+				}
+			}
+		});		
+	});
+
   // gallery
   var gallery = new Vue({
     el: "#gallery",
     data: {
-      hover: false,
       activePhoto: 0,
       photos: [
-        {
-          id: 0,
-          url: "<?= BASEURL;?>/assets/images/ketak.jpeg"
+        <?php for($i=0; $i<count($data['gallery']); $i++):?> {
+          id: <?=$i?>,
+          url: "<?=BASEURL?>/assets/images/<?=$data['gallery'][$i]['foto']?>",
         },
-        {
-          id: 1,
-          url: "<?= BASEURL;?>/assets/images/songket.jpeg"
-        },
-        {
-          id: 2,
-          url: "<?= BASEURL;?>/assets/images/slingbag.jpeg"
-        },
-        {
-          id: 3,
-          url: "<?= BASEURL;?>/assets/images/ketak.jpeg"
-        },
-        {
-          id: 4,
-          url: "<?= BASEURL;?>/assets/images/slingbag.jpeg"
-        },
-      // @foreach($product->galleries as $gallery)  
-      //   {
-      //       id: {{ $gallery->id }},
-      //       url: "{{ Storage::url($gallery->photos) }}",
-      //   },
-      // @endforeach
+        <?php endfor;?>
       ],
     },
     methods: {
@@ -173,132 +197,9 @@
           },
       },
       navText: [
-          "<img src='http://localhost/ISC/public/assets/images/prev.png'>",
-          "<img src='http://localhost/ISC/public/assets/images/next.png'>",
+          "<img src=''. BASEURL .'/assets/images/prev.png'>",
+          "<img src=''. BASEURL .'/assets/images/next.png'>",
       ],
     });
   });
-
-  // quantity
-  $(document).ready(function(){
-    var quantitiy=0;
-    $('.quantity-right-plus').click(function(e){
-      e.preventDefault();
-      var quantity = parseInt($('#quantity').val());
-      $('#quantity').val(quantity + 1);
-    });
-
-    $('.quantity-left-minus').click(function(e){
-      e.preventDefault();
-      var quantity = parseInt($('#quantity').val());
-      if(quantity>1){
-      $('#quantity').val(quantity - 1);
-      }
-    });
-  });
-
-  // submit review ajax
-  var $star_rating = $('.star-rating .fa');
-  var SetRatingStar = function() {
-    return $star_rating.each(function() {
-      if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-        return $(this).removeClass('fa-star-o').addClass('fa-star');
-      } else {
-        return $(this).removeClass('fa-star').addClass('fa-star-o');
-      }
-    });
-  };
-
-  $star_rating.on('click', function() {
-    $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-    return SetRatingStar();
-  });
-
-  SetRatingStar();
-  $(document).ready(function() {
-  });
-
-  $("#submit_review").click(function() {
-    var $star_rating = $('.star-rating .fa');
-    var rating = parseInt($star_rating.siblings('input.rating-value').val());
-    var photo= $('#foto').val();
-    var review= $('#review').val();
-    var craft_id= $('#craft_id').val();
-    if(rating>0 && review!="" && photo!=""){
-      $.ajax({
-        url: "submit_review.php",
-        type: "POST",
-        contentType: false,
-        cache: fale,
-        processData: false, 
-        data: {
-          rate: rating,
-          photo:foto,
-          review:review,
-          craft_id:craft_id
-        },
-        success : function(data){
-          alert(data);
-          location.reload();	
-        }
-      });
-    }
-    else{
-      alert('Please add your review, photo, and rating!');
-    }
-  });
-  $(".selected").click(function() {
-    var selected = $(this).hasClass("highlight");
-    $(".selected").removeClass("highlight");
-    if(!selected){
-        $(this).addClass("highlight");
-    }
-  });
-  
-  // // add star rating 
-  // var ratedIndex = -1, uID = 0;
-  // $(document).ready(function () {
-  //   resetStarColors();
-  //   if (localStorage.getItem('ratedIndex') != null) {
-  //     setStars(parseInt(localStorage.getItem('ratedIndex')));
-  //     uID = localStorage.getItem('uID');
-  //   }
-  //   $('.fa-star').on('click', function () {
-  //     ratedIndex = parseInt($(this).data('index'));
-  //     localStorage.setItem('ratedIndex', ratedIndex);
-  //     saveToTheDB();
-  //   });
-  //   $('.fa-star').mouseover(function () {
-  //     resetStarColors();
-  //     var currentIndex = parseInt($(this).data('index'));
-  //     setStars(currentIndex);
-  //   });
-  //   $('.fa-star').mouseleave(function () {
-  //     resetStarColors();
-  //     if (ratedIndex != -1)
-  //       setStars(ratedIndex);
-  //   });
-  // });
-  // function saveToTheDB() {
-  //   $.ajax({
-  //     url: "index.php",
-  //     method: "POST",
-  //     dataType: 'json',
-  //     data: {
-  //       save: 1,
-  //       uID: uID,
-  //       ratedIndex: ratedIndex
-  //     }, success: function (r) {
-  //       uID = r.id;
-  //       localStorage.setItem('uID', uID);
-  //     }
-  //   });
-  // }
-  // function setStars(max) {
-  //   for (var i=0; i <= max; i++)
-  //     $('.fa-star:eq('+i+')').css({'color': 'var(--third)'});
-  // }
-  // function resetStarColors() {
-  //   $('.fa-star').css('color', 'var(--main)');
-  // }
 </script>
