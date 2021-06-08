@@ -1,7 +1,7 @@
 Options -Multiviews
 php_flag display_errors 1
-AllowOverride all
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [L]
+AllowOverride all
