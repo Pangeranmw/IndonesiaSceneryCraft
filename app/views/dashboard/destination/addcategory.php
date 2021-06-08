@@ -14,8 +14,8 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="kategori_'.$_SESSION['lang'].'" class="form-label">Category</label>
-              <select class="form-select" name="id_kategori" id="kategori_'.$_SESSION['lang'].'">
+              <label for="kategori_id" class="form-label">Category</label>
+              <select class="form-select" name="id_kategori" id="kategori_id">
                 <option value=""> Select Destination </option>
                 <?php foreach($data['kategori'] as $kategori):?>
                   <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_'.$_SESSION['lang'].''];?> </option>

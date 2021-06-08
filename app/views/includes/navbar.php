@@ -45,7 +45,7 @@
                 </li>
                 <li class="nav-item my-auto">
                     <div class="me-4 px-3">
-                        <form action="<?=BASEURL?>/search" method="GET">
+                        <form action="<?=BASEURL?>/search" method="post">
                             <div class="searchBox">
                                 <div class="nav-link" id="mobile-search">Search</div>
                                 <input class="searchInput py-2"type="text" name="search" placeholder="Search" required>

@@ -43,23 +43,45 @@
       $this->model("Wilayah_model")->add_ajax_des($id_kec);
     }
     public function tambah($id){
-      $data['id_kerajinan'] = $id;
-      if(!empty($_POST['quantity'])){
-        $data['jumlah'] = $_POST['quantity'];
+      $result = $this->model('Cart_model')->selectkeranjangbyidkerajinan($id, $_SESSION['id_user']);
+      if(!empty($result)){
+        if(isset($_POST['quantity'])){
+          $result['jumlah']+=$_POST['quantity'];
+        }else{
+          $result['jumlah']+=1;
+        }
+        if($this->model('Cart_model')->updatejumlahbyid($id, $result['jumlah'], $_SESSION['id_user'])>0){
+          echo
+          "<script>
+            alert('Berhasil');
+            window.location='".BASEURL."/cart';
+          </script>";
+        }else{
+          echo
+          "<script>
+            alert('Gagal');
+            window.location='".BASEURL."/cart';
+          </script>";
+        }
       }else{
-        $data['jumlah'] = 1;
-      }
-      $data['id_user'] = $_SESSION['id_user'];
-      if($this->model('Cart_model')->tambah($data)>0){
-        echo
-        "<script>
-          window.location='".BASEURL."/cart';
-        </script>";
-      }else{
-        echo
-        "<script>
-          window.location='".BASEURL."/cart';
-        </script>";
+        $data['id_kerajinan'] = $id;
+        if(!empty($_POST['quantity'])){
+          $data['jumlah'] = $_POST['quantity'];
+        }else{
+          $data['jumlah'] = 1;
+        }
+        $data['id_user'] = $_SESSION['id_user'];
+        if($this->model('Cart_model')->tambah($data)>0){
+          echo
+          "<script>
+            window.location='".BASEURL."/cart';
+          </script>";
+        }else{
+          echo
+          "<script>
+            window.location='".BASEURL."/cart';
+          </script>";
+        }
       }
     }public function remove($id){
       $this->model('Language_model')->changeLanguage();

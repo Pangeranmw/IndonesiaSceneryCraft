@@ -1,6 +1,6 @@
 <body style="background-color: var(--bg);">
     <!-- Page Content -->
-    <div class="page-content page-cart mt-5">
+    <div class="page-content page-cart mt-5 cart-container">
       <section class="store-cart">
         <div class="container px-5">
           <div class="row">
@@ -54,70 +54,71 @@
               </table>
             </div>
           </div>
-          <div class="shipping-detail row">
-            <hr/>
-            <div class="col-12">
-              <h2 class="mb-4">Shipping Details</h2>
-            </div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-md-12">
-              <div class="form-group mb-3">
-                <label for="alamat">Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="alamat"
-                  aria-describedby="emailHelp"
-                  name="alamat"
-                  placeholder="Address"
-                />
+          <form action="<?= BASEURL?>/Transaksi" method="post">
+            <div class="shipping-detail row">
+              <hr/>
+              <div class="col-12">
+                <h2 class="mb-4">Shipping Details</h2>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group mb-3">
-                <label for="provinsi">Province</label>
-                <select class="form-control form-select w-100" name="provinsi" id="provinsi"required>
-                  <option>Select Province</option>
-                  <?php foreach( $data['wilayah'] as $daerah) :?>
-                    <option value="<?= $daerah['id']?>" required><?= $daerah['nama_provinsi']?></option>
-                  <?php endforeach;?>
-                </select>
+            <div class="row mb-2">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="alamat">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="alamat"
+                    aria-describedby="emailHelp"
+                    name="alamat"
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="provinsi">Province</label>
+                  <select class="form-control form-select w-100" name="provinsi" id="provinsi"required>
+                    <option>Select Province</option>
+                    <?php foreach( $data['wilayah'] as $daerah) :?>
+                      <option value="<?= $daerah['id']?>" required><?= $daerah['nama_provinsi']?></option>
+                    <?php endforeach;?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="kabupaten">City</label>
+                  <select class="form-control form-select w-100" name="kabupaten" id="kabupaten" required>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-3">
+                  <label for="postalCode">Postal Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="postalCode"
+                    name="postalCode"
+                    placeholder="83113"
+                  />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="mobile">Mobile</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="+6283129978695"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group mb-3">
-                <label for="kabupaten">City</label>
-                <select class="form-control form-select w-100" name="kabupaten" id="kabupaten" required>
-                  <option></option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group mb-3">
-                <label for="postalCode">Postal Code</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="postalCode"
-                  name="postalCode"
-                  placeholder="83113"
-                />
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group mb-3">
-                <label for="mobile">Mobile</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="mobile"
-                  name="mobile"
-                  placeholder="+6283129978695"
-                />
-              </div>
-            </div>
-          </div>
           <div class="row">
             <div class="col-12">
               <hr />
@@ -134,20 +135,21 @@
                 foreach($data['cart'] as $cart){
                   $total+=$cart['jumlah']*$cart['harga'];
                 }
+                $_SESSION['total_transaksi'] = str_replace(',','.',number_format($total));
                 echo str_replace(',','.',number_format($total));
               ?>
               </div>
               <div class="product-subtitle">Total</div>
             </div>
             <div class="col-8 col-md-3">
-              <a
-                href="success.html"
+              <button type="submit"
                 class="btn btn-success mt-4 px-4 btn-block"
               >
                 Checkout Now
-              </a>
+              </button>
             </div>
           </div>
+          </form>
         </div>
       </section>
     </div>

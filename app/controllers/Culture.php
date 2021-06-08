@@ -14,7 +14,6 @@
         $data['label']= null;
         $data['culture'] = $this->model('Sortby_model')->sortbyculture();
       }else{
-        var_dump($_POST['lokasi']);
         $data['label']= $this->model('Culture_model')->getnamaprovinsi(implode(', ',$_POST['lokasi']));
         $data['culture'] = $this->model('Culture_model')->getAlldataCulturecondisi(implode(', ',$_POST['lokasi']));
       }
@@ -23,7 +22,10 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
+      }
+      foreach(range('A', 'Z') as $alfabet){
+        $data[$alfabet] = $this->model('Wilayah_model')->ambilnamaprovinsi($alfabet);
       }
       $data['daerah'] = $this->model('Culture_model')->getallculturegruopbynama();
       $this->view('layouts/header', $data);
@@ -47,7 +49,7 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
       }
       $data['review'] = $this->model('review_model')->getreviewbyidculture($id);
       $data['culture'] = $this->model('Culture_model')->getAllgaleryCultureById($id);

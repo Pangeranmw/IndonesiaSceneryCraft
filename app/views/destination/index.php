@@ -52,9 +52,9 @@
                   <?php foreach($data['daerah'] as $daerah) :?>
                   <li class="category-list">
                     <div class="form-check ">
-                      <input class="form-check-input" name="lokasi[]" type="checkbox" value="<?= $daerah['id_kabupaten']?>" id="">
-                      <label class="form-check-label fs-6 main" for="">
-                        <?= $daerah['nama_kabupaten']?>
+                      <input class="form-check-input" name="lokasi[]" type="checkbox" value="<?= $daerah['id_kabupaten']?>" id="<?= $daerah['id_kabupaten']?>">
+                      <label class="form-check-label fs-6 main" for="<?= $daerah['id_kabupaten']?>">
+                        <?= ucwords(strtolower($daerah['nama_kabupaten']))?>
                       </label>
                     </div>
                   </li>
@@ -72,18 +72,22 @@
                         </div>
                         <div class="modal-body">
                           <!-- Looping -->
-                          <div class="text fs-3 d-inline-block">
-                            A
-                          </div>
-                          <!-- Looping -->
-                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="form-check m-2">
-                              <input class="form-check-input" name="" type="checkbox" value="Ampenan" id="">
-                              <label class="form-check-label fs-6 main" for="">
-                                Ampenan
-                              </label>
+                          <?php foreach(range('A','Z') as $char) :?>
+                            <div class="text fs-3 d-inline-block">
+                              <?=$char?>
                             </div>
-                          </div>
+                            <!-- Looping -->
+                            <div class="location-content d-flex flex-wrap align-items-center">
+                                <?php foreach($data[$char] as $daerah) :?>
+                                <div class="form-check m-2">
+                                  <input class="form-check-input" name="lokasi[]" type="checkbox" value="<?=$daerah['id']?>" id="<?=$daerah['id']?>">
+                                  <label class="form-check-label fs-6 main" for="<?=$daerah['id']?>">
+                                    <?= ucwords(strtolower($daerah['nama_kabupaten']))?>
+                                  </label>
+                                </div>
+                                <?php endforeach;?>
+                              </div>
+                          <?php endforeach;?>
                           <!-- End Looping -->
                         </div>
                       </div>
@@ -107,8 +111,8 @@
                   <?php foreach($data['kategori'] as $kategori) :?>
                   <li class="category-list">
                     <div class="form-check ">
-                      <input class="form-check-input" name="kategori[]" type="checkbox" value="<?= $kategori['id_kategori'] ?>" id="">
-                      <label class="form-check-label fs-6 main" for="">
+                      <input class="form-check-input" name="kategori[]" type="checkbox" value="<?= $kategori['id_kategori'] ?>" id="<?= $kategori['id_kategori'] ?>">
+                      <label class="form-check-label fs-6 main" for="<?= $kategori['id_kategori'] ?>">
                         <?= $kategori['kategori_'.$_SESSION['lang'].''] ?>
                       </label>
                     </div>
@@ -132,7 +136,7 @@
             <?php if(isset($_POST['lokasi'])) :?>
               <?php foreach($data['label'] as $label)  :?>
               <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
-                <p class="d-inline-block m-0 main"><?= $label['nama_kabupaten']?></p>
+                <p class="d-inline-block m-0 main"><?= ucwords(strtolower($label['nama_kabupaten']))?></p>
                 <button class="btn close" style="background-image: url('<?=BASEURL;?>/assets/images/closeicon.svg');"></button>
               </div>
               <?php endforeach;?>
@@ -148,12 +152,12 @@
             <!-- End Looping -->
           </form>
         </div>
+        <!-- <?=var_dump($data['destination'][0])?> -->
         <?php foreach($data['destination'] as $destinasi) :?>
         <div class="destination-section card p-3 mb-4">
           <!-- Looping -->
-          
           <div class="destination-content row">
-            <div class="destination-image col-lg-3 col-md-3 col-sm-6">
+            <div class="destination-image col-lg-4 col-md-4 col-sm-6">
               <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $destinasi['gallery']?>');">
               <div class="star py-1 px-3">
                 <img class="" src="<?=BASEURL;?>/assets/images/ic-stargreen.svg" alt="">
@@ -161,13 +165,11 @@
               </div>
               </div>
             </div>
-            <div class="text col-lg-9 col-md-9 col-sm-6">
-              <div class="category mb-2">
-              <span class="py-1 px-3 rounded-pill me-3"><?= $destinasi['kategori']?></span>
-              <!-- <span class="py-1 px-3 rounded-pill"><?= $destinasi['']?></span> -->
-              <!-- <?php foreach($destinasi['kategori'] as $kategori) :?> -->
-              <!-- <?php endforeach; ?> -->
-              </div>
+            <div class="text col-lg-8 col-md-8 col-sm-6">
+                <div class="category mb-2">
+                <span class="py-1 px-3 rounded-pill me-3"><?= $destinasi['kategori_'.$_SESSION['lang'].'']?></span>
+                <!-- <span class="py-1 px-3 rounded-pill"><?= $destinasi['']?></span> -->
+                </div>
               <div class="name fs-3 fw-semibold">
                 <?= $destinasi['nama_'.$_SESSION['lang'].'']?>
               </div>

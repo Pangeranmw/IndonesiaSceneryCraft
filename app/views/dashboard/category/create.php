@@ -5,8 +5,8 @@
         <div class="card p-3">
           <form action="<?=BASEURL;?>/addcategory/tambah" method="post">
             <div class="mb-3">
-              <label for="kategori_'.$_SESSION['lang'].'" class="form-label">Category (Indonesia)</label>
-              <input type="text" class="form-control" id="kategori_'.$_SESSION['lang'].'" placeholder="Category (Indonesia)" name="kategori_'.$_SESSION['lang'].'">
+              <label for="kategori_id" class="form-label">Category (Indonesia)</label>
+              <input type="text" class="form-control" id="kategori_id" placeholder="Category (Indonesia)" name="kategori_id">
             </div>
             <div class="mb-3">
               <label for="kategori_en" class="form-label">Category (English)</label>

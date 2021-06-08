@@ -25,6 +25,9 @@
       }else{
         $_SESSION['id_user'] = null;
       }
+      foreach(range('A', 'Z') as $alfabet){
+        $data[$alfabet] = $this->model('Wilayah_model')->ambilnamakabupaten($alfabet);
+      }
       $this->model('Language_model')->changeLanguage();
       $data['kategori'] = $this->model('Destination_model')->getAllCategoryDestinationgroupby();
       $data['daerah'] = $this->model('Destination_model')->getAlldatadestinastion();
@@ -36,6 +39,7 @@
       $this->view('layouts/footer');
     }
     public function detail($id){
+      $this->model('Language_model')->changeLanguage();
       if(isset($_SESSION['login'])){
         $data['email'] = $_SESSION['email'];
         $data['user']= $this->model('User_model')->dataUser($_SESSION['email']);
@@ -48,7 +52,7 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
       }
       $data['review'] = $this->model('review_model')->getreviewbyiddestinasi($id);
       $data['destination'] = $this->model('Destination_model')->getDestinationbyId($id);

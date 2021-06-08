@@ -1,5 +1,5 @@
 <body style="background-color: var(--bg);">
- <div class="culture-detail container">
+ <div class="culture-detail container  scene">
   <div class="row my-5 justify-content-center align-items-center">
     <div class="detail-image col-lg-8 col-md-6 col-sm-12" id="gallery">
       <!-- <zoom-on-hover class="detail-item w-100":style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }" img-normal="photos[activePhoto].url" ></zoom-on-hover> -->

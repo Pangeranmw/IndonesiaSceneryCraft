@@ -6,7 +6,7 @@
           <form action="<?=BASEURL;?>/addcategorycraft/tambah" method="POST">
             <div class="mb-3">
               <label for="craft" class="form-label">Craft</label>
-              <select class="form-select" name="id_kerajinan" id="craft">
+              <select class="form-select" name="id_kerajinan" id="craft" required>
                 <option> Select Craft </option>
                 <?php foreach($data['kerajinan'] as $kerajinan):?>
                   <option value="<?=$kerajinan['id'];?>"> <?=$kerajinan['nama_'.$_SESSION['lang'].''];?> </option>
@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3">
               <label for="kategori" class="form-label">Category</label>
-              <select class="form-select" name="id_kategori" id="kategori">
+              <select class="form-select" name="id_kategori" id="kategori" required>
                 <option> Select Category </option>
                 <?php foreach($data['kategori'] as $kategori):?>
                   <option value="<?=$kategori['id'];?>"> <?=$kategori['kategori_'.$_SESSION['lang'].''];?> </option>

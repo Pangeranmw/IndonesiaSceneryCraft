@@ -14,12 +14,13 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
       }
-      $data['culture'] = $this->model('Culture_model')->getAllGaleryCulture();
-      $data['destination_gallery'] = $this->model('Destination_model')->getAllGaleryDestination();
+      $data['culture'] = $this->model('Culture_model')->getCultureProvince();
+      // $data['destination_gallery'] = $this->model('Destination_model')->getAllGaleryDestination();
       $data['destination'] = $this->model('Destination_model')->getAlldatadestinastionrekomendation();
-      $data['craft'] = $this->model('Craft_model')->getAllGaleryCraft();
+      $data['review'] = $this->model('Review_model')->selectbestreview();
+      $data['craft'] = $this->model('Craft_model')->getCraftRated();
       $this->view('layouts/header', $data);
       $this->view('includes/navbar-home');
       $this->view('includes/navbar', $data);

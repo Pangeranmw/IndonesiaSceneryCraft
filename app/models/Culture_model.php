@@ -29,7 +29,7 @@ class Culture_model {
   public function getAlldataCulturecondisi($lokasi){
     $this->db->query(
       "SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
-        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, IF(kabupaten.nama_kabupaten LIKE '%kabupaten%', SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
         FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
         JOIN kecamatan ON desa.district_id = kecamatan.id 
         JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
@@ -63,6 +63,17 @@ class Culture_model {
   public function getAllGaleryCulture(){
     $this->db->query(
       'SELECT budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, gallery_budaya.id AS id,gallery_budaya.foto AS gallery, provinsi.nama_provinsi as nama_provinsi
+      FROM budaya JOIN gallery_budaya ON budaya.id = gallery_budaya.id_budaya 
+      JOIN desa ON budaya.id_lokasi = desa.id 
+      JOIN kecamatan ON desa.district_id = kecamatan.id 
+      JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
+      JOIN provinsi ON kabupaten.province_id = provinsi.id
+    ');
+    return $this->db->allSet();
+  }
+  public function getCultureProvince(){
+    $this->db->query(
+      'SELECT budaya.id AS id_budaya, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, gallery_budaya.id AS id,gallery_budaya.foto AS gallery, provinsi.nama_provinsi as nama_provinsi
       FROM budaya JOIN gallery_budaya ON budaya.id = gallery_budaya.id_budaya 
       JOIN desa ON budaya.id_lokasi = desa.id 
       JOIN kecamatan ON desa.district_id = kecamatan.id 

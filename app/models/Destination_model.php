@@ -26,18 +26,19 @@ class Destination_model {
     return $this->db->allSet();
   }public function getnamakabupaten($id){
     $this->db->query(
-      "SELECT nama_kabupaten FROM kabupaten WHERE id IN ($id)
+      "SELECT SUBSTRING(nama_kabupaten,11) AS nama_kabupaten FROM kabupaten WHERE id IN ($id)
     ");
     return $this->db->allSet();
   }public function getAlldatadestinastionrekomendation(){
     $this->db->query(
-      'SELECT destinasi.id as id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
+      'SELECT destinasi.id as id_destination, gallery_destination.foto as gallery, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
       desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.id as id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.id as id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
       FROM destinasi JOIN desa ON destinasi.id_lokasi = desa.id 
+      JOIN gallery_destination ON gallery_destination.id_destination = destinasi.id
       JOIN kecamatan ON desa.district_id = kecamatan.id 
       JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
       JOIN provinsi ON kabupaten.province_id = provinsi.id
-      GROUP BY  kabupaten.nama_kabupaten
+      GROUP BY  provinsi.nama_provinsi
       ORDER BY destinasi.rating DESC
     ');
     return $this->db->allSet();
@@ -45,7 +46,7 @@ class Destination_model {
   public function getAlldatadestinastion(){
     $this->db->query(
       'SELECT destinasi.id as id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
-      desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.id as id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.id as id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
+      desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.id as id_kabupaten, IF(kabupaten.nama_kabupaten LIKE "%kabupaten%", SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten, provinsi.id as id_provinsi, provinsi.nama_provinsi AS nama_provinsi 
       FROM destinasi JOIN desa ON destinasi.id_lokasi = desa.id 
       JOIN kecamatan ON desa.district_id = kecamatan.id 
       JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
@@ -146,7 +147,7 @@ class Destination_model {
     return $this->db->rowCount();
   }public function getAllDestinationConditionLocation($lokasi){
     $this->db->query(
-      "SELECT kategori.kategori_id as kategori, gallery_destination.foto as gallery, destinasi.id AS id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, 
+      "SELECT kategori.kategori_id as kategori_id,kategori.kategori_en as kategori_en, gallery_destination.foto as gallery, destinasi.id AS id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, 
         destinasi.artikel_id AS artikel_id,
         destinasi.artikel_en AS artikel_en,
         destinasi.rating AS rating, 
@@ -170,7 +171,7 @@ class Destination_model {
     return $this->db->allSet();
   }public function getAllDestinationConditionCategory($lokasi){
     $this->db->query(
-      "SELECT kategori.kategori_id as kategori, gallery_destination.foto as gallery, destinasi.id AS id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, 
+      "SELECT kategori.kategori_id as kategori_id,kategori.kategori_en as kategori_en, gallery_destination.foto as gallery, destinasi.id AS id_destination, destinasi.nama_id AS nama_id, destinasi.nama_en AS nama_en, 
         destinasi.artikel_id AS artikel_id,
         destinasi.artikel_en AS artikel_en,
         destinasi.rating AS rating, 

@@ -6,10 +6,10 @@
           <form action="<?= BASEURL;?>/addgallerycraft/tambah" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
               <label for="id_kerajinan" class="form-label">Craft</label>
-              <select class="form-select" name="id_kerajinan" id="id_kerajinan">
+              <select class="form-select" name="id_kerajinan" id="id_kerajinan" required>
                 <option> Select Craft </option>
                 <?php foreach( $data['craft'] as $craft) :?>
-                  <option value="<?=$craft['id']?>" required><?=$craft['nama_'.$_SESSION['lang'].'']?></option>
+                  <option value="<?=$craft['id']?>"><?=$craft['nama_'.$_SESSION['lang'].'']?></option>
                 <?php endforeach;?>
               </select>
             </div>

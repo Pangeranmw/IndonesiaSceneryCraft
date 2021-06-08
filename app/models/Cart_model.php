@@ -12,6 +12,7 @@
             kerajinan.nama_en AS nama_en,
             gallery_kerajinan.id AS id,
             gallery_kerajinan.foto AS gallery,
+            kerajinan.id AS id_kerajinan,
             kerajinan.stok AS stok, 
             kerajinan.harga AS harga, 
             kerajinan.rating AS rating, 
@@ -27,6 +28,7 @@
             JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
             JOIN provinsi ON kabupaten.province_id = provinsi.id
             WHERE keranjang.id_user = :id
+            GROUP BY kerajinan.nama_id 
             ORDER BY keranjang.id ASC
             ");
             $this->db->bind('id', $id);
@@ -42,11 +44,35 @@
             $this->db->execute();
             return $this->db->rowCount();
         }
+        public function deletecartuser($id)
+        {
+            $query = "DELETE FROM keranjang WHERE id_user =:id";
+            $this->db->query($query);
+            $this->db->bind('id',$id);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
         public function delete($id, $table)
         {
             $query = "DELETE FROM ". $table ." WHERE id =:id";
             $this->db->query($query);
             $this->db->bind('id',$id);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+        public function selectkeranjangbyidkerajinan($id, $id_user)
+        {
+            $this->db->query("SELECT * FROM keranjang WHERE id_kerajinan =:id AND id_user = :id_user");
+            $this->db->bind('id', $id);
+            $this->db->bind('id_user',$id_user);
+            return $this->db->singleSet();
+        }
+        public function updatejumlahbyid($id, $jumlah, $id_user){
+            $query = "UPDATE keranjang SET jumlah = :jumlah WHERE id_kerajinan=:id AND id_user = :id_user";
+            $this->db->query($query);
+            $this->db->bind('id',$id);
+            $this->db->bind('jumlah',$jumlah);
+            $this->db->bind('id_user',$id_user);
             $this->db->execute();
             return $this->db->rowCount();
         }

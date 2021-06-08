@@ -27,7 +27,7 @@
     public function sortby(){
         if( $_SESSION['sortby'] == 'MostRelevance' || $_SESSION['sortby'] == 'LowestPrice' || $_SESSION['sortby'] == 'HighestPrice'){
           $this->db->query(
-            'SELECT DISTINCT kategori.kategori_id as kategori, destinasi.rating as rating, destinasi.id as id_destination, destinasi.nama_id AS nama_id, gallery_destination.foto as gallery, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
+            'SELECT kategori.kategori_id as kategori_id, kategori.kategori_en as kategori_en, destinasi.rating as rating, destinasi.id as id_destination, destinasi.nama_id AS nama_id, gallery_destination.foto as gallery, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
             desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
             FROM destinasi JOIN desa ON destinasi.id_lokasi = desa.id 
             JOIN kecamatan ON desa.district_id = kecamatan.id 
@@ -42,7 +42,7 @@
         }
         else if ( $_SESSION['sortby'] == 'Recommended') {
           $this->db->query(
-            'SELECT DISTINCT kategori.kategori_id as kategori, destinasi.rating as rating, destinasi.id as id_destination, destinasi.nama_id AS nama_id, gallery_destination.foto as gallery, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
+            'SELECT kategori.kategori_id as kategori_id, kategori.kategori_en as kategori_en, destinasi.rating as rating, destinasi.id as id_destination, destinasi.nama_id AS nama_id, gallery_destination.foto as gallery, destinasi.nama_en AS nama_en, destinasi.artikel_id AS artikel_id, destinasi.artikel_en AS artikel_en, destinasi.maps AS maps, destinasi.rating AS rating, 
             desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
             FROM destinasi JOIN desa ON destinasi.id_lokasi = desa.id 
             JOIN kecamatan ON desa.district_id = kecamatan.id 
@@ -61,7 +61,8 @@
       if( $_SESSION['sortby'] == 'MostRelevance' || $_SESSION['sortby'] == 'LowestPrice' || $_SESSION['sortby'] == 'HighestPrice' ){
         $this->db->query(
           'SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
-          desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+          desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, 
+          IF(kabupaten.nama_kabupaten LIKE "%kabupaten%", SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
           FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
           JOIN kecamatan ON desa.district_id = kecamatan.id 
           JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
@@ -74,7 +75,7 @@
       else if ( $_SESSION['sortby'] == 'Recommended') {
         $this->db->query(
           'SELECT gallery_budaya.foto as gallery, budaya.id AS id, budaya.nama_id AS nama_id, budaya.nama_en AS nama_en, budaya.artikel_id AS artikel_id, budaya.artikel_en AS artikel_en, budaya.maps AS maps, budaya.rating AS rating, 
-          desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+          desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan, IF(kabupaten.nama_kabupaten LIKE "%kabupaten%", SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
           FROM budaya JOIN desa ON budaya.id_lokasi = desa.id 
           JOIN kecamatan ON desa.district_id = kecamatan.id 
           JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 

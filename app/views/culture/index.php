@@ -52,9 +52,9 @@
                   <?php foreach($data['daerah'] as $culture) :?>
                   <li class="category-list">
                     <div class="form-check ">
-                      <input class="form-check-input" name="lokasi[]" type="checkbox" value="<?= $culture['id_provinsi']?>" id="lokasi">
-                      <label class="form-check-label fs-6 main" >
-                        <?= $culture['nama_provinsi']?>
+                      <input class="form-check-input" name="lokasi[]" value="<?= $culture['id_provinsi']?>" type="checkbox" id="<?= $culture['id_provinsi']?>">
+                      <label class="form-check-label fs-6 main" for="<?= $culture['id_provinsi']?>">
+                        <?= ucwords(strtolower($culture['nama_provinsi']))?>
                       </label>
                     </div>
                   </li>
@@ -72,18 +72,24 @@
                         </div>
                         <div class="modal-body">
                           <!-- Looping -->
-                          <div class="text fs-3 d-inline-block">
-                            A
-                          </div>
-                          <!-- Looping -->
-                          <div class="location-content d-flex flex-wrap justify-content-between align-items-center">
-                            <div class="form-check m-2">
-                              <input class="form-check-input" name="lokasi" type="checkbox" value="Ampenan" id="">
-                              <label class="form-check-label fs-6 main" for="">
-                                Ampenan
-                              </label>
+                          <?php foreach(range('A','Z') as $char) :?>
+                            <?php if(!empty($data[$char])):?>
+                            <div class="text fs-3 d-inline-block">
+                              <?= $char?>
                             </div>
-                          </div>
+                            <?php endif;?>
+                            <!-- Looping -->
+                            <div class="location-content d-flex flex-wrap  align-items-center">
+                                <?php foreach($data[$char] as $daerah) :?>
+                                <div class="form-check m-2">
+                                  <input class="form-check-input" name="lokasi[]" value="<?= $daerah['id']?>" type="checkbox" id="<?= $daerah['id']?>">
+                                  <label class="form-check-label fs-6 main" for="<?= $daerah['id']?>">
+                                    <?= ucwords(strtolower($daerah['nama_provinsi']))?>
+                                  </label>
+                                </div>
+                                <?php endforeach;?>
+                              </div>
+                          <?php endforeach;?>
                           <!-- End Looping -->
                         </div>
                       </div>
@@ -103,11 +109,10 @@
         <div class="category-selected">
           <form action="" class="mb-3" name="sortby"> 
             <!-- Looping if category select-->
-            
             <?php if (!is_null($data['label'])) : ?>
                 <?php foreach($data['label'] as $label) :?>
                   <div class="card px-4 py-3 w-auto d-inline-block category-item " id="category-item">
-                    <p class="d-inline-block m-0 main"><?= $label['nama_provinsi']?></p>
+                    <p class="d-inline-block m-0 main"><?= ucwords(strtolower($label['nama_provinsi']))?></p>
                     <button class="btn close" id='closelabel' style="background-image: url('<?=BASEURL;?>/assets/images/closeicon.svg');"></button>
                   </div>
                 <?php endforeach;?>
@@ -130,7 +135,7 @@
             </div>
             <div class="text col-lg-8 col-md-8 col-sm-6">
               <div class="category mb-2">
-                <span class="py-1 px-3 rounded-pill"><?= $culture['nama_kabupaten']?>, <?= $culture['nama_provinsi']?></span>
+                <span class="py-1 px-3 rounded-pill"><?= ucwords(strtolower($culture['nama_kabupaten']))?>, <?= ucwords(strtolower($culture['nama_provinsi']))?></span>
               </div>
               <div class="name fs-3 fw-semibold">
                 <?= $culture['nama_'.$_SESSION['lang'].'']?>

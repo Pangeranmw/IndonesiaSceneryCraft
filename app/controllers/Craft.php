@@ -24,7 +24,10 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
+      }
+      foreach(range('A', 'Z') as $alfabet){
+        $data[$alfabet] = $this->model('Wilayah_model')->ambilnamakabupaten($alfabet);
       }
       $data['kategori'] = $this->model('Craft_model')->getAllCategoryCraftgroupby();
       $data['daerah'] = $this->model('Craft_model')->getAllcraft();
@@ -49,7 +52,7 @@
       if(!is_null($_SESSION['id_user'])){
         $data['qty'] = count($this->model('Cart_model')->getAllCartUser($_SESSION['id_user']));
       }else{
-        $data['qty'] = null;
+        $data['qty'] = 0;
       }
       $data['review'] = $this->model('review_model')->getreviewbyidcraft($id);
       $data['craft'] = $this->model('Craft_model')->getAllCraftById($id);

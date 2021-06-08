@@ -42,6 +42,16 @@ class Wilayah_model{
     }
     echo $data;
   }
+  public function ambilnamakabupaten($text){
+    $query = "SELECT id, IF(kabupaten.nama_kabupaten LIKE '%kabupaten%', SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten FROM kabupaten WHERE nama_kabupaten LIKE 'kabupaten $text%'";
+    $this->db->query($query);
+    return $this->db->allSet();
+  }
+  public function ambilnamaprovinsi($text){
+    $query = "SELECT * FROM provinsi WHERE nama_provinsi LIKE '$text%'";
+    $this->db->query($query);
+    return $this->db->allSet();
+  }
   // public function getFullLocation($id_desa){
   //   $this->db->query('SELECT nama_desa FROM desa WHERE id=:id_desa');
   //   $this->db->bind('id', $id_desa);

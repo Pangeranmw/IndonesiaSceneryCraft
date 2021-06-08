@@ -12,14 +12,14 @@
               name="id"
               value="<?=$data['kategori']['id'];?>">
             <div class="mb-3">
-              <label for="kategori_'.$_SESSION['lang'].'" class="form-label">Category (Indonesia)</label>
+              <label for="kategori_id" class="form-label">Category (Indonesia)</label>
               <input 
               type="text" 
               class="form-control" 
-              id="kategori_'.$_SESSION['lang'].'" 
+              id="kategori_id" 
               placeholder="Category (Indonesia)" 
-              name="kategori_'.$_SESSION['lang'].'"
-              value="<?=$data['kategori']['kategori_'.$_SESSION['lang'].''];?>">
+              name="kategori_id"
+              value="<?=$data['kategori']['kategori_id'];?>">
             </div>
             <div class="mb-3">
               <label for="kategori_en" class="form-label">Category (English)</label>

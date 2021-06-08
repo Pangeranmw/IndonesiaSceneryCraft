@@ -1,5 +1,5 @@
 <body style="background-color: var(--bg);">
- <div class="detail-detail container">
+ <div class="detail-detail container  scene">
   <div class="row mt-5">
     <div class="detail-image col-lg-5 col-md-6 col-sm-12" id="gallery">
       <div class="detail-item w-100" :style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }">
@@ -24,6 +24,15 @@
       <div class="detail-name fs-3 fw-semibold">
         <?= $data['craft']['nama_'.$_SESSION['lang'].'']?>
       </div>
+      <?php if($data['craft']['stok']<5):?>
+        <div class="detail-price fs-6 text-warning">
+          Stock is almost out,  <?= $data['craft']['stok']?> pieces left
+        </div>
+        <?php else:?>
+          <div class="detail-price fs-6 third-color">
+            Stock <?= $data['craft']['stok']?>
+          </div>
+      <?php endif;?>
       <div class="detail-price fs-5 third-color">
         Rp. <?= $data['craft']['harga']?>
       </div>
@@ -36,7 +45,7 @@
           <button type="button" class="minus quantity-left-minus btn btn-white btn-number rounded-left"  data-type="minus" onclick="this.parentNode.querySelector('[type=number]').stepDown();" id="decrease">
             <i class="bi bi-dash-circle"></i>
           </button>
-          <input type="number" id="quantity" name="quantity" class="form-control input-number border-0 rounded-0 quantity" value="1" min="1" max="<?= $cart['stok'] ?>">
+          <input type="number" id="quantity" name="quantity" class="form-control input-number border-0 rounded-0 quantity" value="1" min="1" max="<?= $data['craft']['stok'] ?>">
           <button type="button" class="plus quantity-right-plus btn btn-white btn-number rounded-right" data-type="plus" onclick="this.parentNode.querySelector('[type=number]').stepUp();" id="increment"> 
               <i class="bi bi-plus-circle"></i>
           </button>

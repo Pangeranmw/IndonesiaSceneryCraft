@@ -10,36 +10,43 @@
 ?>
 <body style="background-color: var(--bg);">
   <div class="scene container">
+    
+    <?php if(empty($data['budaya']) && empty($data['destinasi']) && empty($data['kerajinan'])):?>
+      <p class="text-center my-5 py-5">Sorry, But We Don't Found Any Results For "<?=$_SESSION['search'];?>"</p>
+    <?php endif;?>
+
+    <?php if(!empty($data['budaya'])):?>
     <div class="culture-search row mt-3">
       <h4 class="text-center my-2">Culture</h4>
       <!-- Looping -->
+      <?php foreach ($data['budaya'] as $budaya) : ?>
       <div class="search col-lg-4">
         <div class="culture-section card p-3 mb-4">
           <div class="culture-content row">
             <div class="culture-image col-12">
-              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/peresean.jpg');">
+              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $budaya['gallery']?>');">
                 <div class="star py-1 px-3">
                   <img class="" src="<?=BASEURL;?>/assets/images/ic-stargreen.svg" alt="">
-                  <p class="d-inline-block third-color">5 Stars</p>
+                  <p class="d-inline-block third-color"><?= $budaya['rating']?> Stars</p>
                 </div>
               </div>
             </div>
             <div class="text col-12">
               <div class="category my-3">
                 <span class="py-1 px-3 rounded-pill">
-                  Lombok
+                <?= $budaya['nama_kabupaten']?>
                   <!-- <?= $search['nama_kabupaten']?>, <?= $search['nama_provinsi']?> -->
                 </span>
               </div>
               <div class="name fs-3 fw-semibold">
-                Halo
+              <?= $budaya['nama_'.$_SESSION['lang']]?>
                 <!-- <?= $search['nama_'.$_SESSION['lang'].'']?> -->
               </div>
               <div class="description fs-6 mb-2">
-                <?= limit_text('Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, velit sint? Minus a distinctio vel quis facere ex tempore, saepe explicabo nihil sit assumenda totam sunt inventore dolorum sapiente dolore.', 20)?>
+                <?= limit_text($budaya['artikel_'.$_SESSION['lang']], 20)?>
               </div>
               <a 
-              href="<?=BASEURL;?>/culture/detail/<?= $culture['id']?>" 
+              href="<?=BASEURL;?>/culture/detail/<?= $budaya['id']?>" 
               class="btn btn-third py-2 px-3 fw-semibold">
               Read More
               </a>
@@ -47,37 +54,41 @@
           </div>
         </div>
       </div>
+      <?php endforeach;?>
     </div>
+    <?php endif;?>
+    <?php if(!empty($data['destinasi'])):?>
     <div class="destination-search row mt-3">
       <h4 class="text-center my-2">Destination</h4>
       <!-- Looping -->
+      <?php foreach ($data['destinasi'] as $destinasi) : ?>
       <div class="search col-lg-4">
         <div class="destination-section card p-3 mb-4">
           <div class="destination-content row">
             <div class="destination-image col-12">
-              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/peresean.jpg');">
+              <div class="image" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $destinasi['gallery']?>');">
                 <div class="star py-1 px-3">
                   <img class="" src="<?=BASEURL;?>/assets/images/ic-stargreen.svg" alt="">
-                  <p class="d-inline-block third-color">5 Stars</p>
+                  <p class="d-inline-block third-color"><?= $destinasi['rating']?> Stars</p>
                 </div>
               </div>
             </div>
             <div class="text col-12">
               <div class="category my-3">
                 <span class="py-1 px-3 rounded-pill">
-                  Lombok
+                  <?= $destinasi['nama_kabupaten']?>
                   <!-- <?= $search['nama_kabupaten']?>, <?= $search['nama_provinsi']?> -->
                 </span>
               </div>
               <div class="name fs-3 fw-semibold">
-                Halo
-                <!-- <?= $search['nama_'.$_SESSION['lang'].'']?> -->
+                <?= $destinasi['nama_'.$_SESSION['lang']]?>
+                <!-- <?= $search['nama_'.$_SESSION['lang']]?> -->
               </div>
               <div class="description fs-6 mb-2">
-                <?= limit_text('Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, velit sint? Minus a distinctio vel quis facere ex tempore, saepe explicabo nihil sit assumenda totam sunt inventore dolorum sapiente dolore.', 20)?>
+                <?= limit_text($destinasi['artikel_'.$_SESSION['lang']], 20)?>
               </div>
               <a 
-              href="<?=BASEURL;?>/destination/detail/<?= $culture['id']?>" 
+              href="<?=BASEURL;?>/destination/detail/<?= $destinasi['id']?>" 
               class="btn btn-third py-2 px-3 fw-semibold">
               Read More
               </a>
@@ -85,27 +96,30 @@
           </div>
         </div>
       </div>
-    </div>
+      <?php endforeach;?>
+     </div>
+    <?php endif;?>
+    <?php if(!empty($data['kerajinan'])):?>
     <div class="craft-search row mt-3">
       <h4 class="text-center my-2">Craft</h4>
       <!-- Looping -->
+      <?php foreach ($data['kerajinan'] as $craft) : ?>
       <div class="search col-lg-3">
         <div class="craft-content card p-3">
           <a href="<?=BASEURL;?>/craft/detail/<?= $craft['id_kerajinan']?>" class="link-primary mt-1">
-            <div class="image rounded" style="background-image: url('<?=BASEURL;?>/assets/images/ketak.jpeg');">
+            <div class="image rounded" style="background-image: url('<?=BASEURL;?>/assets/images/<?= $craft['gallery']?>');">
             </div>
             <div class="star mt-1">
-              <img src="<?=BASEURL;?>/assets/images/ic-greystar.svg" alt="">
-              <!-- <?php for($i = 0;$i<$craft['rating'];$i++):?> -->
-              <!-- <?php endfor;?> -->
+              <?php for($i = 0;$i<$craft['rating'];$i++):?> 
+                <img src="<?=BASEURL;?>/assets/images/ic-greystar.svg" alt="">
+              <?php endfor;?> 
             </div>
             <div class="name fs-5 fw-semibold">
-              Nama
+              <?= $craft['nama_'.$_SESSION['lang']]?>
               <!-- <?= $craft['nama_'.$_SESSION['lang'].'']?> -->
             </div>
             <div class="price main mt-1">
-              Rp. 200000
-              <!-- <?= str_replace(',','.',number_format($craft['harga']))?> -->
+              Rp. <?= str_replace(',','.',number_format($craft['harga']))?>
             </div>
           </a>
           <?php if ($_SESSION['id_user'] == null){?>
@@ -115,5 +129,7 @@
           <?php }?>
         </div>
       </div>
+      <?php endforeach;?>
     </div>
+  <?php endif;?>
   </div>

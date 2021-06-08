@@ -153,6 +153,28 @@
         exit;
       }
     }
+    public function deleteculture($id=null){
+      $this->model('Language_model')->changeLanguage();
+      if($_SESSION['login'] == 'admin'){
+        $tabel = "budaya";
+        if($this->model('Culture_model')->delete($id, $tabel)){
+          echo
+          "<script>
+            alert('Budaya Berhasil Dihapus');
+            window.location='".BASEURL."/dashboard/culture';
+          </script>";
+        }else{
+          echo
+          "<script>
+            alert('Budaya Gagal Dihapus');
+            window.location='".BASEURL."/dashboard/culture';
+          </script>";
+        }
+      }else{
+        header('Location: '. BASEURL .'/loginadmin');
+        exit;
+      }
+    }
     public function deletedestination($id=null){
       $this->model('Language_model')->changeLanguage();
       if($_SESSION['login'] == 'admin'){

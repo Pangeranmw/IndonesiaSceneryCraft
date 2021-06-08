@@ -7,6 +7,25 @@ class Review_model {
   public function __construct()
   {
     $this->db = new Database();
+  }public function selectbestreview(){
+    $this->db->query('SELECT review.review as review, 
+    review.judul as judul, 
+    review.foto as gallery, 
+    destinasi.nama_id as nama_id, 
+    destinasi.nama_en as nama_en, 
+    review.rating as rating, 
+    gallery_destination.foto as gallerydestinasi, 
+    user.nama_lengkap as nama_lengkap,
+    user.profesi as profesi,
+    user.foto as foto
+    FROM review JOIN user ON review.id_user = user.id 
+    JOIN destinasi ON destinasi.id = review.id_destinasi 
+    JOIN gallery_destination ON destinasi.id = gallery_destination.id_destination 
+    WHERE review.rating = 5
+    ORDER BY LENGTH(review.review) DESC, destinasi.rating DESC LIMIT 1
+    ');
+    return $this->db->singleSet();
+
   }public function getreviewbyiddestinasi($id){
     $this->db->query('SELECT review.review as review,
     review.judul as judul,

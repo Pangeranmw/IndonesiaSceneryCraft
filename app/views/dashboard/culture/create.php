@@ -5,13 +5,13 @@
         <div class="card p-3">
           <form action="<?=BASEURL;?>/addculture/tambah" method="POST">
             <div class="mb-3">
-              <label for="nama_'.$_SESSION['lang'].'" class="form-label">Name (Indonesia)</label>
+              <label for="nama_id" class="form-label">Name (Indonesia)</label>
               <input 
                 type="text" 
                 class="form-control" 
-                id="nama_'.$_SESSION['lang'].'" 
+                id="nama_id" 
                 placeholder="Culture Name (Indonesia)" 
-                name="nama_'.$_SESSION['lang'].'" required>
+                name="nama_id" required>
             </div>
             <div class="mb-3">
               <label for="nama_en" class="form-label">Name (English)</label>
@@ -23,10 +23,10 @@
               name="nama_en" required>
             </div>
             <div class="mb-3">
-              <label for="artikel_'.$_SESSION['lang'].'" class="form-label">Article (Indonesia)</label>
+              <label for="artikel_id" class="form-label">Article (Indonesia)</label>
               <textarea class="form-control"
               placeholder="Article (Indonesia)" 
-              name="artikel_'.$_SESSION['lang'].'"></textarea>
+              name="artikel_id"></textarea>
             </div>
             <div class="mb-3">
               <label for="artikel_en" class="form-label">Article (English)</label>

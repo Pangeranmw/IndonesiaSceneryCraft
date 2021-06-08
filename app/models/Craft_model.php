@@ -22,7 +22,15 @@ class Craft_model {
       FROM kerajinan JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan ORDER BY kerajinan.rating DESC
     ');
     return $this->db->allSet();
-  }public function getAllCategoryCraftgroupby(){
+  }
+  public function getCraftRated(){
+    $this->db->query(
+      'SELECT kerajinan.rating AS rating, kerajinan.id AS id_kerajinan, kerajinan.stok AS stok, kerajinan.nama_id AS nama_id, kerajinan.harga AS harga, kerajinan.nama_en AS nama_en, gallery_kerajinan.id AS id_gallery,gallery_kerajinan.foto AS gallery
+      FROM kerajinan JOIN gallery_kerajinan ON kerajinan.id = gallery_kerajinan.id_kerajinan GROUP BY gallery_kerajinan.id_kerajinan ORDER BY kerajinan.rating DESC
+    ');
+    return $this->db->allSet();
+  }
+  public function getAllCategoryCraftgroupby(){
     $this->db->query(
       'SELECT 
       kategori_kerajinan.id AS id_kategori,
@@ -143,7 +151,7 @@ class Craft_model {
         kerajinan.deskripsi_id AS deskripsi_id, 
         kerajinan.deskripsi_en AS deskripsi_en,
         kerajinan.rating AS rating, 
-        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan,kabupaten.id as id_kabupaten, kabupaten.nama_kabupaten AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
+        desa.nama_desa AS nama_desa, kecamatan.nama_kecamatan AS nama_kecamatan,kabupaten.id as id_kabupaten, IF(kabupaten.nama_kabupaten LIKE "%kabupaten%", SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten, provinsi.nama_provinsi AS nama_provinsi 
         FROM kerajinan JOIN desa ON kerajinan.id_lokasi = desa.id 
         JOIN kecamatan ON desa.district_id = kecamatan.id 
         JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 

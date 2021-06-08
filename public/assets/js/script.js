@@ -41,7 +41,7 @@ for (var i = 0; i < deleteButtons.length; i++) {
 	})(i);
 }
 if (mobile.matches){
-	navbar.classList.toggle("main-color");
+	navbar.classList.add("main-color");
 	navbar.classList.remove("rounded-pill");
 	cart.style.display = "none";
 	logo.style.display = "none";
@@ -59,7 +59,7 @@ if (mobile.matches){
 	mobileSearch.style.display = "none";
 }
 mobileNav.onclick = function changeNav() {
-	navbar.classList.toggle("rounded-pill");
+	// navbar.classList.toggle("rounded-pill");
 	cart.style.display = "none";
 	logo.style.display = "none";
 	lang.style.width = "25%";
