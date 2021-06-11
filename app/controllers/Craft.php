@@ -54,7 +54,7 @@
       }else{
         $data['qty'] = 0;
       }
-      $data['review'] = $this->model('review_model')->getreviewbyidcraft($id);
+      $data['review'] = $this->model('Review_model')->getreviewbyidcraft($id);
       $data['craft'] = $this->model('Craft_model')->getAllCraftById($id);
       $data['gallery'] = $this->model('Craft_model')->getCraftGallerybyId($id);
       $this->view('layouts/header', $data);

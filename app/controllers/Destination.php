@@ -56,7 +56,7 @@
       }else{
         $data['qty'] = 0;
       }
-      $data['review'] = $this->model('review_model')->getreviewbyiddestinasi($id);
+      $data['review'] = $this->model('Review_model')->getreviewbyiddestinasi($id);
       $data['destination'] = $this->model('Destination_model')->getDestinationbyId($id);
       $data['gallery'] = $this->model('Destination_model')->getDestinationGallerybyId($id);
       $this->view('layouts/header', $data);
