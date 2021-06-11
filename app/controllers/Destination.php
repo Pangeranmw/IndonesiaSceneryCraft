@@ -3,9 +3,11 @@
     public function index(){
       $this->model('Sortby_model')->setvar();
       if(isset($_POST['lokasi'])){
+        // var_dump($_POST['lokasi']);
         $data['label'] = $this->model('Destination_model')->getnamakabupaten(implode(', ',$_POST['lokasi']));
         $data['destination'] = $this->model('Destination_model')->getAllDestinationConditionLocation(implode(', ',$_POST['lokasi']));
       }else if(isset($_POST['kategori'])){
+        // var_dump($_POST['kategori']);
         $data['destination'] = $this->model('Destination_model')->getAllDestinationConditionCategory(implode(', ',$_POST['kategori']));
         $data['label_kategori'] = $this->model('Destination_model')->selectkategori(implode(', ',$_POST['kategori']));
       }else{

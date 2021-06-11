@@ -26,7 +26,7 @@ class Destination_model {
     return $this->db->allSet();
   }public function getnamakabupaten($id){
     $this->db->query(
-      "SELECT SUBSTRING(nama_kabupaten,11) AS nama_kabupaten FROM kabupaten WHERE id IN ($id)
+      "SELECT IF(kabupaten.nama_kabupaten LIKE '%kabupaten%', SUBSTRING(nama_kabupaten,11), SUBSTRING(nama_kabupaten,6)) AS nama_kabupaten FROM kabupaten WHERE id IN ($id)
     ");
     return $this->db->allSet();
   }public function getAlldatadestinastionrekomendation(){
@@ -51,7 +51,7 @@ class Destination_model {
       JOIN kecamatan ON desa.district_id = kecamatan.id 
       JOIN kabupaten ON kecamatan.regency_id = kabupaten.id 
       JOIN provinsi ON kabupaten.province_id = provinsi.id
-      GROUP BY  kabupaten.nama_kabupaten
+      GROUP BY nama_kabupaten ORDER BY nama_kabupaten
     ');
     return $this->db->allSet();
   }

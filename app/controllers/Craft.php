@@ -30,7 +30,7 @@
         $data[$alfabet] = $this->model('Wilayah_model')->ambilnamakabupaten($alfabet);
       }
       $data['kategori'] = $this->model('Craft_model')->getAllCategoryCraftgroupby();
-      $data['daerah'] = $this->model('Craft_model')->getAllcraft();
+      $data['daerah'] = $this->model('Craft_model')->getKabupaten();
       $this->view('layouts/header', $data);
       $this->view('includes/navbar-general');
       $this->view('includes/navbar', $data);
