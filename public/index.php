@@ -1,3 +1,3 @@
 <?php
-require_once '../init.php';
+require_once '../app/init.php';
 $app = new App;
