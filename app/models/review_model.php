@@ -25,6 +25,7 @@ class Review_model {
     ORDER BY LENGTH(review.review) DESC, destinasi.rating DESC LIMIT 1
     ');
     return $this->db->singleSet();
+    
 
   }public function getreviewbyiddestinasi($id){
     $this->db->query('SELECT review.review as review,
