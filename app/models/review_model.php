@@ -26,7 +26,6 @@ class Review_model {
     ');
     return $this->db->singleSet();
 
-
   }public function getreviewbyiddestinasi($id){
     $this->db->query('SELECT review.review as review,
     review.judul as judul,

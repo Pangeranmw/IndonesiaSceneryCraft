@@ -206,8 +206,8 @@
           },
       },
       navText: [
-          "<img src=''. BASEURL .'/assets/images/prev.png'>",
-          "<img src=''. BASEURL .'/assets/images/next.png'>",
+          "<img src='<?= BASEURL?>/assets/images/prev.png'>",
+          "<img src='<?= BASEURL?>/assets/images/next.png'>",
       ],
     });
   });

@@ -9,10 +9,10 @@
                 $rating = $_POST['rating'];
                 $judul = $_POST['judul'];
                 $foto = $this->model('Upload_model')->upload($_FILES);
-                if($this->model('Review_model')->tambahreviewculture($id_user, $id_culture,$review, $foto, $judul, $rating)>0){
-                    $rating = $this->model('Review_model')->selectratingculture($id_culture);
+                if($this->model('review_model')->tambahreviewculture($id_user, $id_culture,$review, $foto, $judul, $rating)>0){
+                    $rating = $this->model('review_model')->selectratingculture($id_culture);
                     settype($rating['rating'], "int");
-                    $this->model('Review_model')->updateratingreviewculture($rating['rating'], $id_culture);
+                    $this->model('review_model')->updateratingreviewculture($rating['rating'], $id_culture);
                     $sukses = array(
                         "success"	=> 1,
                     );

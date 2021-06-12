@@ -7,7 +7,7 @@
       <div class="detail-item position-relative" :style="{ backgroundImage: 'url(' + photos[activePhoto].url + ')' }">
         <div class="location-cta btn-primary w-50 d-inline p-3">
           <i class="fas fa-map-marker-alt d-inline fs-5"></i>
-          <a class="nav-link d-inline fs-5 p-1" href="https://goo.gl/maps/i83icx3Jzp3BxrVJ9" target="blank">
+          <a class="nav-link d-inline fs-5 p-1" href="<?=$data['destination']['maps']?>" target="blank">
             View Location
           </a>
         </div>
@@ -194,8 +194,8 @@
           },
       },
       navText: [
-          "<img src=''. BASEURL .'/assets/images/prev.png'>",
-          "<img src=''. BASEURL .'/assets/images/next.png'>",
+          "<img src='<?= BASEURL?>/assets/images/prev.png'>",
+          "<img src='<?= BASEURL?>/assets/images/next.png'>",
       ],
     });
   });

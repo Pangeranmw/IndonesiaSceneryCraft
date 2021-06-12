@@ -51,7 +51,7 @@
       }else{
         $data['qty'] = 0;
       }
-      $data['review'] = $this->model('Review_model')->getreviewbyidculture($id);
+      $data['review'] = $this->model('review_model')->getreviewbyidculture($id);
       $data['culture'] = $this->model('Culture_model')->getAllgaleryCultureById($id);
       $data['gallery'] = $this->model('Culture_model')->getCultureGallerybyId($id);
       $this->view('layouts/header', $data);

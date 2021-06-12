@@ -7,6 +7,7 @@ var mobileNav = document.getElementById("btnNav");
 var mobile = window.matchMedia("(max-width: 845px)");
 var mobileCart = document.getElementById("mobile-cart");
 var mobileSearch = document.getElementById("mobile-search");
+Vue.config.devtools = true;
 
 // toggle review
 function toggleReview() {

@@ -18,7 +18,7 @@
       <div class="col-lg-3 col-md-6 col-sm-12 py-5">
         <div class="contact">
           <h3 class="fs-4">About</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea nobis atque ratione ad tempora non illo nemo, temporibus dolore recusandae, aperiam qui perspiciatis eveniet repellat illum</p>
+          <p>This website is a website with the theme of Indonesian Tourism created by Blablala students. All content listed on this website is intended to provide information and sales displayed are a sign of a partnership that will connect you to our partners.</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 py-5">
