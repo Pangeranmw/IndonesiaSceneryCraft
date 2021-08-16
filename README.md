@@ -3,6 +3,8 @@
 Merupakan website dibidang pariwisata sekaligus kewirausahaan, yang
 mencangkup wilayah nasional hingga internasional yang mana akan menyediakan informasi seputar wisata serta budaya yang ada di Indonesia dan kerajinan daerah pada daerahnya.
 
+> DEPLOYMENT IN PROGRESS
+
 ## Tech Stack
 - PHP native (MVC)
 - Bootsrap — CSS Framework
