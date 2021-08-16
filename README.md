@@ -3,6 +3,7 @@
 Merupakan website dibidang pariwisata sekaligus kewirausahaan, yang
 mencangkup wilayah nasional hingga internasional yang mana akan menyediakan informasi seputar wisata serta budaya yang ada di Indonesia dan kerajinan daerah pada daerahnya.
 
+https://indonesiascenerycraft.herokuapp.com/
 > DEPLOYMENT IN PROGRESS
 
 ## Tech Stack
